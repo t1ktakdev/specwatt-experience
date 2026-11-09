@@ -26,6 +26,8 @@ npm test
 npm run build
 npx playwright install chromium
 node tools/qa.mjs
+node tools/accessibility.mjs
+node tools/verify-live.mjs
 ```
 
 The browser checks use a separate, headless Chromium process. They never control the user's browser or desktop. `artifacts/` contains generated screenshots and QA evidence and is ignored by Git.
