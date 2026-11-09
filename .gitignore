@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env*
+*.log
+artifacts/
+*.zip
+tools/cloudflared.exe
+*.tsbuildinfo

@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "12 routes × 3 widths: render and horizontal overflow",
+    "Power limit rejection and successful channel switching",
+    "CH3 has no switch",
+    "Offline: unknown current power, disabled control, demo recovery",
+    "Loading and error states do not display fresh telemetry",
+    "Concept scene slider and presets",
+    "Analytics periods update totals and chart",
+    "Autopilot requires explicit channel consent; consent survives navigation",
+    "Schedule save/reload/delete; CH3 excluded",
+    "Setup explicitly ends in demo, not hardware success",
+    "Reduced-motion preference"
+  ],
+  "overflow": [],
+  "errors": []
+}
