@@ -1,0 +1,2037 @@
+{
+  "fileKey": "CZEjsvoYoT7888KQ0o7B5Q",
+  "pages": [
+    {
+      "id": "4:2",
+      "name": "00 Cover & Product Principles",
+      "children": 1,
+      "screens": [
+        {
+          "id": "29:231",
+          "name": "SpecWATT / Experience V4",
+          "width": 1000,
+          "height": 1051,
+          "types": {
+            "FRAME": 2,
+            "TEXT": 7,
+            "RECTANGLE": 1,
+            "INSTANCE": 2,
+            "VECTOR": 2
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "29:235",
+              "name": "Original architecture / content photograph",
+              "width": 872,
+              "height": 340
+            }
+          ],
+          "autoLayouts": 3,
+          "boundNodes": 1,
+          "unsettledFrames": [],
+          "hotspots": 1
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:3",
+      "name": "01 Foundations / Tokens / Typography",
+      "children": 1,
+      "screens": [
+        {
+          "id": "4:81",
+          "name": "Foundations / shared source of truth",
+          "width": 900,
+          "height": 1500,
+          "types": {
+            "FRAME": 12,
+            "TEXT": 22,
+            "RECTANGLE": 11
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 12,
+          "boundNodes": 34,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:4",
+      "name": "02 Component Library / Variants / States",
+      "children": 11,
+      "screens": [
+        {
+          "id": "11:596",
+          "name": "Components / Usage & Safety",
+          "width": 528,
+          "height": 336,
+          "types": {
+            "FRAME": 1,
+            "TEXT": 7
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 1,
+          "boundNodes": 0,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [
+        {
+          "id": "11:18",
+          "name": "Toggle",
+          "variants": 4,
+          "properties": {
+            "State": {
+              "type": "VARIANT",
+              "defaultValue": "Off",
+              "variantOptions": [
+                "Off",
+                "On",
+                "Disabled",
+                "Unavailable"
+              ]
+            }
+          }
+        },
+        {
+          "id": "11:151",
+          "name": "Navigation",
+          "variants": 4,
+          "properties": {
+            "Active": {
+              "type": "VARIANT",
+              "defaultValue": "Home",
+              "variantOptions": [
+                "Home",
+                "Devices",
+                "Energy",
+                "Auto"
+              ]
+            }
+          }
+        },
+        {
+          "id": "11:173",
+          "name": "Primary",
+          "variants": 6,
+          "properties": {
+            "Label#12:0": {
+              "type": "TEXT",
+              "defaultValue": "Открыть SpecWATT"
+            },
+            "Icon#40:0": {
+              "type": "INSTANCE_SWAP",
+              "defaultValue": "40:34",
+              "preferredValues": []
+            },
+            "Tone": {
+              "type": "VARIANT",
+              "defaultValue": "Neutral",
+              "variantOptions": [
+                "Neutral",
+                "Accent"
+              ]
+            },
+            "State": {
+              "type": "VARIANT",
+              "defaultValue": "Default",
+              "variantOptions": [
+                "Default",
+                "Pressed",
+                "Disabled"
+              ]
+            }
+          }
+        },
+        {
+          "id": "11:595",
+          "name": "DeviceCard",
+          "variants": 12,
+          "properties": {
+            "Layout": {
+              "type": "VARIANT",
+              "defaultValue": "Tile",
+              "variantOptions": [
+                "Tile",
+                "Row"
+              ]
+            },
+            "Channel": {
+              "type": "VARIANT",
+              "defaultValue": "CH1",
+              "variantOptions": [
+                "CH1",
+                "CH2"
+              ]
+            },
+            "State": {
+              "type": "VARIANT",
+              "defaultValue": "Off",
+              "variantOptions": [
+                "Off",
+                "On",
+                "Unknown"
+              ]
+            }
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "11:5",
+          "name": "State=Off"
+        },
+        {
+          "id": "11:9",
+          "name": "State=On"
+        },
+        {
+          "id": "11:13",
+          "name": "State=Disabled"
+        },
+        {
+          "id": "11:17",
+          "name": "State=Unavailable"
+        },
+        {
+          "id": "11:51",
+          "name": "Active=Home"
+        },
+        {
+          "id": "11:84",
+          "name": "Active=Devices"
+        },
+        {
+          "id": "11:117",
+          "name": "Active=Energy"
+        },
+        {
+          "id": "11:150",
+          "name": "Active=Auto"
+        },
+        {
+          "id": "11:158",
+          "name": "Tone=Neutral, State=Default"
+        },
+        {
+          "id": "11:165",
+          "name": "Tone=Neutral, State=Pressed"
+        },
+        {
+          "id": "11:172",
+          "name": "Tone=Neutral, State=Disabled"
+        },
+        {
+          "id": "21:257",
+          "name": "Tone=Accent, State=Default"
+        },
+        {
+          "id": "21:264",
+          "name": "Tone=Accent, State=Pressed"
+        },
+        {
+          "id": "21:271",
+          "name": "Tone=Accent, State=Disabled"
+        },
+        {
+          "id": "11:189",
+          "name": "StatusBar"
+        },
+        {
+          "id": "11:200",
+          "name": "Brand"
+        },
+        {
+          "id": "11:204",
+          "name": "DemoBadge"
+        },
+        {
+          "id": "11:231",
+          "name": "Layout=Tile, Channel=CH1, State=Off"
+        },
+        {
+          "id": "11:261",
+          "name": "Layout=Tile, Channel=CH1, State=On"
+        },
+        {
+          "id": "11:291",
+          "name": "Layout=Tile, Channel=CH1, State=Unknown"
+        },
+        {
+          "id": "11:327",
+          "name": "Layout=Tile, Channel=CH2, State=Off"
+        },
+        {
+          "id": "11:363",
+          "name": "Layout=Tile, Channel=CH2, State=On"
+        },
+        {
+          "id": "11:399",
+          "name": "Layout=Tile, Channel=CH2, State=Unknown"
+        },
+        {
+          "id": "11:428",
+          "name": "Layout=Row, Channel=CH1, State=Off"
+        },
+        {
+          "id": "11:457",
+          "name": "Layout=Row, Channel=CH1, State=On"
+        },
+        {
+          "id": "11:486",
+          "name": "Layout=Row, Channel=CH1, State=Unknown"
+        },
+        {
+          "id": "11:521",
+          "name": "Layout=Row, Channel=CH2, State=Off"
+        },
+        {
+          "id": "11:556",
+          "name": "Layout=Row, Channel=CH2, State=On"
+        },
+        {
+          "id": "11:591",
+          "name": "Layout=Row, Channel=CH2, State=Unknown"
+        },
+        {
+          "id": "12:36",
+          "name": "Brand / Small"
+        },
+        {
+          "id": "40:34",
+          "name": "Icon / Primary arrow"
+        },
+        {
+          "id": "40:38",
+          "name": "Icon / Primary check"
+        }
+      ]
+    },
+    {
+      "id": "0:1",
+      "name": "03 Main: Welcome, Home, Lighting, Energy",
+      "children": 4,
+      "screens": [
+        {
+          "id": "15:298",
+          "name": "V4 / 01 Welcome",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 28,
+            "INSTANCE": 4,
+            "VECTOR": 13,
+            "TEXT": 12
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "15:300",
+              "name": "Image (Архитектурный холл с бронзовым светильником и тёплым светом на травертине)",
+              "width": 393,
+              "height": 852
+            }
+          ],
+          "autoLayouts": 22,
+          "boundNodes": 8,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:386",
+          "name": "V4 / 02 Home",
+          "width": 393,
+          "height": 1109.6875,
+          "types": {
+            "FRAME": 118,
+            "TEXT": 41,
+            "VECTOR": 102,
+            "INSTANCE": 7
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 84,
+          "boundNodes": 58,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:762",
+          "name": "V4 / 03 Lighting",
+          "width": 393,
+          "height": 993.875,
+          "types": {
+            "FRAME": 70,
+            "VECTOR": 71,
+            "TEXT": 22,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "15:782",
+              "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+              "width": 345,
+              "height": 298
+            }
+          ],
+          "autoLayouts": 44,
+          "boundNodes": 42,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:978",
+          "name": "V4 / 04 Energy",
+          "width": 393,
+          "height": 1163.40625,
+          "types": {
+            "FRAME": 106,
+            "TEXT": 54,
+            "INSTANCE": 3,
+            "VECTOR": 66,
+            "GROUP": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 76,
+          "boundNodes": 65,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:5",
+      "name": "04 Devices & Detail & Protected",
+      "children": 3,
+      "screens": [
+        {
+          "id": "15:1262",
+          "name": "V4 / 05 Devices",
+          "width": 393,
+          "height": 1080.921875,
+          "types": {
+            "FRAME": 95,
+            "TEXT": 38,
+            "VECTOR": 56,
+            "INSTANCE": 6
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 71,
+          "boundNodes": 46,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:1564",
+          "name": "V4 / 06 Device Detail",
+          "width": 393,
+          "height": 1294.046875,
+          "types": {
+            "FRAME": 85,
+            "VECTOR": 64,
+            "TEXT": 30,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 61,
+          "boundNodes": 50,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:1796",
+          "name": "V4 / 12 Protected CH3",
+          "width": 393,
+          "height": 1132.453125,
+          "types": {
+            "FRAME": 73,
+            "VECTOR": 39,
+            "TEXT": 26,
+            "INSTANCE": 2
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 56,
+          "boundNodes": 47,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:6",
+      "name": "05 Autopilot & Planner & Journal",
+      "children": 3,
+      "screens": [
+        {
+          "id": "15:1983",
+          "name": "V4 / 07 Autopilot",
+          "width": 393,
+          "height": 1379.59375,
+          "types": {
+            "FRAME": 95,
+            "TEXT": 35,
+            "VECTOR": 72,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 68,
+          "boundNodes": 60,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:2246",
+          "name": "V4 / 08 Load Planner",
+          "width": 393,
+          "height": 1261.6875,
+          "types": {
+            "FRAME": 98,
+            "VECTOR": 44,
+            "TEXT": 56,
+            "INSTANCE": 3,
+            "GROUP": 4
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 78,
+          "boundNodes": 52,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:2501",
+          "name": "V4 / 09 Activity Journal",
+          "width": 393,
+          "height": 874.421875,
+          "types": {
+            "FRAME": 61,
+            "VECTOR": 39,
+            "TEXT": 25,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 46,
+          "boundNodes": 27,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:7",
+      "name": "06 Onboarding (3 steps) & Settings",
+      "children": 4,
+      "screens": [
+        {
+          "id": "15:2679",
+          "name": "V4 / 10 Setup — 01",
+          "width": 393,
+          "height": 883.75,
+          "types": {
+            "FRAME": 56,
+            "VECTOR": 37,
+            "INSTANCE": 4,
+            "TEXT": 22
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 39,
+          "boundNodes": 58,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:2829",
+          "name": "V4 / 10 Setup — 02",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 45,
+            "VECTOR": 24,
+            "INSTANCE": 4,
+            "TEXT": 20
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 31,
+          "boundNodes": 41,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:2953",
+          "name": "V4 / 10 Setup — 03",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 48,
+            "VECTOR": 30,
+            "INSTANCE": 4,
+            "TEXT": 19
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 33,
+          "boundNodes": 40,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:3085",
+          "name": "V4 / 11 Settings",
+          "width": 393,
+          "height": 1640.875,
+          "types": {
+            "FRAME": 129,
+            "VECTOR": 74,
+            "TEXT": 41,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 98,
+          "boundNodes": 64,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:8",
+      "name": "07 Edge Cases: offline/loading/error/empty/overload/permission",
+      "children": 15,
+      "screens": [
+        {
+          "id": "15:3397",
+          "name": "V4 / Offline",
+          "width": 393,
+          "height": 1322.359375,
+          "types": {
+            "FRAME": 124,
+            "TEXT": 44,
+            "VECTOR": 108,
+            "INSTANCE": 7
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 88,
+          "boundNodes": 60,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:3790",
+          "name": "V4 / Loading",
+          "width": 393,
+          "height": 1301.96875,
+          "types": {
+            "FRAME": 125,
+            "TEXT": 44,
+            "VECTOR": 102,
+            "INSTANCE": 7
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 89,
+          "boundNodes": 60,
+          "unsettledFrames": [
+            {
+              "id": "15:3805",
+              "name": "Text",
+              "opacity": 0.41148000955581665
+            }
+          ],
+          "hotspots": 0
+        },
+        {
+          "id": "15:4174",
+          "name": "V4 / Error",
+          "width": 393,
+          "height": 1322.359375,
+          "types": {
+            "FRAME": 124,
+            "TEXT": 44,
+            "VECTOR": 104,
+            "INSTANCE": 7
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 88,
+          "boundNodes": 60,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:4559",
+          "name": "V4 / CH2 Off",
+          "width": 393,
+          "height": 993.875,
+          "types": {
+            "FRAME": 69,
+            "VECTOR": 71,
+            "TEXT": 22,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "15:4578",
+              "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+              "width": 345,
+              "height": 298
+            }
+          ],
+          "autoLayouts": 43,
+          "boundNodes": 40,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:4774",
+          "name": "V4 / CH1 On",
+          "width": 393,
+          "height": 1294.046875,
+          "types": {
+            "FRAME": 84,
+            "VECTOR": 64,
+            "TEXT": 30,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 60,
+          "boundNodes": 54,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:5005",
+          "name": "V4 / Empty Journal",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 48,
+            "VECTOR": 32,
+            "TEXT": 20,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 35,
+          "boundNodes": 24,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:5158",
+          "name": "V4 / Permission Required",
+          "width": 393,
+          "height": 1379.59375,
+          "types": {
+            "FRAME": 94,
+            "TEXT": 35,
+            "VECTOR": 72,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 67,
+          "boundNodes": 60,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:5420",
+          "name": "V4 / Protected Offline",
+          "width": 393,
+          "height": 1132.453125,
+          "types": {
+            "FRAME": 72,
+            "VECTOR": 39,
+            "TEXT": 26,
+            "INSTANCE": 2
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 55,
+          "boundNodes": 47,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "15:5606",
+          "name": "V4 / Overload Refused",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 10,
+            "VECTOR": 3,
+            "TEXT": 4,
+            "INSTANCE": 2
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 9,
+          "boundNodes": 6,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "22:786",
+          "name": "V4 / Energy — Day",
+          "width": 393,
+          "height": 1163.40625,
+          "types": {
+            "FRAME": 100,
+            "TEXT": 52,
+            "INSTANCE": 3,
+            "VECTOR": 83,
+            "GROUP": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 75,
+          "boundNodes": 65,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "22:1079",
+          "name": "V4 / Energy — Month",
+          "width": 393,
+          "height": 1163.40625,
+          "types": {
+            "FRAME": 100,
+            "TEXT": 51,
+            "INSTANCE": 3,
+            "VECTOR": 63,
+            "GROUP": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 75,
+          "boundNodes": 65,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "22:1351",
+          "name": "V4 / Planner — Saved",
+          "width": 393,
+          "height": 1237.203125,
+          "types": {
+            "FRAME": 112,
+            "VECTOR": 47,
+            "TEXT": 60,
+            "INSTANCE": 4,
+            "GROUP": 4
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 84,
+          "boundNodes": 70,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "22:1631",
+          "name": "V4 / Planner — Editing",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 152,
+            "VECTOR": 62,
+            "TEXT": 88,
+            "INSTANCE": 6,
+            "GROUP": 8
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 111,
+          "boundNodes": 89,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "22:1998",
+          "name": "V4 / Planner — Conflict",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 153,
+            "VECTOR": 63,
+            "TEXT": 89,
+            "INSTANCE": 6,
+            "GROUP": 8
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 112,
+          "boundNodes": 90,
+          "unsettledFrames": [],
+          "hotspots": 0
+        },
+        {
+          "id": "22:2368",
+          "name": "V4 / Permission Granted",
+          "width": 393,
+          "height": 1379.59375,
+          "types": {
+            "FRAME": 94,
+            "TEXT": 35,
+            "VECTOR": 72,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 67,
+          "boundNodes": 69,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "4:9",
+      "name": "08 Handoff / React-Native-Mapping",
+      "children": 1,
+      "screens": [
+        {
+          "id": "32:231",
+          "name": "Handoff / verified source map",
+          "width": 1100,
+          "height": 1900,
+          "types": {
+            "FRAME": 15,
+            "TEXT": 49
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 15,
+          "boundNodes": 0,
+          "unsettledFrames": [],
+          "hotspots": 0
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    },
+    {
+      "id": "25:231",
+      "name": "09 Prototype / Interactive flows",
+      "children": 23,
+      "screens": [
+        {
+          "id": "25:232",
+          "name": "Flow / V4 / 01 Welcome",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 30,
+            "INSTANCE": 4,
+            "VECTOR": 13,
+            "TEXT": 12
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "25:234",
+              "name": "Image (Архитектурный холл с бронзовым светильником и тёплым светом на травертине)",
+              "width": 393,
+              "height": 852
+            }
+          ],
+          "autoLayouts": 22,
+          "boundNodes": 8,
+          "unsettledFrames": [],
+          "hotspots": 2
+        },
+        {
+          "id": "25:289",
+          "name": "Flow / V4 / 02 Home",
+          "width": 393,
+          "height": 1109.6875,
+          "types": {
+            "FRAME": 126,
+            "TEXT": 41,
+            "VECTOR": 102,
+            "INSTANCE": 7
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 84,
+          "boundNodes": 58,
+          "unsettledFrames": [],
+          "hotspots": 8
+        },
+        {
+          "id": "25:557",
+          "name": "Flow / V4 / 03 Lighting",
+          "width": 393,
+          "height": 993.875,
+          "types": {
+            "FRAME": 76,
+            "VECTOR": 71,
+            "TEXT": 22,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "25:577",
+              "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+              "width": 345,
+              "height": 298
+            }
+          ],
+          "autoLayouts": 44,
+          "boundNodes": 42,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:723",
+          "name": "Flow / V4 / 04 Energy",
+          "width": 393,
+          "height": 1163.40625,
+          "types": {
+            "FRAME": 111,
+            "TEXT": 54,
+            "INSTANCE": 3,
+            "VECTOR": 66,
+            "GROUP": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 76,
+          "boundNodes": 65,
+          "unsettledFrames": [],
+          "hotspots": 5
+        },
+        {
+          "id": "25:957",
+          "name": "Flow / V4 / 05 Devices",
+          "width": 393,
+          "height": 1080.921875,
+          "types": {
+            "FRAME": 99,
+            "TEXT": 38,
+            "VECTOR": 56,
+            "INSTANCE": 6
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 71,
+          "boundNodes": 46,
+          "unsettledFrames": [],
+          "hotspots": 4
+        },
+        {
+          "id": "25:1156",
+          "name": "Flow / V4 / 06 Device Detail",
+          "width": 393,
+          "height": 1294.046875,
+          "types": {
+            "FRAME": 92,
+            "VECTOR": 64,
+            "TEXT": 30,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 61,
+          "boundNodes": 50,
+          "unsettledFrames": [],
+          "hotspots": 7
+        },
+        {
+          "id": "25:1338",
+          "name": "Flow / V4 / 12 Protected CH3",
+          "width": 393,
+          "height": 1132.453125,
+          "types": {
+            "FRAME": 78,
+            "VECTOR": 39,
+            "TEXT": 26,
+            "INSTANCE": 2
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 56,
+          "boundNodes": 47,
+          "unsettledFrames": [],
+          "hotspots": 5
+        },
+        {
+          "id": "25:1478",
+          "name": "Flow / V4 / 07 Autopilot",
+          "width": 393,
+          "height": 1379.59375,
+          "types": {
+            "FRAME": 100,
+            "TEXT": 35,
+            "VECTOR": 72,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 68,
+          "boundNodes": 60,
+          "unsettledFrames": [],
+          "hotspots": 5
+        },
+        {
+          "id": "25:1685",
+          "name": "Flow / V4 / 08 Load Planner",
+          "width": 393,
+          "height": 1261.6875,
+          "types": {
+            "FRAME": 105,
+            "VECTOR": 44,
+            "TEXT": 56,
+            "INSTANCE": 3,
+            "GROUP": 4
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 78,
+          "boundNodes": 52,
+          "unsettledFrames": [],
+          "hotspots": 7
+        },
+        {
+          "id": "25:1890",
+          "name": "Flow / V4 / 09 Activity Journal",
+          "width": 393,
+          "height": 874.421875,
+          "types": {
+            "FRAME": 67,
+            "VECTOR": 39,
+            "TEXT": 25,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 46,
+          "boundNodes": 27,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:2018",
+          "name": "Flow / V4 / 10 Setup — 01",
+          "width": 393,
+          "height": 883.75,
+          "types": {
+            "FRAME": 59,
+            "VECTOR": 37,
+            "INSTANCE": 4,
+            "TEXT": 22
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 39,
+          "boundNodes": 58,
+          "unsettledFrames": [],
+          "hotspots": 3
+        },
+        {
+          "id": "25:2137",
+          "name": "Flow / V4 / 10 Setup — 02",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 47,
+            "VECTOR": 24,
+            "INSTANCE": 4,
+            "TEXT": 20
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 31,
+          "boundNodes": 41,
+          "unsettledFrames": [],
+          "hotspots": 2
+        },
+        {
+          "id": "25:2230",
+          "name": "Flow / V4 / 10 Setup — 03",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 50,
+            "VECTOR": 30,
+            "INSTANCE": 4,
+            "TEXT": 19
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 33,
+          "boundNodes": 40,
+          "unsettledFrames": [],
+          "hotspots": 2
+        },
+        {
+          "id": "25:2331",
+          "name": "Flow / V4 / 11 Settings",
+          "width": 393,
+          "height": 1640.875,
+          "types": {
+            "FRAME": 134,
+            "VECTOR": 74,
+            "TEXT": 41,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 98,
+          "boundNodes": 64,
+          "unsettledFrames": [],
+          "hotspots": 5
+        },
+        {
+          "id": "25:2580",
+          "name": "Flow / V4 / Energy — Day",
+          "width": 393,
+          "height": 1163.40625,
+          "types": {
+            "FRAME": 106,
+            "TEXT": 52,
+            "INSTANCE": 3,
+            "VECTOR": 83,
+            "GROUP": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 75,
+          "boundNodes": 65,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:2823",
+          "name": "Flow / V4 / Energy — Month",
+          "width": 393,
+          "height": 1163.40625,
+          "types": {
+            "FRAME": 106,
+            "TEXT": 51,
+            "INSTANCE": 3,
+            "VECTOR": 63,
+            "GROUP": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 75,
+          "boundNodes": 65,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:3045",
+          "name": "Flow / V4 / Planner — Saved",
+          "width": 393,
+          "height": 1237.203125,
+          "types": {
+            "FRAME": 118,
+            "VECTOR": 47,
+            "TEXT": 60,
+            "INSTANCE": 4,
+            "GROUP": 4
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 84,
+          "boundNodes": 70,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:3272",
+          "name": "Flow / V4 / Planner — Editing",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 154,
+            "VECTOR": 62,
+            "TEXT": 88,
+            "INSTANCE": 6,
+            "GROUP": 8
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 111,
+          "boundNodes": 89,
+          "unsettledFrames": [],
+          "hotspots": 2
+        },
+        {
+          "id": "25:3581",
+          "name": "Flow / V4 / Planner — Conflict",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 154,
+            "VECTOR": 63,
+            "TEXT": 89,
+            "INSTANCE": 6,
+            "GROUP": 8
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 112,
+          "boundNodes": 90,
+          "unsettledFrames": [],
+          "hotspots": 1
+        },
+        {
+          "id": "25:3893",
+          "name": "Flow / V4 / Permission Granted",
+          "width": 393,
+          "height": 1379.59375,
+          "types": {
+            "FRAME": 100,
+            "TEXT": 35,
+            "VECTOR": 72,
+            "INSTANCE": 5
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 67,
+          "boundNodes": 69,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:4099",
+          "name": "Flow / V4 / CH2 Off",
+          "width": 393,
+          "height": 993.875,
+          "types": {
+            "FRAME": 75,
+            "VECTOR": 71,
+            "TEXT": 22,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [
+            {
+              "id": "25:4118",
+              "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+              "width": 345,
+              "height": 298
+            }
+          ],
+          "autoLayouts": 43,
+          "boundNodes": 40,
+          "unsettledFrames": [],
+          "hotspots": 6
+        },
+        {
+          "id": "25:4264",
+          "name": "Flow / V4 / CH1 On",
+          "width": 393,
+          "height": 1294.046875,
+          "types": {
+            "FRAME": 91,
+            "VECTOR": 64,
+            "TEXT": 30,
+            "INSTANCE": 3
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 60,
+          "boundNodes": 54,
+          "unsettledFrames": [],
+          "hotspots": 7
+        },
+        {
+          "id": "25:4445",
+          "name": "Flow / V4 / Overload Refused",
+          "width": 393,
+          "height": 852,
+          "types": {
+            "FRAME": 11,
+            "VECTOR": 3,
+            "TEXT": 4,
+            "INSTANCE": 2
+          },
+          "fonts": [
+            "Manrope"
+          ],
+          "imageFills": [],
+          "autoLayouts": 9,
+          "boundNodes": 6,
+          "unsettledFrames": [],
+          "hotspots": 1
+        }
+      ],
+      "componentSets": [],
+      "components": []
+    }
+  ],
+  "variables": [
+    {
+      "id": "VariableID:4:12",
+      "name": "color/surface/canvas",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:13",
+      "name": "color/surface/canvas",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:14",
+      "name": "color/surface/raised",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:15",
+      "name": "color/surface/raised",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:16",
+      "name": "color/surface/elevated",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:17",
+      "name": "color/surface/elevated",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:18",
+      "name": "color/surface/inset",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:19",
+      "name": "color/surface/inset",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:20",
+      "name": "color/text/primary",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:21",
+      "name": "color/text/primary",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "id": "VariableID:4:22",
+      "name": "color/text/secondary",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:23",
+      "name": "color/text/secondary",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "id": "VariableID:4:24",
+      "name": "color/accent/amber",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:25",
+      "name": "color/accent/amber",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:26",
+      "name": "color/accent/amberBright",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:27",
+      "name": "color/accent/amberBright",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:28",
+      "name": "color/status/protected",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:29",
+      "name": "color/status/protected",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:30",
+      "name": "color/status/warning",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:31",
+      "name": "color/status/warning",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:32",
+      "name": "color/status/error",
+      "resolvedType": "COLOR",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:33",
+      "name": "color/status/error",
+      "resolvedType": "COLOR",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "STROKE_COLOR"
+      ]
+    },
+    {
+      "id": "VariableID:4:34",
+      "name": "radius/card",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:35",
+      "name": "radius/card",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ]
+    },
+    {
+      "id": "VariableID:4:36",
+      "name": "radius/control",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:37",
+      "name": "radius/control",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ]
+    },
+    {
+      "id": "VariableID:4:38",
+      "name": "radius/small",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:39",
+      "name": "radius/small",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ]
+    },
+    {
+      "id": "VariableID:4:40",
+      "name": "radius/hero",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:41",
+      "name": "radius/hero",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ]
+    },
+    {
+      "id": "VariableID:4:42",
+      "name": "radius/device",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:43",
+      "name": "radius/device",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ]
+    },
+    {
+      "id": "VariableID:4:44",
+      "name": "radius/instrument",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:45",
+      "name": "radius/instrument",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "CORNER_RADIUS"
+      ]
+    },
+    {
+      "id": "VariableID:4:46",
+      "name": "spacing/unit",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:47",
+      "name": "spacing/unit",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:48",
+      "name": "spacing/screen",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:49",
+      "name": "spacing/screen",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:50",
+      "name": "motion/press",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:51",
+      "name": "motion/press",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:52",
+      "name": "motion/screen",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:53",
+      "name": "motion/screen",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:54",
+      "name": "motion/chart",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:55",
+      "name": "motion/chart",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:56",
+      "name": "spacing/scale/4",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:57",
+      "name": "spacing/scale/4",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:58",
+      "name": "spacing/scale/8",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:59",
+      "name": "spacing/scale/8",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:60",
+      "name": "spacing/scale/12",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:61",
+      "name": "spacing/scale/12",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:62",
+      "name": "spacing/scale/16",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:63",
+      "name": "spacing/scale/16",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:64",
+      "name": "spacing/scale/20",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:65",
+      "name": "spacing/scale/20",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:66",
+      "name": "spacing/scale/24",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:67",
+      "name": "spacing/scale/24",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:68",
+      "name": "spacing/scale/32",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:69",
+      "name": "spacing/scale/32",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:70",
+      "name": "spacing/scale/40",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:71",
+      "name": "spacing/scale/40",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    },
+    {
+      "id": "VariableID:4:72",
+      "name": "spacing/scale/48",
+      "resolvedType": "FLOAT",
+      "scopes": []
+    },
+    {
+      "id": "VariableID:4:73",
+      "name": "spacing/scale/48",
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "GAP"
+      ]
+    }
+  ],
+  "textStyles": [
+    {
+      "id": "S:4bc72b9dfd274e2a1ded1ee2470a3cac193a2dc6,",
+      "name": "SpecWATT/display",
+      "font": {
+        "family": "Manrope",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      }
+    },
+    {
+      "id": "S:2954c5e99dc15fd0f581e1cf5d735d06ec180c8f,",
+      "name": "SpecWATT/metric",
+      "font": {
+        "family": "Manrope",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      }
+    },
+    {
+      "id": "S:057693bf4b713b90e8631595e2557ef197ee5ecf,",
+      "name": "SpecWATT/heading",
+      "font": {
+        "family": "Manrope",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      }
+    },
+    {
+      "id": "S:f00007825bf5691c981d9ed5b42370285ad4bd57,",
+      "name": "SpecWATT/section",
+      "font": {
+        "family": "Manrope",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wght": 600
+        }
+      }
+    },
+    {
+      "id": "S:af22c9c3730a505fed8ce1c61cae25b9e8d6ff7e,",
+      "name": "SpecWATT/body",
+      "font": {
+        "family": "Manrope",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      }
+    },
+    {
+      "id": "S:b3ebf9c9499317c8a74fab44088e2a2e3318aed2,",
+      "name": "SpecWATT/caption",
+      "font": {
+        "family": "Manrope",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      }
+    },
+    {
+      "id": "S:f43e09c4106364a603080f0f96cb8f43a83e78f8,",
+      "name": "SpecWATT/analytics",
+      "font": {
+        "family": "Manrope",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      }
+    }
+  ],
+  "testNodeRemoved": true
+}

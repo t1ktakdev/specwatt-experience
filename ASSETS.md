@@ -1,3 +1,11 @@
+# V4 asset changes
+
+The rejected `evening-object.svg` is retained only for historical rollback and is no longer referenced by the application. Home renders `LightRail.tsx`, a new editable architectural LED profile. `LampIllustration` renders a brass disk pendant with distinct on/off diffuser states. These are conceptual illustrations, not photographs or technical drawings of registered hardware. `npm run export:vectors` exports the actual React SVGs, including `light-rail.svg`, `lamp-on.svg`, `lamp-off.svg` and the corrected gauge.
+
+`native/host/assets/Manrope.ttf` is the same SIL OFL Manrope font already present in the original authorized project. The license remains in `licenses/`. Welcome/Lighting continue using the two distinct original V3 concept interiors below. No remote artwork or new image dependency was added. Supplied before images in `docs/v4/` are review evidence, not application assets.
+
+---
+
 # Assets & rights
 
 ## Experience V3 library
