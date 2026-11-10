@@ -1,6 +1,6 @@
 {
-  "name": "@specwatt/experience-v3-native-kit",
-  "version": "0.1.0",
+  "name": "@specwatt/experience-v4-native-kit",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {

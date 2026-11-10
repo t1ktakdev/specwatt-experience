@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Query-route entry preserves tab navigation and browser back",
+    "Chart period transition runs for 420 ms and reaches its settled state",
+    "Loaded Manrope; chart hover, keyboard selection and three real period states",
+    "Draft conflict is visible on the chart; rejection preserves the single saved plan",
+    "Nine edge cases, six workflow states and reduced-motion snapshots"
+  ],
+  "errors": [],
+  "failed": []
+}

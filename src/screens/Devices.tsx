@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   Radio,
   Plus,
-  Cpu,
 } from "lucide-react";
 import { useApp } from "../state/context";
 import {
@@ -27,29 +26,18 @@ export function Devices() {
       <main className="screen-content">
         <Header
           title="Ваши устройства"
-          subtitle="Один стенд. Всё на своих местах."
+          subtitle="Каналы локального демонстрационного стенда"
         />
         <SystemState />
         <ConnectionBanner />
-        <div className="devices-summary">
-          <div className="device-count">
-            03<span>КАНАЛА В СИСТЕМЕ</span>
-            <div className="catalog-meta">
-              <span>
-                <b>02</b> управляемых
-              </span>
-              <span>
-                <b>01</b> защищённый
-              </span>
-            </div>
-          </div>
-          <div className="summary-orbit">
-            <Cpu size={27} />
-            <span />
-            <i />
-            <i />
-            <i />
-          </div>
+        <div className="inventory-summary">
+          <span>
+            <b>02</b> управляемых
+          </span>
+          <span>
+            <ShieldCheck size={18} />
+            <b>01</b> защищённый
+          </span>
         </div>
         <div className="filter-chips">
           {["Все", "Включены", "Защищённые"].map((f) => (
@@ -95,11 +83,11 @@ export function Devices() {
           </span>
           <span>
             <small>CH3 · ЗАЩИЩЁННЫЙ</small>
-            <strong>Важное — под защитой.</strong>
+            <strong>Постоянная защищённая нагрузка</strong>
             <em>
               {link === "online"
                 ? "2,4 Вт · управление заблокировано"
-                : "Последнее известное: 2,4 Вт"}
+                : "Нет актуальных данных · номинал 2,4 Вт"}
             </em>
           </span>
           <ChevronRight size={18} />

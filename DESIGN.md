@@ -1,50 +1,13 @@
-# SpecWATT — Warm Graphite / Ambient Amber
+# Experience V4 · Warm Graphite × Ambient Amber
 
-Самостоятельный интерактивный веб-прототип, не обновление React Native приложения и не Figma-файл.
+V4 starts from the real v1.1.0 repository at `263a4df`; it preserves Welcome's original architectural photograph and Manrope, and improves the full twelve-route experience. The original SpecWATT application and both rejected Figma files remain unchanged.
 
-V3 развивает исходную версию `0623f3e`, сохраняя маршруты и поведение. Добавлен изолированный набор исходников React Native в `native/`; основной Android-проект не изменён. Он не считается готовым приложением или проверенной нативной копией.
+Home's rejected oval is replaced by an architectural LED profile. Energy has a legible, inspectable interval chart and exact channel-energy allocations. Devices uses an inventory rather than the Home card composition. Detail has a coherent disk pendant. Autopilot is a permission-led policy editor. The planner shows protected base load, per-channel lanes and conflicting draft intervals. Journal is a chronological ledger. Setup uses a truthful connection topology rather than a pseudo board. Settings is grouped operationally. CH3 is a safety passport with its role in the power budget.
 
-## V3 / производственные изменения
+The shared token file generates CSS/native tokens. The editable Figma file contains foundations, 62 variables, seven text styles, 32 component variants/primitives, fourteen core frames covering twelve routes and three setup steps, fifteen additional states, handoff and a navigation prototype. [IDs and source mapping](docs/COMPONENT-MAP.md).
 
-- Welcome: отдельный архитектурный холл, бронзовый свет и травертин; эмоциональный порог продукта.
-- Home: инструмент мощности, явный резерв, SVG-объект вместо повторной фотографии, номиналы в карточках.
-- Lighting: самостоятельная спальня и световая архитектура; концептуальная яркость отделена от питания канала.
-- Energy: согласованные единицы, выбор интервала с клавиатуры, доли каналов и приблизительные объёмы. Неподтверждённое сравнение экономии удалено.
-- Devices / Detail / CH3: каталог, отдельный предметный вектор, история канала и самостоятельный язык защиты.
-- Autopilot / Planner: явное разрешение, пример предполагаемого правила, редактирование плана и расчёт пересечений. Фоновых команд нет.
-- Journal / Setup / Settings: типы событий, реальные действия текущей сессии, разные пути демо и контроллера, постоянная настройка уменьшения движения и видимый блок безопасности.
+The supplied four images were inspected. Three original collage references and the oval close-up are retained under `docs/v4/` for review. The Dribbble references informed composition, lighting and density; their artwork is not shipped. Welcome and Lighting use two different original AI-generated interiors retained from V3. UI, icons, graphs and the new LED rail/pendant are editable DOM/SVG/native/Figma layers.
 
-Основные цвета, радиусы и типографическая шкала исходят из `design-tokens.json`. `npm run tokens` создаёт CSS и native-спецификацию. `docs/COMPONENT-MAP.md` фиксирует сопоставление, включая ещё не созданные Figma-назначения.
+Parities are assessed at 393 px from actual Chromium and Figma renders. Small differences remain in antialiasing, gradient/shadow rendering, asymmetric borders and SVG label positioning. Figma import errors in opacity, transforms, grid spans, button tones, progress indicators, range inputs and fallback SVG fonts were corrected through layer inspection and screenshot comparison. This is not a claim of pixel-identical rendering.
 
-## Дизайн-контракт
-
-1. Четыре основных экрана имеют разные смысловые центры: интерьер, текущая мощность, световая сцена, график энергии.
-2. Manrope с локальными кириллическими файлами; графитовые поверхности, тёплый белый, приглушённый янтарь. Фотография только в выразительных сценах.
-3. Иконки Lucide — настоящие SVG (ISC); интерфейс и графики — DOM/SVG, а не полноэкранные изображения.
-4. Четыре основных вкладки; журнал, настройки и план доступны вложенными маршрутами.
-5. CH3 не имеет переключателя. Сумма мощности и лимит проверяются до изменения локального состояния.
-6. Все показатели — демо. Нет физического управления, настоящей телеметрии, расчёта тарифа, RGB или цветовой температуры.
-7. Яркость меняет только визуализацию концептуальной сцены; аппаратное диммирование не подтверждено.
-8. Проверить 320 / 393 / 440 px, навигацию, offline/error/loading, защиту и overflow. Web-проверка не доказывает работу Android-приложения.
-
-## Референсы
-
-- Nahidul Islam: https://dribbble.com/shots/27414589-Modern-Smart-Living-Home-Automation-Mobile-App-UI — атмосфера, воздух, сдержанные компактные карточки.
-- Sheikh Naeem: https://dribbble.com/shots/27694971-Smart-Home-App-UI-Modern-IoT-Control-Energy-Dashboard — глубина поверхностей, управление и иерархия аналитики.
-
-Изображения и уникальные композиции авторов не копируются. Интерьер создан встроенным image_gen; итоговый prompt сохранён в ASSETS.md.
-
-## Инженерные источники (read-only)
-
-Изучены README.md, backend/README.md и firmware/README.md исходного SpecWATT. Подтверждены симулятор FastAPI/SQLite, управляемые CH1/CH2, защищённый CH3, номиналы 1,8 / 4,2 / 2,4 Вт и лимит 7 Вт. Реальное оборудование и фоновое выполнение расписаний не подключены. В этом прототипе автоматизация и расписания — только интерактивные демонстрации.
-
-## Проверенные маршруты Figma
-
-Официальная документация на дату работы:
-
-- https://developers.figma.com/docs/figma-mcp-server/write-to-canvas/ — use_figma создаёт редактируемые компоненты, фреймы, переменные.
-- https://developers.figma.com/docs/figma-mcp-server/code-to-canvas/ — generate_figma_design и html_to_figma дают редактируемые слои; импорт сам по себе не создаёт библиотеку компонентов.
-- https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/ — официальный endpoint https://mcp.figma.com/mcp, требуется авторизация поддерживаемого клиента.
-- https://developers.figma.com/docs/rest-api/ — REST не предоставляет универсальный create/edit API для узлов холста.
-
-Повторная техническая проверка V3: прямой `whoami` подключённого плагина вернул `MCP tool codex_apps/figma.whoami is not available to the model`. Отдельный `figma-remote` зарегистрирован, но инициализация завершилась ошибкой `Auth required, when send initialize request`. Создание, редактирование и получение снимков Figma не подтверждены; файл не создан. Старый файл YZ6V1EF1KWJ8QnOIFYemXk не изменён. QA 4 не выполнен.
+Motion is functional in the web app: chart/schedule entrance 420 ms, screen transition 350 ms, controls 200 ms, with reduced-motion support. Native route transitions compile and honor AccessibilityInfo; device runtime remains unverified. The Figma prototype has verified navigation links; playback/animated behavior is not claimed.

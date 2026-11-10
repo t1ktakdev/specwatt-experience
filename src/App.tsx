@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, ReactNode } from "react";
-import { ShieldCheck, Check, X, Layers } from "lucide-react";
+import { Check, X, Layers } from "lucide-react";
 import {
   readChannels,
   requestSwitch,
@@ -12,7 +12,9 @@ import { Page, LogEntry, Model } from "./types";
 import { Context } from "./state/context";
 import { useDialogFocus } from "./hooks/useDialogFocus";
 import { pageLabels } from "./lib/design";
-import { StatusBar, Primary, HomeIndicator } from "./components/ui";
+import { StatusBar, HomeIndicator } from "./components/ui";
+import { LimitDialog } from "./components/LimitDialog";
+import { StateGallery } from "./components/StateGallery";
 import { DesktopSidebar } from "./components/DesktopSidebar";
 import { Welcome } from "./screens/Welcome";
 import { Home } from "./screens/Home";
@@ -26,19 +28,51 @@ import { Planner } from "./screens/Planner";
 import { Journal } from "./screens/Journal";
 import { Setup } from "./screens/Setup";
 import { Settings } from "./screens/Settings";
+import type { PlannerPreview } from "./screens/Planner";
+import type { Period } from "./lib/demo-energy";
 
-export function Screen({ page }: { page: Page }) {
+export function Screen({
+  page,
+  setupStep,
+  energyPeriod,
+  plannerPreview,
+  allowPreview,
+}: {
+  page: Page;
+  setupStep?: number;
+  energyPeriod?: Period;
+  plannerPreview?: PlannerPreview;
+  allowPreview?: boolean;
+}) {
   const screens: Record<Page, ReactNode> = {
     welcome: <Welcome />,
     home: <Home />,
     lighting: <Lighting />,
-    energy: <Energy />,
+    energy: <Energy initialPeriod={energyPeriod} />,
     devices: <Devices />,
     device: <DeviceDetail />,
-    autopilot: <Autopilot />,
-    planner: <Planner />,
+    autopilot: (
+      <Autopilot
+        initialAllow={allowPreview ? { CH1: false, CH2: true } : undefined}
+      />
+    ),
+    planner: <Planner preview={plannerPreview} />,
     journal: <Journal />,
-    setup: <Setup />,
+    setup: (
+      <Setup
+        initialStep={
+          setupStep ||
+          Math.max(
+            1,
+            Math.min(
+              3,
+              Number(new URLSearchParams(location.search).get("setupStep")) ||
+                1,
+            ),
+          )
+        }
+      />
+    ),
     settings: <Settings />,
     protected: <Protected />,
   };
@@ -52,7 +86,10 @@ export function Screen({ page }: { page: Page }) {
 }
 
 export function readPage(): Page {
-  const p = location.hash.slice(1);
+  const hash = location.hash.slice(1);
+  const p = Object.hasOwn(pageLabels, hash)
+    ? hash
+    : new URLSearchParams(location.search).get("screen") || "welcome";
   return Object.hasOwn(pageLabels, p) ? (p as Page) : "welcome";
 }
 
@@ -192,8 +229,8 @@ export default function App() {
   return (
     <Context.Provider value={model}>
       <div
-        data-version="3"
-        className={`experience ${gallery ? "is-gallery" : ""}`}
+        data-version="4"
+        className={`experience ${gallery ? "is-gallery" : ""} ${new URLSearchParams(location.search).has("designexport") ? "design-export" : ""}`}
       >
         {!gallery && <DesktopSidebar page={page} go={go} />}
         <div className="stage">
@@ -206,19 +243,87 @@ export default function App() {
           </div>
           {gallery ? (
             <div className="gallery">
-              {(allGallery
-                ? (Object.keys(pageLabels) as Page[])
-                : (["welcome", "home", "lighting", "energy"] as Page[])
-              ).map((p, i) => (
-                <div className="gallery-item" key={p}>
-                  <span className="gallery-title">
-                    0{i + 1} / {pageLabels[p]}
-                  </span>
-                  <div className="phone-frame">
-                    <Screen page={p} />
+              {new URLSearchParams(location.search).get("gallery") ===
+              "workflows" ? (
+                <>
+                  {(["День", "Месяц"] as Period[]).map((period) => (
+                    <div
+                      className="gallery-item"
+                      key={period}
+                      data-route={`energy-${period}`}
+                    >
+                      <span className="gallery-title">
+                        Аналитика / {period}
+                      </span>
+                      <div className="phone-frame">
+                        <Screen page="energy" energyPeriod={period} />
+                      </div>
+                    </div>
+                  ))}
+                  {(["saved", "editing", "conflict"] as PlannerPreview[]).map(
+                    (preview) => (
+                      <div
+                        className="gallery-item"
+                        key={preview}
+                        data-route={`planner-${preview}`}
+                      >
+                        <span className="gallery-title">
+                          Пример демо-плана / {preview}
+                        </span>
+                        <div className="phone-frame">
+                          <Screen page="planner" plannerPreview={preview} />
+                        </div>
+                      </div>
+                    ),
+                  )}
+                  <div className="gallery-item" data-route="permission-granted">
+                    <span className="gallery-title">
+                      Разрешение CH2 / явное согласие
+                    </span>
+                    <div className="phone-frame">
+                      <Context.Provider value={{ ...model, auto: true }}>
+                        <Screen page="autopilot" allowPreview />
+                      </Context.Provider>
+                    </div>
                   </div>
-                </div>
-              ))}
+                </>
+              ) : new URLSearchParams(location.search).get("gallery") ===
+                "states" ? (
+                <StateGallery
+                  model={model}
+                  renderScreen={(page) => <Screen page={page} />}
+                />
+              ) : (
+                (allGallery
+                  ? (Object.keys(pageLabels) as Page[])
+                  : (["welcome", "home", "lighting", "energy"] as Page[])
+                ).map((p, i) => (
+                  <div className="gallery-item" key={p} data-route={p}>
+                    <span className="gallery-title">
+                      0{i + 1} / {pageLabels[p]}
+                    </span>
+                    <div className="phone-frame">
+                      <Screen page={p} />
+                    </div>
+                  </div>
+                ))
+              )}
+              {allGallery &&
+                new URLSearchParams(location.search).has("designexport") &&
+                [2, 3].map((step) => (
+                  <div
+                    className="gallery-item"
+                    key={step}
+                    data-route={`setup-${step}`}
+                  >
+                    <span className="gallery-title">
+                      Подключение / шаг {step}
+                    </span>
+                    <div className="phone-frame">
+                      <Screen page="setup" setupStep={step} />
+                    </div>
+                  </div>
+                ))}
             </div>
           ) : (
             <div className="phone-frame">
@@ -227,7 +332,7 @@ export default function App() {
           )}
           <div className="stage-caption">
             <span>DESIGNED TO FEEL DIFFERENT.</span>
-            <span>EXPERIENCE V3 · MOBILE WEB · RU</span>
+            <span>EXPERIENCE V4 · MOBILE WEB · RU</span>
           </div>
         </div>
       </div>
@@ -245,28 +350,7 @@ export default function App() {
       )}
       {dialog && (
         <div className="modal-backdrop" onClick={() => setDialog("")}>
-          <section
-            className="modal material"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="dialog-title"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="dialog-icon">
-              <ShieldCheck size={32} />
-            </span>
-            <h2 id="dialog-title">Лимит защищает ваш стенд</h2>
-            <p>
-              Включение обоих каналов создаст нагрузку <b>8,4 Вт</b> при лимите{" "}
-              <b>7 Вт</b>. Сначала выключите другой управляемый канал.
-            </p>
-            <p className="muted">
-              CH3 остаётся защищённым. Изменение не применено.
-            </p>
-            <Primary onClick={() => setDialog("")} icon={Check}>
-              Понятно
-            </Primary>
-          </section>
+          <LimitDialog onClose={() => setDialog("")} />
         </div>
       )}
     </Context.Provider>

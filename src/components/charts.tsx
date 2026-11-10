@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useId } from "react";
 import { Zap } from "lucide-react";
 import { fmt, fmtEnergy } from "../lib/design";
-import { data, type Period } from "../lib/demo-energy";
+import { chartScale, data, type Period } from "../lib/demo-energy";
 export type { Period } from "../lib/demo-energy";
 
 export function PowerGauge({
@@ -38,27 +38,27 @@ export function PowerGauge({
           stroke="#ffffff0a"
           strokeWidth="1"
         />
-        <circle
-          cx="60"
-          cy="60"
-          r="43"
+        <path
+          d="M29.6 90.4A43 43 0 1 1 90.4 90.4"
           fill="none"
-          stroke="#ffffff10"
-          strokeWidth="4"
-          strokeDasharray="205 70"
-          transform="rotate(135 60 60)"
-        />
-        <circle
-          cx="60"
-          cy="60"
-          r="43"
-          fill="none"
-          stroke="url(#gaugeAmber)"
+          stroke="#ffffff18"
           strokeWidth="4"
           strokeLinecap="round"
-          strokeDasharray={`${Math.min(current / limit, 1) * 205} 300`}
-          transform="rotate(135 60 60)"
         />
+        {current > 0 &&
+          (() => {
+            const angle =
+              ((135 + Math.min(current / limit, 1) * 270) * Math.PI) / 180;
+            return (
+              <path
+                d={`M29.6 90.4A43 43 0 ${current / limit > 2 / 3 ? 1 : 0} 1 ${60 + 43 * Math.cos(angle)} ${60 + 43 * Math.sin(angle)}`}
+                fill="none"
+                stroke="#edb17c"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+            );
+          })()}
         {Array.from({ length: 25 }, (_, i) => {
           const a = ((135 + i * 11.25) * Math.PI) / 180;
           return (
@@ -101,134 +101,143 @@ export function MiniSpark() {
 
 export function EnergyChart({ period }: { period: Period }) {
   const values = data[period];
-  const max = period === "День" ? 8 : period === "Неделя" ? 0.2 : 1.2;
+  const scale = chartScale(period);
+  const id = useId();
   const [selected, setSelected] = useState(values.length - 1);
   useEffect(() => setSelected(values.length - 1), [period, values.length]);
-  const width = 312,
-    height = 158;
-  const points = values
-    .map(
-      (v, i) =>
-        `${12 + (i * (width - 24)) / (values.length - 1)},${height - 12 - (v / max) * (height - 28)}`,
-    )
-    .join(" ");
   const sel = Math.min(selected, values.length - 1);
-  const x = 12 + (sel * (width - 24)) / (values.length - 1),
-    y = height - 12 - (values[sel] / max) * (height - 28);
+  const x = (i: number) => 44 + ((i + 0.5) / values.length) * 280;
   const unit = period === "День" ? "Вт" : "кВт·ч";
-  const sampleLabel =
+  const label = (i: number) =>
     period === "День"
-      ? `${String(sel).padStart(2, "0")}:00–${String(sel + 1).padStart(2, "0")}:00`
+      ? `${String(i).padStart(2, "0")}:00–${String(i + 1).padStart(2, "0")}:00`
       : period === "Неделя"
-        ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"][sel]
-        : ["1–7 ноября", "8–14 ноября", "15–21 ноября", "22–30 ноября"][sel];
+        ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"][i]
+        : ["1–7 ноября", "8–14 ноября", "15–21 ноября", "22–30 ноября"][i];
+  const choose = (clientX: number, element: SVGSVGElement) => {
+    const box = element.getBoundingClientRect();
+    const coordinate = ((clientX - box.left) / box.width) * 336;
+    setSelected(
+      Math.max(
+        0,
+        Math.min(
+          values.length - 1,
+          Math.floor(((coordinate - 44) / 280) * values.length),
+        ),
+      ),
+    );
+  };
   return (
-    <div className="chart">
+    <div className="chart chart-v4">
       <div className="chart-selection">
-        <span>{sampleLabel}</span>
+        <span>{label(sel)}</span>
         <output aria-live="polite">
           {fmtEnergy(values[sel])} {unit}
         </output>
       </div>
       <svg
-        viewBox={`0 0 ${width} ${height}`}
+        key={period}
+        fontFamily="Manrope"
+        viewBox="0 0 336 216"
         role="img"
-        aria-label={`График расхода за период ${period}`}
+        aria-labelledby={id}
+        onPointerMove={(e) => choose(e.clientX, e.currentTarget)}
+        onPointerDown={(e) => choose(e.clientX, e.currentTarget)}
       >
-        <defs>
-          <linearGradient
-            id={`chartFill-${period}`}
-            x1="0"
-            x2="0"
-            y1="0"
-            y2="1"
-          >
-            <stop stopColor="#e5a571" stopOpacity=".24" />
-            <stop offset="1" stopColor="#e5a571" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <g key={i}>
+        <title
+          id={id}
+        >{`График за ${period}. ${period === "День" ? "Средняя мощность, Вт" : "Энергия, кВт·ч"}. Выбор интервала доступен ползунком ниже.`}</title>
+        <text x="4" y="10" fill="#c4c6be" fontSize="11">
+          {unit}
+        </text>
+        {scale.ticks.map((t) => (
+          <g key={t}>
             <path
-              d={`M10 ${16 + i * 32.5}H302`}
-              stroke="#ffffff12"
-              strokeDasharray="3 5"
+              d={`M44 ${scale.y(t)}H324`}
+              stroke="#ffffff18"
+              strokeDasharray={t === 0 ? undefined : "2 4"}
             />
             <text
-              x="305"
-              y={20 + i * 32.5}
+              x="34"
+              y={scale.y(t) + 4}
               textAnchor="end"
-              fill="#afb4aa"
-              fontSize="9"
+              fill="#b9bcb5"
+              fontSize="11"
             >
-              {fmtEnergy(max * (1 - i / 4))}
+              {fmtEnergy(t)}
             </text>
           </g>
         ))}
-        <polygon
-          points={`12,158 ${points} 300,158`}
-          fill={`url(#chartFill-${period})`}
-        />
-        <polyline
-          points={points}
-          fill="none"
-          stroke="#efb37c"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path d={`M${x} ${y}V158`} stroke="#d09c6a" strokeDasharray="3 4" />
-        <circle cx={x} cy={y} r="8" fill="#eeb17b" fillOpacity=".12" />
-        <circle
-          cx={x}
-          cy={y}
-          r="3.5"
-          fill="#ffe5c5"
-          stroke="#efb37c"
-          strokeWidth="2"
-        />
-        {values.map((_, i) => (
+        {values.map((v, i) => (
           <rect
             key={i}
-            x={i * (width / values.length)}
-            y="0"
-            width={width / values.length}
-            height={height}
-            fill="transparent"
-            onClick={() => setSelected(i)}
-            style={{ cursor: "pointer" }}
+            className="energy-bar"
+            x={x(i) - Math.max(3, (280 / values.length) * 0.3)}
+            y={scale.y(v)}
+            width={Math.max(6, (280 / values.length) * 0.6)}
+            height={184 - scale.y(v)}
+            rx="2"
+            fill={i === sel ? "#edb17c" : "#817363"}
+            opacity={i === sel ? 1 : 0.65}
           />
         ))}
-      </svg>
-      <input
-        className="chart-point-control"
-        type="range"
-        aria-label="Интервал графика"
-        aria-valuetext={`${sampleLabel}: ${fmtEnergy(values[sel])} ${unit}`}
-        min="0"
-        max={values.length - 1}
-        value={sel}
-        onChange={(e) => setSelected(+e.target.value)}
-      />
-      <span
-        className="chart-tooltip"
-        style={{
-          left: `${Math.max(14, Math.min(83, (x / width) * 100))}%`,
-          top: `${Math.max(26, (y / height) * 150)}px`,
-        }}
-      >
-        {fmtEnergy(values[sel])} <small>{unit}</small>
-      </span>
-      <div className="chart-labels">
+        <path
+          d={`M${x(sel)} 20V184`}
+          stroke="#edb17c"
+          strokeDasharray="2 4"
+          opacity=".65"
+        />
+        <circle
+          cx={x(sel)}
+          cy={scale.y(values[sel])}
+          r="4"
+          fill="#fff0d8"
+          stroke="#edb17c"
+          strokeWidth="2"
+        />
         {(period === "День"
-          ? ["00:00", "06:00", "12:00", "18:00", "23:00"]
-          : period === "Неделя"
-            ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
-            : ["1–7", "8–14", "15–21", "22–30"]
-        ).map((t) => (
-          <span key={t}>{t}</span>
+          ? [
+              { i: 0, t: "00" },
+              { i: 6, t: "06" },
+              { i: 12, t: "12" },
+              { i: 18, t: "18" },
+              { i: 23, t: "23" },
+            ]
+          : values.map((_, i) => ({
+              i,
+              t:
+                period === "Неделя"
+                  ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"][i]
+                  : ["1–7", "8–14", "15–21", "22–30"][i],
+            }))
+        ).map((p) => (
+          <text
+            key={p.i}
+            x={x(p.i)}
+            y="207"
+            textAnchor="middle"
+            fill="#b9bcb5"
+            fontSize="11"
+          >
+            {p.t}
+          </text>
         ))}
-      </div>
+      </svg>
+      <label className="chart-scrubber">
+        <span>
+          Выбрать интервал <span aria-hidden="true">← →</span>
+        </span>
+        <input
+          className="chart-point-control"
+          type="range"
+          aria-label="Интервал графика"
+          aria-valuetext={`${label(sel)}: ${fmtEnergy(values[sel])} ${unit}`}
+          min="0"
+          max={values.length - 1}
+          value={sel}
+          onChange={(e) => setSelected(+e.target.value)}
+        />
+      </label>
     </div>
   );
 }

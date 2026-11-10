@@ -1,39 +1,28 @@
-# React ↔ native ↔ Figma handoff
+# React ↔ React Native ↔ Figma V4
 
-Figma is unavailable in this Codex session. All destinations below are **planned names**, not existing Figma nodes or Code Connect mappings. No two-way synchronization is claimed.
+Verified editable file: https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q . These are real node IDs, not planned names. Native source coverage is complete for 12 routes and three setup steps; Android device parity remains unverified.
 
-| Web source                                        | Native source                                 | Planned Figma destination           |
-| ------------------------------------------------- | --------------------------------------------- | ----------------------------------- |
-| `design-tokens.json` → `src/tokens.css`           | generated `native/tokens.ts`                  | Foundations / Tokens                |
-| `components/ui.tsx` / Primary, Toggle, DeviceCard | NativeButton, NativeDeviceTile, native Switch | Components / States                 |
-| `components/ui.tsx` / ConnectionBanner            | SourceLabel / unknown data display            | Edge Cases / Safety                 |
-| `components/charts.tsx` / PowerGauge              | NativePower                                   | Components / Power instrument       |
-| `screens/Welcome.tsx`                             | NativeWelcome                                 | Main Screens / Welcome              |
-| `screens/Home.tsx`                                | NativeHome                                    | Main Screens / Home                 |
-| `screens/Lighting.tsx`                            | NativeLighting                                | Main Screens / Lighting             |
-| `screens/Energy.tsx`                              | NativeEnergy                                  | Main Screens / Energy               |
-| Devices, DeviceDetail                             | tile primitives only                          | Extended Screens / Devices / Detail |
-| Protected                                         | NativeProtected                               | Edge Cases / Safety / CH3           |
-| Autopilot, Planner, Journal, Settings             | pending                                       | Extended Screens                    |
-| Setup (3 steps, demo/hardware choice)             | pending                                       | Onboarding & Connection             |
+| Route     | React                          | React Native                           | Figma frame                                                                    |
+| --------- | ------------------------------ | -------------------------------------- | ------------------------------------------------------------------------------ |
+| welcome   | `src/screens/Welcome.tsx`      | `native/screens.tsx · NativeWelcome`   | [15:298](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-298)   |
+| home      | `src/screens/Home.tsx`         | `native/screens.tsx · NativeHome`      | [15:386](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-386)   |
+| lighting  | `src/screens/Lighting.tsx`     | `native/screens.tsx · NativeLighting`  | [15:762](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-762)   |
+| energy    | `src/screens/Energy.tsx`       | `native/screens.tsx · NativeEnergy`    | [15:978](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-978)   |
+| devices   | `src/screens/Devices.tsx`      | `native/Devices.tsx`                   | [15:1262](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-1262) |
+| device    | `src/screens/DeviceDetail.tsx` | `native/DeviceDetail.tsx`              | [15:1564](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-1564) |
+| protected | `src/screens/Protected.tsx`    | `native/screens.tsx · NativeProtected` | [15:1796](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-1796) |
+| autopilot | `src/screens/Autopilot.tsx`    | `native/Autopilot.tsx`                 | [15:1983](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-1983) |
+| planner   | `src/screens/Planner.tsx`      | `native/Planner.tsx`                   | [15:2246](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-2246) |
+| journal   | `src/screens/Journal.tsx`      | `native/Journal.tsx`                   | [15:2501](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-2501) |
+| setup     | `src/screens/Setup.tsx`        | `native/Setup.tsx`                     | [15:2679](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-2679) |
+| setup-2   | `src/screens/Setup.tsx`        | `native/Setup.tsx · step 2`            | [15:2829](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-2829) |
+| setup-3   | `src/screens/Setup.tsx`        | `native/Setup.tsx · step 3`            | [15:2953](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-2953) |
+| settings  | `src/screens/Settings.tsx`     | `native/Settings.tsx`                  | [15:3085](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=15-3085) |
 
-## Shared states
+Shared tokens: `design-tokens.json` → `src/tokens.css`, `native/tokens.ts`, 62 Figma primitive/semantic variables and seven Manrope text styles.
 
-- Toggle: off, on, disabled; 44 CSS px touch area (native 48 dp wrapper).
-- DeviceCard: on, off, unknown connection; nominal W derived from shared model.
-- PowerGauge: current value or unknown. Unknown never becomes 0 W.
-- Autopilot: permission required, allowed, paused/unavailable; no background actuation.
-- Schedule: empty, editor, validation error, saved, paused, edited, no plans on selected day.
-- CH3: protected in all connection states, no actuation component.
-- Connection: online local demo, offline, loading, error.
+Shared component sets: Toggle `11:18` (four states), Navigation `11:151` (four tabs), Primary `11:173` (neutral/amber × default/pressed/disabled), DeviceCard `11:595` (tile/row × CH1/CH2 × off/on/unknown). CH3 has no toggle component.
 
-## Supported transfer when authentication returns
+Fifteen additional state frames, 23 navigation prototype frames and the complete ID ledger are in [figma-v4-delivery.json](figma-v4-delivery.json). The prototype contains 108 native hotspots; playback was not tested. Code Connect was not published: the local library is mapped manually here.
 
-1. Verify a direct successful `whoami` and resolve the actual plan.
-2. Create `SpecWATT — Experience V3 · Premium Product Design`.
-3. Use the available official Code to Canvas capture workflow on the working route URLs. `send_code_to_figma` alone creates code layers, not native design shapes; it does not satisfy editability.
-4. Establish semantic variables, text styles, component variants and auto-layout using supported `use_figma` APIs. Use the source component/state matrix above.
-5. Assign imported image fills from the same WebP files. Import `design-export/` icons and product vectors.
-6. Record real file/node IDs here; take Figma screenshots and compare at 393 CSS px equivalent with code screenshots. Resolve typography, spacing, image crop and state differences. Only then mark QA 4 passed.
-
-`npm run export:vectors` renders editable SVG source from actual React components. It is not a Figma import and does not export entire screens as bitmaps disguised as editable designs.
+Review the actual 393 px image pairs in [review.html](v4/review.html). Text/image/vector structure is audited separately in [figma-audit.json](v4/figma-audit.json). Raster images are original interior assets only. There are no flattened UI screenshots inside delivered screens.

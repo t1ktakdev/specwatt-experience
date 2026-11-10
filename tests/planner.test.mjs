@@ -1,4 +1,5 @@
 import { test } from "node:test";
+import * as planner from "../src/lib/planner.ts";
 import assert from "node:assert/strict";
 import { validatePlan, readPlans, loadSegments } from "../src/lib/planner.ts";
 const plan = {
@@ -10,6 +11,40 @@ const plan = {
   enabled: true,
   days: ["Вт"],
 };
+
+test("draft preview prioritizes the actual conflict day without changing saved plans", () => {
+  assert.equal(typeof planner.previewPlan, "function");
+  const existing = [{ ...plan }];
+  const before = JSON.stringify(existing);
+  const draft = {
+    ...plan,
+    id: 2,
+    channel: "CH1",
+    days: ["Пн", "Вт", "Ср", "Чт", "Пт"],
+  };
+  const preview = planner.previewPlan(draft, existing, "Пн");
+  assert.equal(preview.day, "Вт");
+  assert.deepEqual(preview.conflictDays, ["Вт"]);
+  assert.equal(
+    Math.max(...loadSegments(preview.plans, preview.day).map((s) => s.watts)),
+    8.4,
+  );
+  assert.equal(JSON.stringify(existing), before);
+});
+
+test("draft preview uses strict shared input validation and excludes the edited plan", () => {
+  assert.equal(typeof planner.previewPlan, "function");
+  for (const time of ["19:99", "25:00", ""])
+    assert.equal(planner.previewPlan({ ...plan, time }, [], "Вт"), null);
+  const preview = planner.previewPlan(
+    { ...plan, channel: "CH1" },
+    [plan],
+    "Вт",
+  );
+  assert.equal(preview.plans.length, 1);
+  assert.deepEqual(preview.conflictDays, []);
+  assert.equal(preview.day, "Вт");
+});
 test("valid plan is accepted; protected, malformed and empty inputs are rejected", () => {
   assert.equal(validatePlan(plan, []), null);
   for (const bad of [

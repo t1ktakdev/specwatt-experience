@@ -35,8 +35,8 @@ export function Journal() {
     <>
       <main className="screen-content journal-content">
         <Header
-          title="Всё на виду."
-          subtitle="Понятная история решений и действий."
+          title="Журнал событий"
+          subtitle="Действия и решения текущей демо-сессии"
           back
           action="none"
         />

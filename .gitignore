@@ -7,3 +7,4 @@ artifacts-baseline/
 *.zip
 tools/cloudflared.exe
 *.tsbuildinfo
+.expo/

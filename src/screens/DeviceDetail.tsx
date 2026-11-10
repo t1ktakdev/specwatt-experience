@@ -15,47 +15,56 @@ export function LampIllustration({ on }: { on: boolean }) {
       viewBox="0 0 300 220"
       className={`lamp-illustration ${on ? "lit" : ""}`}
       role="img"
-      aria-label="Предметная иллюстрация светильника"
+      aria-label="Дисковый подвесной светильник, концептуальная иллюстрация CH1"
     >
       <defs>
-        <linearGradient id="lampBody" x1="0" y1="0" x2="1" y2=".8">
-          <stop stopColor="#59594f" />
-          <stop offset=".4" stopColor="#30322e" />
-          <stop offset="1" stopColor="#151918" />
+        <linearGradient id="pendant-metal" x1="0" x2="1">
+          <stop stopColor="#342e27" />
+          <stop offset=".25" stopColor="#8c7252" />
+          <stop offset=".48" stopColor="#b89b71" />
+          <stop offset=".7" stopColor="#6a563e" />
+          <stop offset="1" stopColor="#262824" />
         </linearGradient>
-        <radialGradient id="lampLight">
-          <stop stopColor="#f7daab" stopOpacity={on ? ".25" : "0"} />
-          <stop offset="1" stopColor="#e5ad72" stopOpacity="0" />
+        <linearGradient id="pendant-face" x2="0" y2="1">
+          <stop stopColor={on ? "#fff0ce" : "#787a6d"} />
+          <stop offset="1" stopColor={on ? "#d6a15c" : "#373e36"} />
+        </linearGradient>
+        <radialGradient id="pendant-wash">
+          <stop stopColor="#f2bc81" stopOpacity={on ? ".32" : "0"} />
+          <stop offset="1" stopColor="#edb17c" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="lampFace" x1="0" y1="0" x2="0" y2="1">
-          <stop stopColor={on ? "#fff0d5" : "#6b6e62"} />
-          <stop offset="1" stopColor={on ? "#dcac75" : "#333a32"} />
-        </linearGradient>
       </defs>
-      <ellipse cx="150" cy="189" rx="117" ry="27" fill="url(#lampLight)" />
-      <path d="M148 0v46" stroke="#6c6e60" strokeWidth="2" />
+      <ellipse cx="150" cy="185" rx="130" ry="27" fill="url(#pendant-wash)" />
+      <path d="M149 0V80" stroke="#77776b" strokeWidth="1.5" />
+      <path d="M144 76h12v12h-12Z" fill="#71634d" />
       <path
-        d="M135 44h26l5 19h-36z"
-        fill="#242a23"
-        stroke="#5e6455"
-        strokeWidth=".5"
-      />
-      <path
-        d="M126 61C107 73 90 97 77 136Q150 180 223 136C208 97 191 73 172 61Z"
-        fill="url(#lampBody)"
-        stroke="#7e817344"
+        d="M52 114C64 92 102 81 150 81S236 92 248 114L245 123H55Z"
+        fill="url(#pendant-metal)"
+        stroke="#ad936b"
+        strokeWidth=".6"
       />
       <ellipse
         cx="150"
-        cy="136"
-        rx="73"
-        ry="23"
-        fill="#1a201a"
-        stroke="#777c6b66"
+        cy="121"
+        rx="96"
+        ry="22"
+        fill="#151a18"
+        stroke="#a28964"
+        strokeWidth="1"
       />
-      <ellipse cx="150" cy="138" rx="64" ry="17" fill="url(#lampFace)" />
-      <path d="M103 94Q150 109 197 94" fill="none" stroke="#b3b2a518" />
-      <path d="M90 119Q150 145 211 119" fill="none" stroke="#a6a79511" />
+      <ellipse cx="150" cy="123" rx="87" ry="16" fill="url(#pendant-face)" />
+      <path
+        d="M65 113C110 98 190 98 235 113"
+        fill="none"
+        stroke="#f4d2a1"
+        strokeOpacity=".24"
+      />
+      <path
+        d="M69 128Q150 147 231 128"
+        fill="none"
+        stroke={on ? "#ffe9b7" : "#686e5e"}
+        strokeWidth="1"
+      />
     </svg>
   );
 }

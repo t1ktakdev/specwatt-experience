@@ -23,7 +23,7 @@ export function Welcome() {
         <span className="edition">SMART ENERGY</span>
       </div>
       <div className="welcome-progress">
-        <span>EXPERIENCE / 03</span>
+        <span>EXPERIENCE / 04</span>
         <i />
       </div>
       <div className="welcome-copy">

@@ -9,24 +9,21 @@ export function Protected() {
       <main className="screen-content protected-content">
         <Header title="Под защитой" back action="none" />
         <section className="shield-hero">
-          <div className="shield-rings">
-            <span />
-            <span />
-            <span />
-            <ShieldCheck size={76} strokeWidth={1.1} />
-            <i>
-              <LockKeyhole size={15} />
-            </i>
+          <div className="safety-passport-head">
+            <span className="passport-channel">CH3</span>
+            <ShieldCheck size={44} strokeWidth={1.4} />
           </div>
-          <span className="eyebrow">CH3 / PROTECTED CHANNEL</span>
+          <span className="safety-seal">
+            <LockKeyhole size={14} /> ПОСТОЯННАЯ ЗАЩИТА В МОДЕЛИ
+          </span>
           <h2>
-            Важное остаётся
+            Вне управления.
             <br />
-            неприкосновенным.
+            Внутри энергобаланса.
           </h2>
           <p>
-            Этот канал исключён из ручного
-            <br />и автоматического переключения.
+            Номинальная нагрузка канала учитывается перед каждым действием CH1 и
+            CH2.
           </p>
         </section>
         <div className="protected-measurement material">
@@ -35,6 +32,18 @@ export function Protected() {
             {link === "online" ? "2,4" : "—"} <small>Вт</small>
           </b>
           <DemoBadge />
+        </div>
+        <div className="safety-budget">
+          <span>
+            Базовая нагрузка <b>2,4 Вт</b>
+          </span>
+          <span>
+            Лимит стенда <b>7 Вт</b>
+          </span>
+          <div>
+            <i />
+          </div>
+          <small>CH3 занимает 34% лимита · расчёт по номиналу</small>
         </div>
         <div className="protection-rules">
           <DetailRow

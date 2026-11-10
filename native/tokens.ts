@@ -97,6 +97,13 @@ export const tokens = {
         unit: "px",
       },
     },
+    instrument: {
+      $value: {
+        value: 18,
+        unit: "px",
+      },
+      $type: "dimension",
+    },
   },
   spacing: {
     unit: {
@@ -130,6 +137,13 @@ export const tokens = {
         unit: "ms",
       },
     },
+    chart: {
+      $value: {
+        value: 420,
+        unit: "ms",
+      },
+      $type: "duration",
+    },
   },
   typography: {
     display: {
@@ -152,12 +166,12 @@ export const tokens = {
       fontWeight: 600,
     },
     body: {
-      fontSize: 12,
+      fontSize: 13,
       fontWeight: 400,
       lineHeight: 1.7,
     },
     caption: {
-      fontSize: 10,
+      fontSize: 11,
       fontWeight: 500,
       lineHeight: 1.6,
     },

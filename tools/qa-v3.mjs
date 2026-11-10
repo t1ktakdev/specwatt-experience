@@ -173,9 +173,16 @@ try {
     assert.ok(sources.every((s) => s.width > 0));
     heroSources.push(...sources.map((s) => s.source));
   }
-  assert.equal(new Set(heroSources).size, 3);
+  assert.equal(new Set(heroSources).size, 2);
+  await go("home");
+  await expect(
+    page.getByRole("img", {
+      name: "Архитектурная LED-линия: световой профиль CH2",
+    }),
+  ).toBeVisible();
+  assert.equal(await page.locator(".ambient-tile img").count(), 0);
   checks.push(
-    "Three hero surfaces have distinct decoded sources: architecture / vector object / bedroom",
+    "Two distinct decoded interiors; Home has an editable architectural LED vector instead of the rejected oval object",
   );
   await page.evaluate(() => localStorage.clear());
   assert.deepEqual(errors, []);

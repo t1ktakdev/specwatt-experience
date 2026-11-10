@@ -1,44 +1,67 @@
-# Experience V3 verification — 10 November 2026, Asia/Bishkek
+# Experience V4 verification — 10 November 2026, Asia/Bishkek
 
-Stable starting point: `0623f3e`. Worktree: `SpecWATT-Experience-v3`, branch `codex/experience-v3`. The original SpecWATT repository and its Android application were read only.
+Source: real `origin/main` at `263a4dfe54ec12b1f8ff3a1160d97f93a01a5074` (v1.1.0). Isolated branch `codex/experience-v4-crafted-figma`, package v1.2.0. The original SpecWATT repository, backend/firmware and both rejected Figma files were not modified.
 
-## QA 1 — Visual fidelity: completed locally
+## QA1 · Art direction — verified locally
 
-Inspected the actual supplied Nahidul Islam and Sheikh Naeem reference images and real headless Chromium screenshots of all 12 routes. Preserved Warm Graphite / Ambient Amber and Manrope; refined surfaces, object scale, card hierarchy and touch controls. Corrected excessive Home / Analytics height, the planner empty-state density and catalogue caption tracking after visual inspection. Long-screen lower sections are captured separately. Subjective design review is not a claim of pixel identity to the references.
+All four supplied PNGs were opened and inspected. The per-route audit is in [V4-WORK.md](V4-WORK.md). The original before collages and oval close-up are in `v4/before-*.png`.
 
-## QA 2 — Asset diversity: passed
+All twelve routes were revised and visually inspected, including their lower content. Welcome retains its architecture; Home replaces the rejected oval with an architectural LED profile; detail uses a coherent disk pendant. Inventory rows, policy controls, schedule lanes, a chronological journal, a truthful setup topology and a compact CH3 passport replace repeated hero-card compositions. Two distinct original interiors are retained; no reference artist's artwork is shipped.
 
-Welcome: unique architecture. Lighting: different bedroom and lighting composition. Home: dedicated SVG object. Three hero sources decode successfully and are distinct; no screen references the retained V1 `ambient-room.webp`. Small cards use SVG icons. Responsive WebP outputs: 63,940 / 69,372 bytes at 960w, 15,170 / 17,312 bytes at 480w. Provenance is in `ASSETS.md`; reference authors' artwork is not shipped. Sixteen exported/product SVG files parsed successfully as XML.
+## QA2 · Figma editability — verified
 
-## QA 3 — Function and safety: passed
+[Actual new Figma file](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q), authored through authenticated `figma-remote`. The initial editable rectangle/text/vector/Auto Layout probe was rendered, inspected and removed.
 
-- 12 Node unit tests, zero failures, no skips. New guards were first exercised by failing tests before implementation.
-- CH1 / CH2 / CH3 remain 1.8 / 4.2 / 2.4 W, limit 7 W. CH3 has no switch or schedule option.
-- Browser tests cover rejected 8.4 W load, unchanged power after rejection, valid switching, unknown connection states and disabled commands.
-- V3 tests cover editor/save/reload/pause, schedule load calculation and conflict refusal; final consent revocation; journal refusal event; keyboard chart selection; persisted reduced motion; unavailable real pairing and absence of controller network requests.
-- Plans are stored locally and never execute. Autopilot sends no background commands. Lighting brightness is a visual concept.
+Final readback: ten nonempty pages; fourteen core frames cover twelve routes with all three setup steps; fifteen additional interface states; 23 prototype frames; 62 scoped variables; seven Manrope text styles; 32 components including four variant sets. Screens contain real TEXT, VECTOR, FRAME, INSTANCE and Auto Layout nodes. Raster fills in product screens are only the two interior assets, not flattened interfaces. Primary has editable label and icon-swap properties; CH3 has no toggle.
 
-## QA 4 — Figma ↔ code parity: NOT PERFORMED
+[Layer audit](v4/figma-audit.json) records real node types, fonts, dimensions, image fills, bindings and component definitions. All inspected text uses Manrope. One empty loading-indicator frame retains the captured pulse opacity; it is not hidden UI content. [Delivery ledger](figma-v4-delivery.json) contains current IDs. Raw capture roots and the temporary probe were removed.
 
-Direct plugin `whoami`: `MCP tool codex_apps/figma.whoami is not available to the model` (`isError: true`). Separately registered `figma-remote` failed initialization: `Auth required, when send initialize request`.
+The prototype's 108 native hotspot reactions were read back successfully. **Playback was not tested.** Code Connect is not published; [COMPONENT-MAP.md](COMPONENT-MAP.md) is the verified manual mapping.
 
-No authenticated plan/file was resolved. No Figma file, edit, screenshot, import or parity result is claimed. `COMPONENT-MAP.md`, generated tokens and `design-export/` preserve a concrete transfer path. Code layers alone would not satisfy editable Design layer requirements.
+## QA3 · React ↔ Figma — verified with documented differences
 
-## QA 5 — Product validation: local and public checks passed
+[Comparison gallery](v4/review.html) uses actual Chromium and Figma renders at 393 px. Fourteen core-frame widths and full-content heights match the browser geometry. Fifteen state pairs are retained as well. A frozen clock is used only in screenshot fixtures.
 
-- `npm run build`: TypeScript + generated tokens + production Vite build passed.
-- `npm run typecheck`, `npm run lint`, `npm test`: passed. Lint here is Prettier formatting, not an ESLint ruleset.
-- `node tools/qa.mjs`: 12 routes × 320 / 393 / 440 CSS px; no checked horizontal overflow or page errors. First pass found journal filter overflow at 320 px; fixed, final pass zero findings.
-- `node tools/qa-v3.mjs`: all seven extended scenario groups passed, zero console/page errors and HTTP failures.
-- `node tools/accessibility.mjs`: axe WCAG A/AA checks on the initial view of 12 routes, zero reported violations. No full WCAG certification or manual screen-reader claim.
-- `node tools/capture.mjs ...`: actual route screenshots, lower-content views, four-screen and 12-screen overview. Asset decode and bundled Manrope verified in the browser.
-- Public site verified separately at 11:22 Asia/Bishkek on 10 November 2026. `verify-live.mjs` rendered all 12 V3 routes, checked HTTP 200, bundled Manrope, image decode, overload refusal, switching, scene slider, periods and CH3. Zero page errors or failed responses.
-- `qa-v3.mjs https://t1ktakdev.github.io/specwatt-experience/` also passed all seven extended scenario groups against the published app; no console errors or failed HTTP responses. These are actual public checks, not an inference from the local build.
-- Published application source: `4b001e07df84fdceb5910e902c19d0b51be49bd8`. [Merged PR #1](https://github.com/t1ktakdev/specwatt-experience/pull/1). [Successful Pages build and deploy](https://github.com/t1ktakdev/specwatt-experience/actions/runs/42761448168). PR checks also passed in [run 42761221345](https://github.com/t1ktakdev/specwatt-experience/actions/runs/42761221345).
-- `live-verification.json`, `live-qa-v3.json` and `screenshots/published-overview.png` retain public verification evidence. Later evidence-only documentation commits do not change the deployed application.
+Visual checks covered crop, hierarchy, text, controls, graphs and long-screen lower sections. Inspection found and corrected captured entrance opacity/translation, fallback Inter chart labels, grid placement, slider vectors, button tones, setup progress, empty-state width and modal clipping. Final editor screenshots include editable times and Check icon instances.
 
-## Android scope
+Remaining differences: font antialiasing/weight, shadows/gradients, asymmetric borders and SVG-label positioning. Chromium's native time input follows its OS 12-hour presentation; the editable Figma specimen uses 24-hour times. This is not a pixel-identity claim or proof of native Android parity.
 
-Five actual native screen sources, native controls, safe-area shell, SVG instrument and guarded local hook were adapted in `native/`; TypeScript passed against installed React Native 0.88 / React 19.3 / safe-area / SVG definitions. The original app is not modified. No Metro bundle, APK, emulator/device rendering, native screen-reader test or fontScale 1.0 / 1.3 / 1.5 proof exists. Remaining native routes, Expo Router integration, persistence and real transport are explicitly pending.
+## QA4 · Behavior, safety and motion — verified in browser/shared model
 
-Kyrgyz localization, hardware telemetry, controller acknowledgements, tariff calculations and timed execution remain unimplemented in this Experience repository.
+- `npm test`: **16/16 passed**, no skipped tests.
+- CH1/CH2/CH3 remain 1.8/4.2/2.4 W; limit 7 W. CH3 is excluded from switching, scheduling and autopilot. An 8.4 W request preserves prior state.
+- Offline/loading/error block commands; unknown power is not zero or confirmed on.
+- Planner tests cover save/reload/edit/pause/delete, exact load segments, overlap rejection and unchanged saved plans. Review found a misleading first-day draft preview; shared strict `previewPlan` now selects the actual conflict day. Regression tests first failed, then passed, including malformed native time and same-ID edit handling.
+- Review also found that a `?screen=home` entry could pin the screen after a tab click. Hash navigation now takes precedence; the browser regression verifies tab navigation and Back.
+- Explicit consent/revocation, refusal events, journal filters, conceptual brightness and setup with no controller request are exercised.
+- `qa-v4` observes an actual running **420 ms** chart transition and its settled opacity, hover/tap/keyboard selection, period units/totals and reduced motion. Screen/control/planner transitions use shared tokens; not every animation timing was individually measured.
+- Independent read-only code review rechecked both P2 fixes and the native time-preview issue; no remaining concrete findings in those fixes.
+
+Schedules never execute by time, autopilot sends no background commands, and pairing never claims real registration.
+
+## QA5 · Delivery and Android — web verified; device partial
+
+Executed successfully on the final application source:
+
+| Check | Result |
+| --- | --- |
+| `npm test` | 16 passed |
+| `npm run typecheck` | Passed |
+| `npm run lint` | Passed; Prettier formatting, not ESLint |
+| `npm run build` | Passed; production Vite output |
+| `npm run typecheck --prefix native` | Passed |
+| `npm run typecheck --prefix native/host` | Passed |
+| `npm run export:android --prefix native/host` | Passed; Expo/Metro Android Hermes bundle |
+| `node tools/qa.mjs` | 12 routes × 320/393/440 px; no checked overflow/page errors |
+| `node tools/qa-v3.mjs` | Seven extended scenario groups passed; no failed responses |
+| `node tools/qa-v4.mjs` | Five V4 scenario groups passed; no page/HTTP errors |
+| `node tools/accessibility.mjs` | 12 initial route views, zero reported axe A/AA violations |
+| `node tools/parity.mjs` | 14 core + 15 state screenshots generated |
+
+Machine-readable browser reports and geometry are retained in `v4/`. CI independently installs the native host and exports Android; its final run is recorded with the PR after pushing.
+
+All twelve native routes and three setup steps are implemented with React Native primitives, a local guarded runtime, navigation, notices, reduced motion, bundled Manrope and original images. The isolated Expo host is runnable source, not integration into the original Android application. Local validation reused a compatible installed dependency tree; lockfiles are committed for clean CI installation.
+
+**Not performed:** APK build, emulator/physical-device screenshots, native screen-reader, fontScale 1.0/1.3/1.5, Figma prototype playback or full manual WCAG certification. Native persistence is in memory. No hardware telemetry, transport/acknowledgements, timed execution, tariff calculation or Kyrgyz localization is implemented.
+
+The V4 branch is delivered through a PR and local interactive preview. Stable V3 Pages is not replaced; no public V4 deployment is claimed.

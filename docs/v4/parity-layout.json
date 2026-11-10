@@ -1,0 +1,256 @@
+[
+  {
+    "id": "15:298",
+    "name": "V4 / 01 Welcome",
+    "route": "welcome",
+    "source": "7:8",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 28,
+      "INSTANCE": 3,
+      "VECTOR": 13,
+      "TEXT": 12
+    },
+    "images": [
+      {
+        "id": "15:300",
+        "name": "Image (Архитектурный холл с бронзовым светильником и тёплым светом на травертине)",
+        "width": 393,
+        "height": 852
+      }
+    ],
+    "webWidth": 393,
+    "webHeight": 852
+  },
+  {
+    "id": "15:386",
+    "name": "V4 / 02 Home",
+    "route": "home",
+    "source": "7:87",
+    "width": 393,
+    "height": 1109.6875,
+    "types": {
+      "FRAME": 117,
+      "TEXT": 41,
+      "VECTOR": 102,
+      "INSTANCE": 7
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1109.6875
+  },
+  {
+    "id": "15:762",
+    "name": "V4 / 03 Lighting",
+    "route": "lighting",
+    "source": "7:399",
+    "width": 393,
+    "height": 993.875,
+    "types": {
+      "FRAME": 69,
+      "VECTOR": 71,
+      "TEXT": 22,
+      "INSTANCE": 3
+    },
+    "images": [
+      {
+        "id": "15:782",
+        "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+        "width": 345,
+        "height": 298
+      }
+    ],
+    "webWidth": 393,
+    "webHeight": 993.875
+  },
+  {
+    "id": "15:978",
+    "name": "V4 / 04 Energy",
+    "route": "energy",
+    "source": "7:595",
+    "width": 393,
+    "height": 1163.40625,
+    "types": {
+      "FRAME": 105,
+      "TEXT": 54,
+      "INSTANCE": 3,
+      "VECTOR": 66,
+      "GROUP": 5
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1163.40625
+  },
+  {
+    "id": "15:1262",
+    "name": "V4 / 05 Devices",
+    "route": "devices",
+    "source": "7:856",
+    "width": 393,
+    "height": 1080.921875,
+    "types": {
+      "FRAME": 94,
+      "TEXT": 38,
+      "VECTOR": 56,
+      "INSTANCE": 6
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1080.921875
+  },
+  {
+    "id": "15:1564",
+    "name": "V4 / 06 Device Detail",
+    "route": "device",
+    "source": "7:1081",
+    "width": 393,
+    "height": 1294.046875,
+    "types": {
+      "FRAME": 84,
+      "VECTOR": 64,
+      "TEXT": 30,
+      "INSTANCE": 3
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1294.046875
+  },
+  {
+    "id": "15:1796",
+    "name": "V4 / 12 Protected CH3",
+    "route": "protected",
+    "source": "7:2372",
+    "width": 393,
+    "height": 1132.453125,
+    "types": {
+      "FRAME": 72,
+      "VECTOR": 39,
+      "TEXT": 26,
+      "INSTANCE": 2
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1132.453125
+  },
+  {
+    "id": "15:1983",
+    "name": "V4 / 07 Autopilot",
+    "route": "autopilot",
+    "source": "7:1295",
+    "width": 393,
+    "height": 1379.59375,
+    "types": {
+      "FRAME": 94,
+      "TEXT": 35,
+      "VECTOR": 72,
+      "INSTANCE": 5
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1379.59375
+  },
+  {
+    "id": "15:2246",
+    "name": "V4 / 08 Load Planner",
+    "route": "planner",
+    "source": "7:1537",
+    "width": 393,
+    "height": 1261.6875,
+    "types": {
+      "FRAME": 97,
+      "VECTOR": 44,
+      "TEXT": 56,
+      "INSTANCE": 3,
+      "GROUP": 4
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1261.6875
+  },
+  {
+    "id": "15:2501",
+    "name": "V4 / 09 Activity Journal",
+    "route": "journal",
+    "source": "7:1791",
+    "width": 393,
+    "height": 874.421875,
+    "types": {
+      "FRAME": 60,
+      "VECTOR": 39,
+      "TEXT": 25,
+      "INSTANCE": 3
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 874.421875
+  },
+  {
+    "id": "15:2679",
+    "name": "V4 / 10 Setup — 01",
+    "route": "setup",
+    "source": "7:1944",
+    "width": 393,
+    "height": 883.75,
+    "types": {
+      "FRAME": 56,
+      "VECTOR": 37,
+      "INSTANCE": 3,
+      "TEXT": 22
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 883.75
+  },
+  {
+    "id": "15:2829",
+    "name": "V4 / 10 Setup — 02",
+    "route": "setup-2",
+    "source": "7:2540",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 45,
+      "VECTOR": 24,
+      "INSTANCE": 3,
+      "TEXT": 20
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 852
+  },
+  {
+    "id": "15:2953",
+    "name": "V4 / 10 Setup — 03",
+    "route": "setup-3",
+    "source": "7:2651",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 48,
+      "VECTOR": 30,
+      "INSTANCE": 3,
+      "TEXT": 19
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 852
+  },
+  {
+    "id": "15:3085",
+    "name": "V4 / 11 Settings",
+    "route": "settings",
+    "source": "7:2088",
+    "width": 393,
+    "height": 1640.875,
+    "types": {
+      "FRAME": 128,
+      "VECTOR": 74,
+      "TEXT": 41,
+      "INSTANCE": 5
+    },
+    "images": [],
+    "webWidth": 393,
+    "webHeight": 1640.875
+  }
+]

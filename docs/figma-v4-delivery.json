@@ -1,0 +1,701 @@
+{
+  "fileKey": "CZEjsvoYoT7888KQ0o7B5Q",
+  "sessionId": "fe368ed0-9f94-4fab-8051-e24bfe305290",
+  "screens": [
+    {
+      "id": "15:298",
+      "name": "V4 / 01 Welcome",
+      "route": "welcome",
+      "source": "7:8",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 28,
+        "INSTANCE": 3,
+        "VECTOR": 13,
+        "TEXT": 12
+      },
+      "images": [
+        {
+          "id": "15:300",
+          "name": "Image (Архитектурный холл с бронзовым светильником и тёплым светом на травертине)",
+          "width": 393,
+          "height": 852
+        }
+      ]
+    },
+    {
+      "id": "15:386",
+      "name": "V4 / 02 Home",
+      "route": "home",
+      "source": "7:87",
+      "width": 393,
+      "height": 1109.6875,
+      "types": {
+        "FRAME": 117,
+        "TEXT": 41,
+        "VECTOR": 102,
+        "INSTANCE": 7
+      },
+      "images": []
+    },
+    {
+      "id": "15:762",
+      "name": "V4 / 03 Lighting",
+      "route": "lighting",
+      "source": "7:399",
+      "width": 393,
+      "height": 993.875,
+      "types": {
+        "FRAME": 69,
+        "VECTOR": 71,
+        "TEXT": 22,
+        "INSTANCE": 3
+      },
+      "images": [
+        {
+          "id": "15:782",
+          "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+          "width": 345,
+          "height": 298
+        }
+      ]
+    },
+    {
+      "id": "15:978",
+      "name": "V4 / 04 Energy",
+      "route": "energy",
+      "source": "7:595",
+      "width": 393,
+      "height": 1163.40625,
+      "types": {
+        "FRAME": 105,
+        "TEXT": 54,
+        "INSTANCE": 3,
+        "VECTOR": 66,
+        "GROUP": 5
+      },
+      "images": []
+    },
+    {
+      "id": "15:1262",
+      "name": "V4 / 05 Devices",
+      "route": "devices",
+      "source": "7:856",
+      "width": 393,
+      "height": 1080.921875,
+      "types": {
+        "FRAME": 94,
+        "TEXT": 38,
+        "VECTOR": 56,
+        "INSTANCE": 6
+      },
+      "images": []
+    },
+    {
+      "id": "15:1564",
+      "name": "V4 / 06 Device Detail",
+      "route": "device",
+      "source": "7:1081",
+      "width": 393,
+      "height": 1294.046875,
+      "types": {
+        "FRAME": 84,
+        "VECTOR": 64,
+        "TEXT": 30,
+        "INSTANCE": 3
+      },
+      "images": []
+    },
+    {
+      "id": "15:1796",
+      "name": "V4 / 12 Protected CH3",
+      "route": "protected",
+      "source": "7:2372",
+      "width": 393,
+      "height": 1132.453125,
+      "types": {
+        "FRAME": 72,
+        "VECTOR": 39,
+        "TEXT": 26,
+        "INSTANCE": 2
+      },
+      "images": []
+    },
+    {
+      "id": "15:1983",
+      "name": "V4 / 07 Autopilot",
+      "route": "autopilot",
+      "source": "7:1295",
+      "width": 393,
+      "height": 1379.59375,
+      "types": {
+        "FRAME": 94,
+        "TEXT": 35,
+        "VECTOR": 72,
+        "INSTANCE": 5
+      },
+      "images": []
+    },
+    {
+      "id": "15:2246",
+      "name": "V4 / 08 Load Planner",
+      "route": "planner",
+      "source": "7:1537",
+      "width": 393,
+      "height": 1261.6875,
+      "types": {
+        "FRAME": 97,
+        "VECTOR": 44,
+        "TEXT": 56,
+        "INSTANCE": 3,
+        "GROUP": 4
+      },
+      "images": []
+    },
+    {
+      "id": "15:2501",
+      "name": "V4 / 09 Activity Journal",
+      "route": "journal",
+      "source": "7:1791",
+      "width": 393,
+      "height": 874.421875,
+      "types": {
+        "FRAME": 60,
+        "VECTOR": 39,
+        "TEXT": 25,
+        "INSTANCE": 3
+      },
+      "images": []
+    },
+    {
+      "id": "15:2679",
+      "name": "V4 / 10 Setup — 01",
+      "route": "setup",
+      "source": "7:1944",
+      "width": 393,
+      "height": 883.75,
+      "types": {
+        "FRAME": 56,
+        "VECTOR": 37,
+        "INSTANCE": 3,
+        "TEXT": 22
+      },
+      "images": []
+    },
+    {
+      "id": "15:2829",
+      "name": "V4 / 10 Setup — 02",
+      "route": "setup-2",
+      "source": "7:2540",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 45,
+        "VECTOR": 24,
+        "INSTANCE": 3,
+        "TEXT": 20
+      },
+      "images": []
+    },
+    {
+      "id": "15:2953",
+      "name": "V4 / 10 Setup — 03",
+      "route": "setup-3",
+      "source": "7:2651",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 48,
+        "VECTOR": 30,
+        "INSTANCE": 3,
+        "TEXT": 19
+      },
+      "images": []
+    },
+    {
+      "id": "15:3085",
+      "name": "V4 / 11 Settings",
+      "route": "settings",
+      "source": "7:2088",
+      "width": 393,
+      "height": 1640.875,
+      "types": {
+        "FRAME": 128,
+        "VECTOR": 74,
+        "TEXT": 41,
+        "INSTANCE": 5
+      },
+      "images": []
+    }
+  ],
+  "states": [
+    {
+      "id": "15:3397",
+      "name": "V4 / Offline",
+      "route": "home",
+      "source": "13:8",
+      "width": 393,
+      "height": 1322.359375,
+      "types": {
+        "FRAME": 123,
+        "TEXT": 44,
+        "VECTOR": 108,
+        "INSTANCE": 7
+      },
+      "images": []
+    },
+    {
+      "id": "15:3790",
+      "name": "V4 / Loading",
+      "route": "home",
+      "source": "13:341",
+      "width": 393,
+      "height": 1301.96875,
+      "types": {
+        "FRAME": 124,
+        "TEXT": 44,
+        "VECTOR": 102,
+        "INSTANCE": 7
+      },
+      "images": []
+    },
+    {
+      "id": "15:4174",
+      "name": "V4 / Error",
+      "route": "home",
+      "source": "13:644",
+      "width": 393,
+      "height": 1322.359375,
+      "types": {
+        "FRAME": 123,
+        "TEXT": 44,
+        "VECTOR": 104,
+        "INSTANCE": 7
+      },
+      "images": []
+    },
+    {
+      "id": "15:4559",
+      "name": "V4 / CH2 Off",
+      "route": "lighting",
+      "source": "13:948",
+      "width": 393,
+      "height": 993.875,
+      "types": {
+        "FRAME": 68,
+        "VECTOR": 71,
+        "TEXT": 22,
+        "INSTANCE": 3
+      },
+      "images": [
+        {
+          "id": "15:4578",
+          "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+          "width": 345,
+          "height": 298
+        }
+      ]
+    },
+    {
+      "id": "15:4774",
+      "name": "V4 / CH1 On",
+      "route": "device",
+      "source": "13:1142",
+      "width": 393,
+      "height": 1294.046875,
+      "types": {
+        "FRAME": 83,
+        "VECTOR": 64,
+        "TEXT": 30,
+        "INSTANCE": 3
+      },
+      "images": []
+    },
+    {
+      "id": "15:5005",
+      "name": "V4 / Empty Journal",
+      "route": "journal",
+      "source": "13:1357",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 47,
+        "VECTOR": 32,
+        "TEXT": 20,
+        "INSTANCE": 3
+      },
+      "images": []
+    },
+    {
+      "id": "15:5158",
+      "name": "V4 / Permission Required",
+      "route": "autopilot",
+      "source": "13:1483",
+      "width": 393,
+      "height": 1379.59375,
+      "types": {
+        "FRAME": 93,
+        "TEXT": 35,
+        "VECTOR": 72,
+        "INSTANCE": 5
+      },
+      "images": []
+    },
+    {
+      "id": "15:5420",
+      "name": "V4 / Protected Offline",
+      "route": "protected",
+      "source": "13:1724",
+      "width": 393,
+      "height": 1132.453125,
+      "types": {
+        "FRAME": 71,
+        "VECTOR": 39,
+        "TEXT": 26,
+        "INSTANCE": 2
+      },
+      "images": []
+    },
+    {
+      "id": "15:5606",
+      "name": "V4 / Overload Refused",
+      "route": "overload",
+      "source": "13:1892",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 9,
+        "VECTOR": 4,
+        "TEXT": 4,
+        "INSTANCE": 1
+      },
+      "images": []
+    }
+  ],
+  "workflowStates": [
+    {
+      "id": "22:786",
+      "name": "V4 / Energy — Day",
+      "route": "energy-day",
+      "source": "18:237",
+      "width": 393,
+      "height": 1163.40625,
+      "types": {
+        "FRAME": 99,
+        "TEXT": 52,
+        "INSTANCE": 3,
+        "VECTOR": 83,
+        "GROUP": 5
+      },
+      "images": []
+    },
+    {
+      "id": "22:1079",
+      "name": "V4 / Energy — Month",
+      "route": "energy-month",
+      "source": "18:522",
+      "width": 393,
+      "height": 1163.40625,
+      "types": {
+        "FRAME": 99,
+        "TEXT": 51,
+        "INSTANCE": 3,
+        "VECTOR": 63,
+        "GROUP": 5
+      },
+      "images": []
+    },
+    {
+      "id": "22:1351",
+      "name": "V4 / Planner — Saved",
+      "route": "planner-saved",
+      "source": "18:763",
+      "width": 393,
+      "height": 1237.203125,
+      "types": {
+        "FRAME": 111,
+        "VECTOR": 47,
+        "TEXT": 60,
+        "INSTANCE": 4,
+        "GROUP": 4
+      },
+      "images": []
+    },
+    {
+      "id": "22:1631",
+      "name": "V4 / Planner — Editing",
+      "route": "planner-editing",
+      "source": "18:1052",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 150,
+        "VECTOR": 59,
+        "TEXT": 86,
+        "INSTANCE": 5,
+        "GROUP": 8
+      },
+      "images": []
+    },
+    {
+      "id": "22:1998",
+      "name": "V4 / Planner — Conflict",
+      "route": "planner-conflict",
+      "source": "18:1417",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 151,
+        "VECTOR": 60,
+        "TEXT": 87,
+        "INSTANCE": 5,
+        "GROUP": 8
+      },
+      "images": []
+    },
+    {
+      "id": "22:2368",
+      "name": "V4 / Permission Granted",
+      "route": "autopilot-granted",
+      "source": "18:1783",
+      "width": 393,
+      "height": 1379.59375,
+      "types": {
+        "FRAME": 93,
+        "TEXT": 35,
+        "VECTOR": 72,
+        "INSTANCE": 5
+      },
+      "images": []
+    }
+  ],
+  "prototypePage": "25:231",
+  "prototypeScreens": [
+    {
+      "id": "25:232",
+      "route": "welcome",
+      "name": "Flow / V4 / 01 Welcome"
+    },
+    {
+      "id": "25:289",
+      "route": "home",
+      "name": "Flow / V4 / 02 Home"
+    },
+    {
+      "id": "25:557",
+      "route": "lighting",
+      "name": "Flow / V4 / 03 Lighting"
+    },
+    {
+      "id": "25:723",
+      "route": "energy",
+      "name": "Flow / V4 / 04 Energy"
+    },
+    {
+      "id": "25:957",
+      "route": "devices",
+      "name": "Flow / V4 / 05 Devices"
+    },
+    {
+      "id": "25:1156",
+      "route": "device",
+      "name": "Flow / V4 / 06 Device Detail"
+    },
+    {
+      "id": "25:1338",
+      "route": "protected",
+      "name": "Flow / V4 / 12 Protected CH3"
+    },
+    {
+      "id": "25:1478",
+      "route": "autopilot",
+      "name": "Flow / V4 / 07 Autopilot"
+    },
+    {
+      "id": "25:1685",
+      "route": "planner",
+      "name": "Flow / V4 / 08 Load Planner"
+    },
+    {
+      "id": "25:1890",
+      "route": "journal",
+      "name": "Flow / V4 / 09 Activity Journal"
+    },
+    {
+      "id": "25:2018",
+      "route": "setup",
+      "name": "Flow / V4 / 10 Setup — 01"
+    },
+    {
+      "id": "25:2137",
+      "route": "setup-2",
+      "name": "Flow / V4 / 10 Setup — 02"
+    },
+    {
+      "id": "25:2230",
+      "route": "setup-3",
+      "name": "Flow / V4 / 10 Setup — 03"
+    },
+    {
+      "id": "25:2331",
+      "route": "settings",
+      "name": "Flow / V4 / 11 Settings"
+    },
+    {
+      "id": "25:2580",
+      "route": "energy-day",
+      "name": "Flow / V4 / Energy — Day"
+    },
+    {
+      "id": "25:2823",
+      "route": "energy-month",
+      "name": "Flow / V4 / Energy — Month"
+    },
+    {
+      "id": "25:3045",
+      "route": "planner-saved",
+      "name": "Flow / V4 / Planner — Saved"
+    },
+    {
+      "id": "25:3272",
+      "route": "planner-editing",
+      "name": "Flow / V4 / Planner — Editing"
+    },
+    {
+      "id": "25:3581",
+      "route": "planner-conflict",
+      "name": "Flow / V4 / Planner — Conflict"
+    },
+    {
+      "id": "25:3893",
+      "route": "autopilot-granted",
+      "name": "Flow / V4 / Permission Granted"
+    },
+    {
+      "id": "25:4099",
+      "route": "lighting",
+      "name": "Flow / V4 / CH2 Off"
+    },
+    {
+      "id": "25:4264",
+      "route": "device",
+      "name": "Flow / V4 / CH1 On"
+    },
+    {
+      "id": "25:4445",
+      "route": "overload",
+      "name": "Flow / V4 / Overload Refused"
+    }
+  ],
+  "components": {
+    "Toggle/State=Off": "11:5",
+    "Toggle/State=On": "11:9",
+    "Toggle/State=Disabled": "11:13",
+    "Toggle/State=Unavailable": "11:17",
+    "Navigation/Active=Home": "11:51",
+    "Navigation/Active=Devices": "11:84",
+    "Navigation/Active=Energy": "11:117",
+    "Navigation/Active=Auto": "11:150",
+    "Primary/State=Default": "11:158",
+    "Primary/State=Pressed": "11:165",
+    "Primary/State=Disabled": "11:172",
+    "StatusBar": "11:189",
+    "Brand": "11:200",
+    "DemoBadge": "11:204",
+    "DeviceCard/Layout=Tile, Channel=CH1, State=Off": "11:231",
+    "DeviceCard/Layout=Tile, Channel=CH1, State=On": "11:261",
+    "DeviceCard/Layout=Tile, Channel=CH1, State=Unknown": "11:291",
+    "DeviceCard/Layout=Tile, Channel=CH2, State=Off": "11:327",
+    "DeviceCard/Layout=Tile, Channel=CH2, State=On": "11:363",
+    "DeviceCard/Layout=Tile, Channel=CH2, State=Unknown": "11:399",
+    "DeviceCard/Layout=Row, Channel=CH1, State=Off": "11:428",
+    "DeviceCard/Layout=Row, Channel=CH1, State=On": "11:457",
+    "DeviceCard/Layout=Row, Channel=CH1, State=Unknown": "11:486",
+    "DeviceCard/Layout=Row, Channel=CH2, State=Off": "11:521",
+    "DeviceCard/Layout=Row, Channel=CH2, State=On": "11:556",
+    "DeviceCard/Layout=Row, Channel=CH2, State=Unknown": "11:591",
+    "BrandSmall": "12:36",
+    "PrimaryAccent/State=Default": "21:257",
+    "PrimaryAccent/State=Pressed": "21:264",
+    "PrimaryAccent/State=Disabled": "21:271",
+    "Icon/PrimaryArrow": "40:34",
+    "Icon/PrimaryCheck": "40:38"
+  },
+  "prototypeHotspots": 108,
+  "iconSwapProperty": "Icon#40:0",
+  "cover": "29:231",
+  "handoff": "32:231",
+  "pages": {
+    "00 Cover & Product Principles": "4:2",
+    "01 Foundations / Tokens / Typography": "4:3",
+    "02 Component Library / Variants / States": "4:4",
+    "03 Main: Welcome, Home, Lighting, Energy": "0:1",
+    "04 Devices & Detail & Protected": "4:5",
+    "05 Autopilot & Planner & Journal": "4:6",
+    "06 Onboarding (3 steps) & Settings": "4:7",
+    "07 Edge Cases: offline/loading/error/empty/overload/permission": "4:8",
+    "08 Handoff / React-Native-Mapping": "4:9",
+    "09 Prototype / Interactive flows": "25:231"
+  },
+  "foundations": {
+    "board": "4:81",
+    "collections": {
+      "primitives": "VariableCollectionId:4:10",
+      "semantics": "VariableCollectionId:4:11"
+    },
+    "variables": {
+      "color/surface/canvas": "VariableID:4:13",
+      "color/surface/raised": "VariableID:4:15",
+      "color/surface/elevated": "VariableID:4:17",
+      "color/surface/inset": "VariableID:4:19",
+      "color/text/primary": "VariableID:4:21",
+      "color/text/secondary": "VariableID:4:23",
+      "color/accent/amber": "VariableID:4:25",
+      "color/accent/amberBright": "VariableID:4:27",
+      "color/status/protected": "VariableID:4:29",
+      "color/status/warning": "VariableID:4:31",
+      "color/status/error": "VariableID:4:33",
+      "radius/card": "VariableID:4:35",
+      "radius/control": "VariableID:4:37",
+      "radius/small": "VariableID:4:39",
+      "radius/hero": "VariableID:4:41",
+      "radius/device": "VariableID:4:43",
+      "radius/instrument": "VariableID:4:45",
+      "spacing/unit": "VariableID:4:47",
+      "spacing/screen": "VariableID:4:49",
+      "motion/press": "VariableID:4:51",
+      "motion/screen": "VariableID:4:53",
+      "motion/chart": "VariableID:4:55",
+      "spacing/scale/4": "VariableID:4:57",
+      "spacing/scale/8": "VariableID:4:59",
+      "spacing/scale/12": "VariableID:4:61",
+      "spacing/scale/16": "VariableID:4:63",
+      "spacing/scale/20": "VariableID:4:65",
+      "spacing/scale/24": "VariableID:4:67",
+      "spacing/scale/32": "VariableID:4:69",
+      "spacing/scale/40": "VariableID:4:71",
+      "spacing/scale/48": "VariableID:4:73"
+    },
+    "textStyles": {
+      "display": "S:4bc72b9dfd274e2a1ded1ee2470a3cac193a2dc6,",
+      "metric": "S:2954c5e99dc15fd0f581e1cf5d735d06ec180c8f,",
+      "heading": "S:057693bf4b713b90e8631595e2557ef197ee5ecf,",
+      "section": "S:f00007825bf5691c981d9ed5b42370285ad4bd57,",
+      "body": "S:af22c9c3730a505fed8ce1c61cae25b9e8d6ff7e,",
+      "caption": "S:b3ebf9c9499317c8a74fab44088e2a2e3318aed2,",
+      "analytics": "S:f43e09c4106364a603080f0f96cb8f43a83e78f8,"
+    }
+  },
+  "verified": {
+    "coreFrames": 14,
+    "routes": 12,
+    "setupSteps": 3,
+    "additionalStates": 15,
+    "prototypeFrames": 23,
+    "variables": 62,
+    "textStyles": 7,
+    "components": 32,
+    "hotspots": 108
+  }
+}

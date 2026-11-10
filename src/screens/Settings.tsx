@@ -36,7 +36,12 @@ export function Settings() {
   return (
     <>
       <main className="screen-content settings-content">
-        <Header title="Точно под вас." back action="none" />
+        <Header
+          title="Настройки"
+          subtitle="Соединение, интерфейс и локальные данные"
+          back
+          action="none"
+        />
         <div className="settings-profile material">
           <span className="profile-monogram">
             <Zap size={26} />
@@ -191,7 +196,7 @@ export function Settings() {
         )}
         <div className="settings-foot">
           <Brand small />
-          <span>EXPERIENCE V3 · WEB DEMO</span>
+          <span>EXPERIENCE V4 · WEB DEMO</span>
         </div>
       </main>
       <Nav active="home" />

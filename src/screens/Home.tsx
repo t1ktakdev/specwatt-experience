@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import { totalWatts } from "../model";
 import { useApp } from "../state/context";
-import { fmt, visuals } from "../lib/design";
+import { fmt } from "../lib/design";
+import { LightRail } from "../components/LightRail";
 import {
   Header,
   DemoBadge,
@@ -83,22 +84,20 @@ export function Home() {
           />
         </div>
         <button className="ambient-tile" onClick={() => go("lighting")}>
-          <img
-            src={visuals.home}
-            alt="Скульптурный световой объект из бронзы и дымчатого стекла"
-            width="480"
-            height="220"
-          />
+          <LightRail />
           <div />
           <span>
-            <small>LIGHT / CONCEPT</small>
-            <strong>Ваш тихий вечер.</strong>
+            <small>CH2 / СВЕТОВАЯ СЦЕНА</small>
+            <strong>Свет вдоль стены.</strong>
             <em>
               Управлять освещением
               <ArrowUpRight size={16} />
             </em>
           </span>
         </button>
+        <p className="source-caption">
+          Локальная модель · не измерение оборудования
+        </p>
         <div className="quick-actions">
           <button onClick={() => go("planner")}>
             <CalendarDays size={18} />

@@ -291,7 +291,7 @@ export function SystemState() {
       <span className="connection-dot" />
       <span>
         {link === "online"
-          ? "Симулятор подключён"
+          ? "Демо-сессия активна"
           : link === "loading"
             ? "Обновляем состояние…"
             : link === "offline"

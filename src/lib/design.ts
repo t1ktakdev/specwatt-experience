@@ -11,7 +11,6 @@ export const visuals = {
   welcomeSmall: "./assets/welcome-architecture-480.webp",
   lighting: "./assets/lighting-bedroom.webp",
   lightingSmall: "./assets/lighting-bedroom-480.webp",
-  home: "./assets/evening-object.svg",
 };
 
 export const pageLabels: Record<Page, string> = {
