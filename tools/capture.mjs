@@ -11,7 +11,7 @@ await fs.mkdir("artifacts", { recursive: true });
 for (const name of process.argv.length > 2
   ? process.argv.slice(2)
   : ["welcome", "home", "lighting", "energy"]) {
-  await page.goto(`http://127.0.0.1:4173/#${name}`);
+  await page.goto(`http://127.0.0.1:4173/?capture=${name}#${name}`);
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(() =>
     Promise.all(
@@ -19,10 +19,26 @@ for (const name of process.argv.length > 2
     ),
   );
   await page.waitForTimeout(500);
+  await page
+    .locator("main")
+    .evaluateAll((xs) => xs.forEach((e) => (e.scrollTop = 0)));
   await page.screenshot({
     animations: "disabled",
     path: `artifacts/${name}.png`,
   });
+  if (
+    await page
+      .locator("main")
+      .evaluateAll((xs) => xs.some((e) => e.scrollHeight > e.clientHeight + 32))
+  ) {
+    await page
+      .locator("main")
+      .evaluateAll((xs) => xs.forEach((e) => (e.scrollTop = e.scrollHeight)));
+    await page.screenshot({
+      animations: "disabled",
+      path: `artifacts/${name}-detail.png`,
+    });
+  }
 }
 await page.setViewportSize({ width: 1800, height: 1080 });
 await page.goto("http://127.0.0.1:4173/?gallery");
@@ -31,6 +47,16 @@ await page.waitForTimeout(500);
 await page.screenshot({
   animations: "disabled",
   path: "artifacts/final-gallery.png",
+  fullPage: true,
+});
+await page.goto("http://127.0.0.1:4173/?gallery=all");
+await page.evaluate(() => document.fonts.ready);
+await page.evaluate(() =>
+  Promise.all([...document.images].map((i) => i.decode())),
+);
+await page.screenshot({
+  animations: "disabled",
+  path: "artifacts/all-screens.png",
   fullPage: true,
 });
 console.log(JSON.stringify({ errors }));

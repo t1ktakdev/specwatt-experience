@@ -2,6 +2,8 @@ name: Publish SpecWATT Experience
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,12 +23,27 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm test
+      - run: npm run lint
+      - run: npm ci --prefix native --ignore-scripts --no-audit --no-fund
+      - run: npm run typecheck --prefix native
       - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Verify browser experience
+        run: |
+          npm run dev > /tmp/specwatt-vite.log 2>&1 &
+          for attempt in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then break; fi
+            sleep 1
+          done
+          node tools/qa.mjs
+          node tools/qa-v3.mjs
+          node tools/accessibility.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:

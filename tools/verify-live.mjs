@@ -16,9 +16,26 @@ page.on("response", (r) => {
   if (r.status() >= 400) failures.push({ url: r.url(), status: r.status() });
 });
 await fs.mkdir("artifacts", { recursive: true });
-for (const route of ["welcome", "home", "lighting", "energy"]) {
+for (const route of [
+  "welcome",
+  "home",
+  "lighting",
+  "energy",
+  "devices",
+  "device",
+  "protected",
+  "autopilot",
+  "planner",
+  "journal",
+  "setup",
+  "settings",
+]) {
   const response = await page.goto(`${base}#${route}`);
   if (response) assert.equal(response.status(), 200);
+  await expect(page.locator(".experience")).toHaveAttribute(
+    "data-version",
+    "3",
+  );
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(() =>
     Promise.all([...document.images].map((i) => i.decode())),
@@ -69,7 +86,7 @@ const result = {
   fonts: "Manrope loaded",
   assets: "image and bundled assets loaded",
   checks: [
-    "four screen renders",
+    "12 V3 screen renders",
     "power limit rejection",
     "Escape closes modal",
     "channel switching",
