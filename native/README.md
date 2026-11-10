@@ -13,7 +13,7 @@ npm run export:android --prefix native/host
 npm start --prefix native/host
 ```
 
-The Android export writes a Hermes bundle, two original images and Manrope to `artifacts/native-android/`. It has been produced with the actual Expo/Metro toolchain (772 modules). Local validation reused an installed compatible dependency tree; the host has its own reproducible lockfile and CI installs it independently.
+The Android export writes a Hermes bundle, two original images and Manrope to `artifacts/native-android/`. It has been produced with the actual Expo/Metro toolchain. Local validation reused an installed compatible dependency tree; the host has its own reproducible lockfile and CI installs it independently.
 
 The first clean CI export exposed a nested `pretty-format` → `react-is` resolution failure hidden by the reused tree. Metro now allows hierarchical lookup inside host dependencies while keeping shared source and React/RN singletons on the host tree. This follows [Metro's resolution context](https://metrobundler.dev/docs/resolution/); no extra application dependency was added to mask the failure.
 

@@ -51,7 +51,7 @@ Executed successfully on the final application source:
 | `npm run build` | Passed; production Vite output |
 | `npm run typecheck --prefix native` | Passed |
 | `npm run typecheck --prefix native/host` | Passed |
-| `npm run export:android --prefix native/host` | Passed; Expo/Metro, 772 modules, 1.9 MB Hermes bundle |
+| `npm run export:android --prefix native/host` | Passed; Expo/Metro Android Hermes bundle |
 | `node tools/qa.mjs` | 12 routes × 320/393/440 px; no checked overflow/page errors |
 | `node tools/qa-v3.mjs` | Seven extended scenario groups passed; no failed responses |
 | `node tools/qa-v4.mjs` | Five V4 scenario groups passed; no page/HTTP errors |
