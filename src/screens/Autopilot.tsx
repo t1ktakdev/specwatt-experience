@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   ArrowUpRight,
   Sun,
-  Moon,
   Lightbulb,
   SlidersHorizontal,
   ShieldCheck,
@@ -15,9 +14,14 @@ import { useApp } from "../state/context";
 import { Icon, Header, SectionTitle, Toggle, Nav } from "../components/ui";
 import { readConsent } from "../model";
 
-export function Autopilot() {
+export function Autopilot({
+  initialAllow,
+}: {
+  initialAllow?: { CH1: boolean; CH2: boolean };
+}) {
   const { auto, setAuto, go, toast, link, record } = useApp();
   const [allow, setAllow] = useState<{ CH1: boolean; CH2: boolean }>(() => {
+    if (initialAllow) return initialAllow;
     try {
       return readConsent(localStorage.getItem("specwatt-consent"));
     } catch {
@@ -62,8 +66,8 @@ export function Autopilot() {
     <>
       <main className="screen-content autopilot-content">
         <Header
-          title="В вашем ритме"
-          subtitle="Вы задаёте правила. SpecWATT бережёт баланс."
+          title="Правила света"
+          subtitle="Вы решаете, каким каналам доверять демо-правила."
           action="settings"
         />
         <section className={`autopilot-hero material ${auto ? "enabled" : ""}`}>
@@ -75,27 +79,10 @@ export function Autopilot() {
                 ? "РАЗРЕШЕНИЕ ПОЛУЧЕНО"
                 : "ОЖИДАЕТ ВАШЕГО РЕШЕНИЯ"}
           </div>
-          <div className="autopilot-path">
-            <span>
-              <Sun size={22} />
-            </span>
-            <i />
-            <span className="auto-core">
-              <Sparkles size={32} />
-            </span>
-            <i />
-            <span>
-              <Moon size={22} />
-            </span>
-          </div>
           <div className="autopilot-headline">
             <div>
               <span className="eyebrow">ДЕМО-АВТОПИЛОТ</span>
-              <h2>
-                {auto
-                  ? "Разумный баланс."
-                  : "Спокойствие —\nпо вашим правилам."}
-              </h2>
+              <h2>{auto ? "Правила разрешены" : "Сначала — разрешение"}</h2>
             </div>
             <Toggle
               label="Демо-автопилот"
@@ -107,7 +94,7 @@ export function Autopilot() {
           <p>
             {auto
               ? "Демо-режим включён. Фоновые команды не выполняются."
-              : "Включается только с разрешения.\nВы всегда сохраняете ручной контроль."}
+              : "Выберите каналы ниже. Автопилот не отправляет фоновые команды."}
           </p>
         </section>
         <SectionTitle>Разрешённые каналы</SectionTitle>
@@ -139,11 +126,24 @@ export function Autopilot() {
             <span>ПРИМЕР ПРАВИЛА</span>
           </div>
           <div className="auto-rule-steps">
-            <span>19:00</span>
+            <span>
+              <b>01</b> 19:00 · условие
+            </span>
             <ArrowRight size={12} />
-            <span>Есть разрешение</span>
+            <span>
+              <b>02</b> Разрешение CH2
+            </span>
             <ArrowRight size={12} />
-            <span>Проверка 7 Вт</span>
+            <span>
+              <b>03</b> Нагрузка ≤ 7 Вт
+            </span>
+            <ArrowRight size={12} />
+            <span className={allow.CH2 ? "policy-allowed" : "policy-blocked"}>
+              <b>04</b>{" "}
+              {allow.CH2
+                ? "LED-лента · предполагается включение"
+                : "Стоп · нет разрешения CH2"}
+            </span>
           </div>
           <p>
             {!allow.CH2
@@ -157,8 +157,8 @@ export function Autopilot() {
           <CalendarDays size={24} />
           <div>
             <small>СЛЕДУЮЩИЙ ШАГ</small>
-            <h3>Энергия по расписанию</h3>
-            <p>Соберите свой ритм дня</p>
+            <h3>План нагрузки</h3>
+            <p>Проверить интервалы и безопасный пик</p>
           </div>
           <ArrowUpRight size={20} />
         </button>

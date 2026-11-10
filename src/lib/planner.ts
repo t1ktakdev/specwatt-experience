@@ -79,6 +79,22 @@ export function validatePlan(
     return "Пересечение CH1 и CH2 создаст 8,4 Вт при лимите 7 Вт. Измените время или дни.";
   return null;
 }
+/** Preview the day that explains a refusal, never an unrelated safe first day. */
+export function previewPlan(
+  value: unknown,
+  existing: Schedule[],
+  preferredDay?: string,
+) {
+  if (!isPlan(value)) return null;
+  const plans = [...existing.filter((p) => p.id !== value.id), value];
+  const conflictDays = [...new Set(value.days)].filter((day) =>
+    loadSegments(plans, day).some((s) => s.watts > 7),
+  );
+  const preferred = preferredDay ?? value.days[0];
+  let day = value.days.includes(preferred) ? preferred : value.days[0];
+  if (conflictDays.length && !conflictDays.includes(day)) day = conflictDays[0];
+  return { plans, day, conflictDays };
+}
 export function readPlans(raw: string | null): Schedule[] {
   try {
     const values: unknown = JSON.parse(raw || "[]");

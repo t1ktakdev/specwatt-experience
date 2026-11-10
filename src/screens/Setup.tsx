@@ -5,15 +5,15 @@ import {
   Radio,
   Check,
   Cable,
-  Cpu,
   LockKeyhole,
 } from "lucide-react";
 import { useApp } from "../state/context";
-import { IconButton, Brand, Primary, HomeIndicator } from "../components/ui";
+import { IconButton, Brand, Primary } from "../components/ui";
+import { ConnectionTopology } from "../components/ConnectionTopology";
 
-export function Setup() {
+export function Setup({ initialStep = 1 }: { initialStep?: number }) {
   const { go, toast } = useApp();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(initialStep);
   const [address, setAddress] = useState("http://127.0.0.1:8000");
   const [mode, setMode] = useState<"demo" | "hardware">("demo");
   function check() {
@@ -48,22 +48,14 @@ export function Setup() {
             <i key={n} className={step >= n ? "active" : ""} />
           ))}
         </div>
-        <div className="controller-object">
-          <div className="controller-board">
-            <span className="board-label">SPECWATT / GRID</span>
-            <Cpu size={55} strokeWidth={1} />
-            <span className="board-pins" />
-            <span className="board-led" />
-            <span className="board-tag">ESP32</span>
-          </div>
-          <div className="controller-shadow" />
-        </div>
+        <ConnectionTopology step={step} />
         {step === 1 ? (
           <>
             <span className="eyebrow">01 / ЗНАКОМСТВО</span>
             <h1>
-              Большое начинается
-              <br />с подключения.
+              Начните с демо.
+              <br />
+              Подключайте осознанно.
             </h1>
             <p className="setup-description">
               Один контроллер. Три канала.
@@ -191,7 +183,6 @@ export function Setup() {
           </>
         )}
       </main>
-      <HomeIndicator />
     </>
   );
 }

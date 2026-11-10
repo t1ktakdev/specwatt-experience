@@ -24,32 +24,52 @@ import {
   loadSegments,
   readPlans,
   validatePlan,
+  previewPlan,
   weekdays,
   type Schedule,
 } from "../lib/planner";
 import { fmt } from "../lib/design";
+import { LoadTimeline } from "../components/LoadTimeline";
 
-export function Planner() {
+export type PlannerPreview = "saved" | "editing" | "conflict";
+const examplePlan: Schedule = {
+  id: 1,
+  channel: "CH2",
+  name: "Вечерний свет",
+  time: "19:00",
+  end: "22:30",
+  days: ["Пн", "Вт", "Ср", "Чт", "Пт"],
+  enabled: true,
+};
+export function Planner({ preview }: { preview?: PlannerPreview }) {
   const { go, toast, record } = useApp();
   const [plans, setPlans] = useState<Schedule[]>(() =>
-    readPlans(localStorage.getItem("specwatt-plans")),
+    preview
+      ? [{ ...examplePlan }]
+      : readPlans(localStorage.getItem("specwatt-plans")),
   );
-  const [draft, setDraft] = useState<Schedule | null>(null);
+  const initialDraft: Schedule | null =
+    preview === "editing"
+      ? { ...examplePlan }
+      : preview === "conflict"
+        ? { ...examplePlan, id: 2, channel: "CH1", name: "Основной свет" }
+        : null;
+  const [draft, setDraft] = useState<Schedule | null>(initialDraft);
   const [selectedDay, setSelectedDay] = useState("Вт");
-  const [validation, setValidation] = useState("");
-  useDialogFocus(Boolean(draft), ".bottom-sheet", () => setDraft(null));
+  const [validation, setValidation] = useState(
+    preview === "conflict"
+      ? validatePlan(initialDraft, [examplePlan]) || ""
+      : "",
+  );
+  useDialogFocus(Boolean(draft) && !preview, ".bottom-sheet", () =>
+    setDraft(null),
+  );
   const segments = loadSegments(plans, selectedDay);
+  const draftPreview = draft ? previewPlan(draft, plans, selectedDay) : null;
   const peak = Math.max(...segments.map((s) => s.watts));
   const visible = plans
     .filter((p) => p.days.includes(selectedDay))
     .sort((a, b) => a.time.localeCompare(b.time));
-  const y = (watts: number) => 102 - (watts / 7) * 84;
-  const path = segments
-    .map(
-      (s, i) =>
-        `${i === 0 ? "M" : "L"}${(s.start / 1440) * 300} ${y(s.watts)}H${(s.end / 1440) * 300}`,
-    )
-    .join(" ");
   function persist(next: Schedule[]) {
     localStorage.setItem("specwatt-plans", JSON.stringify(next));
     setPlans(next);
@@ -114,7 +134,10 @@ export function Planner() {
         />
         <div className="planner-month">
           <span>РАСПИСАНИЙ ПО ДНЯМ</span>
-          <span>Локальный демо-план</span>
+          <button className="planner-add" onClick={() => open()}>
+            <Plus size={16} />
+            Новое расписание
+          </button>
         </div>
         <div className="planner-week">
           {weekdays.map((d) => (
@@ -145,31 +168,7 @@ export function Planner() {
           <h2>
             Пиковая нагрузка <span>{fmt(peak)} Вт</span>
           </h2>
-          <div className="timeline-preview">
-            <div className="timeline-limit">7 Вт — лимит</div>
-            <svg
-              viewBox="0 0 300 112"
-              role="img"
-              aria-label={`Расчёт по расписаниям на ${selectedDay}. Пик ${fmt(peak)} Вт, CH3 постоянно 2,4 Вт.`}
-            >
-              <path d="M0 18H300" stroke="#edb17c70" strokeDasharray="4 5" />
-              <path d="M0 60H300M0 102H300" stroke="#ffffff10" />
-              <path d={`${path}L300 112H0Z`} fill="#edb17c12" />
-              <path d={`M0 ${y(2.4)}H300`} stroke="#b8c9b080" strokeWidth="2" />
-              <path
-                d={path}
-                stroke="#edb17c"
-                strokeWidth="2.5"
-                fill="none"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <div>
-              {["00:00", "06:00", "12:00", "18:00", "24:00"].map((t) => (
-                <span key={t}>{t}</span>
-              ))}
-            </div>
-          </div>
+          <LoadTimeline plans={plans} day={selectedDay} />
           <div className="timeline-key">
             <span>
               <i />
@@ -358,6 +357,18 @@ export function Planner() {
                 </button>
               ))}
             </div>
+            {draftPreview && (
+              <div
+                className={`draft-load ${validation ? "draft-conflict" : ""}`}
+              >
+                <span>Предпросмотр · {draftPreview.day} · предел 7 Вт</span>
+                <LoadTimeline
+                  plans={draftPreview.plans}
+                  day={draftPreview.day}
+                  compact
+                />
+              </div>
+            )}
             {validation && (
               <p className="validation-error" role="alert">
                 {validation}

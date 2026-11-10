@@ -9,11 +9,15 @@ import {
 import { useApp } from "../state/context";
 import { Icon, Header, DemoBadge, SectionTitle, Nav } from "../components/ui";
 import { Period, EnergyChart } from "../components/charts";
-import { shares, totals } from "../lib/demo-energy";
+import { shares, totals, channelEnergy } from "../lib/demo-energy";
 import { fmtEnergy } from "../lib/design";
 
-export function Energy() {
-  const [period, setPeriod] = useState<Period>("Неделя");
+export function Energy({
+  initialPeriod = "Неделя",
+}: {
+  initialPeriod?: Period;
+}) {
+  const [period, setPeriod] = useState<Period>(initialPeriod);
   const { go } = useApp();
   const value = totals[period].toLocaleString("ru-RU", {
     minimumFractionDigits: 2,
@@ -56,7 +60,11 @@ export function Energy() {
         </section>
         <section className="chart-section material">
           <div className="chart-heading">
-            <h2>Ритм потребления</h2>
+            <h2>
+              {period === "День"
+                ? "Средняя мощность по часам"
+                : "Энергия по интервалам"}
+            </h2>
             <button
               onClick={() => go("journal")}
               aria-label="Открыть журнал измерений"
@@ -131,7 +139,10 @@ export function Energy() {
                 {c.percent}
                 <small>%</small>
                 <span className="consumer-amount">
-                  ≈ {fmtEnergy((totals[period] * c.percent) / 100)} кВт·ч
+                  {fmtEnergy(
+                    channelEnergy[period][c.id as "CH1" | "CH2" | "CH3"] * 1000,
+                  )}{" "}
+                  Вт·ч
                 </span>
               </strong>
             </button>

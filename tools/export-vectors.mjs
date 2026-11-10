@@ -8,10 +8,12 @@ const result = await build({
   import {renderToStaticMarkup as render} from 'react-dom/server';
   import {LampIllustration} from './src/screens/DeviceDetail.tsx';
   import {PowerGauge} from './src/components/charts.tsx';
+  import {LightRail} from './src/components/LightRail.tsx';
   import * as icons from 'lucide-react';
   export const assets={
     'lamp-on.svg':render(React.createElement(LampIllustration,{on:true})),
     'lamp-off.svg':render(React.createElement(LampIllustration,{on:false})),
+    'light-rail.svg':render(React.createElement(LightRail)),
     'power-gauge.svg':render(React.createElement(PowerGauge,{value:6.6})).match(/<svg[\\s\\S]*?<\\/svg>/)[0],
     ...Object.fromEntries(['Lightbulb','Sun','Moon','ShieldCheck','LockKeyhole','CalendarDays','Clock3','WifiOff','TriangleAlert','Sparkles','Cpu','Activity'].map(name=>['icons/'+name+'.svg',render(React.createElement(icons[name],{size:24,strokeWidth:1.65,color:'#edb17c'}))]))
   };
