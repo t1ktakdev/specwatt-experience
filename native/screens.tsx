@@ -6,7 +6,7 @@ import {
   View,
   type ImageSourcePropType,
 } from "react-native";
-import Svg, { Circle, Path, Polyline } from "react-native-svg";
+import Svg, { Circle, Path, Rect, Text as SvgText } from "react-native-svg";
 import {
   Copy,
   NativeButton,
@@ -25,18 +25,16 @@ import {
   type LinkState,
   type ChannelId,
 } from "../src/model";
-import { data, shares, totals, type Period } from "../src/lib/demo-energy";
+import {
+  chartScale,
+  data,
+  shares,
+  totals,
+  type Period,
+} from "../src/lib/demo-energy";
+import type { Page } from "../src/types";
 
-export type NativeRoute =
-  | "home"
-  | "lighting"
-  | "energy"
-  | "devices"
-  | "device"
-  | "protected"
-  | "autopilot"
-  | "planner"
-  | "setup";
+export type NativeRoute = Page;
 export type NativeModel = {
   channels: ChannelState;
   link: LinkState;
@@ -67,7 +65,7 @@ export function NativeWelcome({
         />
         <View style={local.welcomeBrand}>
           <Copy style={{ fontSize: 24, fontWeight: "700" }}>specwatt.</Copy>
-          <Copy style={s.caption}>EXPERIENCE / 03</Copy>
+          <Copy style={s.caption}>EXPERIENCE / 04</Copy>
         </View>
       </View>
       <Copy style={[s.caption, { color: c.accentAmber }]}>
@@ -125,10 +123,21 @@ export function NativeHome(model: NativeModel) {
       <Surface>
         <View style={s.source}>
           <NativeIcon kind="sun" />
-          <Copy style={s.caption}>LIGHT / CONCEPT</Copy>
+          <Copy style={s.caption}>CH2 / СВЕТОВАЯ СЦЕНА</Copy>
         </View>
+        <Svg
+          width="100%"
+          height={100}
+          viewBox="0 0 347 132"
+          accessibilityLabel="Архитектурный LED-профиль"
+        >
+          <Path d="M0 0H347V132H0Z" fill="#292c2a" />
+          <Path d="M0 83 347 33V38L0 89Z" fill="#141819" />
+          <Path d="M0 88 347 37" stroke="#d19560" strokeWidth={6} />
+          <Path d="M0 87 347 36" stroke="#ffe3bb" strokeWidth={2} />
+        </Svg>
         <Copy style={[s.section, { fontSize: 24, lineHeight: 32 }]}>
-          Ваш тихий вечер.
+          Свет вдоль стены.
         </Copy>
         <NativeButton
           label="Управлять освещением"
@@ -248,13 +257,8 @@ export function NativeEnergy({
   const [selected, setSelected] = useState(6);
   const values = data[period],
     index = Math.min(selected, values.length - 1),
-    max = period === "День" ? 8 : period === "Неделя" ? 0.2 : 1.2;
-  const points = values
-    .map(
-      (v, i) =>
-        `${12 + (i * 276) / (values.length - 1)},${140 - (v / max) * 120}`,
-    )
-    .join(" ");
+    scale = chartScale(period);
+  const x = (i: number) => 44 + ((i + 0.5) / values.length) * 280;
   return (
     <ScreenShell>
       <Copy style={s.caption}>SPECWATT / ДЕМО-ИСТОРИЯ</Copy>
@@ -296,31 +300,74 @@ export function NativeEnergy({
         <Copy style={s.unit}> кВт·ч</Copy>
       </Copy>
       <Surface>
-        <Copy style={s.section}>Ритм потребления</Copy>
+        <Copy style={s.section}>
+          {period === "День"
+            ? "Средняя мощность по часам"
+            : "Энергия по интервалам"}
+        </Copy>
         <Svg
-          viewBox="0 0 312 158"
+          viewBox="0 0 336 216"
+          fontFamily="Manrope"
           width="100%"
-          height={158}
+          height={216}
           accessible
-          accessibilityLabel={`Демо-график за период ${period}`}
+          accessibilityLabel={`Демо-график за ${period}. ${period === "День" ? "Вт" : "кВт·ч"}`}
         >
-          <Path
-            d="M12 20H288M12 60H288M12 100H288M12 140H288"
-            stroke="#ffffff14"
-            strokeDasharray="3 5"
-          />
-          <Polyline
-            points={points}
-            fill="none"
-            stroke={c.accentAmber}
-            strokeWidth={2.5}
-          />
+          {scale.ticks.map((t) => (
+            <React.Fragment key={t}>
+              <Path
+                d={`M44 ${scale.y(t)}H324`}
+                stroke="#ffffff18"
+                strokeDasharray="2 4"
+              />
+              <SvgText
+                x={34}
+                y={scale.y(t) + 4}
+                textAnchor="end"
+                fill="#b9bcb5"
+                fontSize={11}
+              >
+                {t.toLocaleString("ru-RU")}
+              </SvgText>
+            </React.Fragment>
+          ))}
+          {values.map((v, i) => (
+            <Rect
+              key={i}
+              x={x(i) - Math.max(3, (280 / values.length) * 0.3)}
+              y={scale.y(v)}
+              width={Math.max(6, (280 / values.length) * 0.6)}
+              height={184 - scale.y(v)}
+              rx={2}
+              fill={i === index ? "#edb17c" : "#817363"}
+              onPress={() => setSelected(i)}
+            />
+          ))}
           <Circle
-            cx={12 + (index * 276) / (values.length - 1)}
-            cy={140 - (values[index] / max) * 120}
+            cx={x(index)}
+            cy={scale.y(values[index])}
             r={4}
-            fill={c.accentAmber}
+            fill="#fff0d8"
           />
+          {(period === "День"
+            ? [0, 6, 12, 18, 23]
+            : values.map((_, i) => i)
+          ).map((i) => (
+            <SvgText
+              key={i}
+              x={x(i)}
+              y={207}
+              textAnchor="middle"
+              fill="#b9bcb5"
+              fontSize={11}
+            >
+              {period === "День"
+                ? String(i).padStart(2, "0")
+                : period === "Неделя"
+                  ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"][i]
+                  : ["1–7", "8–14", "15–21", "22–30"][i]}
+            </SvgText>
+          ))}
         </Svg>
         <View style={s.source}>
           <Pressable
@@ -409,10 +456,10 @@ export function NativeProtected({
         Под защитой
       </Copy>
       <View style={s.protected}>
-        <NativeIcon kind="shield" size={90} color={c.statusProtected} />
+        <NativeIcon kind="shield" size={44} color={c.statusProtected} />
         <Copy style={s.caption}>CH3 / PROTECTED CHANNEL</Copy>
         <Copy style={[s.title, { textAlign: "center", fontWeight: "400" }]}>
-          Важное остаётся неприкосновенным.
+          Вне управления. Внутри энергобаланса.
         </Copy>
         <Copy style={[s.muted, { textAlign: "center" }]}>
           Исключён из ручного и автоматического переключения.

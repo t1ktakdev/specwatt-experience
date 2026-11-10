@@ -1,0 +1,98 @@
+import React from "react";
+import { Pressable, Switch, TextInput, View } from "react-native";
+import { Copy, s } from "./components";
+import { palette as c } from "./tokens";
+export function NativeRow({
+  title,
+  detail,
+  onPress,
+}: {
+  title: string;
+  detail?: string;
+  onPress?: () => void;
+}) {
+  const content = (
+    <>
+      <Copy style={s.section}>{title}</Copy>
+      {detail && <Copy style={s.muted}>{detail}</Copy>}
+    </>
+  );
+  return onPress ? (
+    <Pressable
+      accessibilityRole="button"
+      onPress={onPress}
+      style={({ pressed }) => [s.subtleButton, pressed && s.pressed]}
+    >
+      {content}
+    </Pressable>
+  ) : (
+    <View style={s.subtleButton}>{content}</View>
+  );
+}
+export function NativeToggle({
+  label,
+  detail,
+  value,
+  onChange,
+  disabled = false,
+}: {
+  label: string;
+  detail?: string;
+  value: boolean;
+  onChange: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <View style={[s.switchRow, { minHeight: 72 }]}>
+      <View style={{ flex: 1 }}>
+        <Copy>{label}</Copy>
+        {detail && <Copy style={s.muted}>{detail}</Copy>}
+      </View>
+      <View style={s.switchTouch}>
+        <Switch
+          accessibilityLabel={label}
+          disabled={disabled}
+          value={value}
+          onValueChange={onChange}
+          thumbColor={value ? "#fff0d8" : "#b7beb5"}
+          trackColor={{ false: "#444a47", true: c.accentAmber }}
+        />
+      </View>
+    </View>
+  );
+}
+export function NativeField({
+  label,
+  value,
+  onChange,
+  keyboardType = "default",
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  keyboardType?: "default" | "url" | "numbers-and-punctuation";
+}) {
+  return (
+    <View style={{ gap: 8 }}>
+      <Copy>{label}</Copy>
+      <TextInput
+        accessibilityLabel={label}
+        value={value}
+        onChangeText={onChange}
+        keyboardType={keyboardType}
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={{
+          fontFamily: "Manrope",
+          fontSize: 16,
+          color: c.textPrimary,
+          borderWidth: 1,
+          borderColor: "#ffffff25",
+          borderRadius: 10,
+          padding: 14,
+          minHeight: 52,
+        }}
+      />
+    </View>
+  );
+}

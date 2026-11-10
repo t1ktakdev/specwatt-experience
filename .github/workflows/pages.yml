@@ -26,6 +26,9 @@ jobs:
       - run: npm run lint
       - run: npm ci --prefix native --ignore-scripts --no-audit --no-fund
       - run: npm run typecheck --prefix native
+      - run: npm ci --prefix native/host --ignore-scripts --no-audit --no-fund
+      - run: npm run typecheck --prefix native/host
+      - run: npm run export:android --prefix native/host
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - name: Verify browser experience
@@ -37,6 +40,7 @@ jobs:
           done
           node tools/qa.mjs
           node tools/qa-v3.mjs
+          node tools/qa-v4.mjs
           node tools/accessibility.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

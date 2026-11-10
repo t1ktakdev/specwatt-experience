@@ -1,33 +1,20 @@
-# SpecWATT Experience V3 — isolated native UI kit
+# Experience V4 · isolated native UI and Expo host
 
-Actual React Native source adapted for the existing application's React 19.3 / React Native 0.88 / Expo 58 stack. This is **not an Android app or APK**, and has not been integrated into the original repository.
+All twelve routes and three setup steps are implemented using React Native primitives, shared tokens/assets and the same guarded switch/planner model as the web app. `Experience.tsx` assembles the screens with four tabs, back navigation, notices, system reduced-motion handling and route transitions. `host/` supplies Expo 58.0.19, React Native 0.88.0, Manrope loading and the original interior assets.
 
-## Implemented source
-
-- `NativeWelcome`, `NativeHome`, `NativeLighting`, `NativeEnergy`, `NativeProtected` in `screens.tsx`.
-- `ScreenShell` with SafeAreaView and real StatusBar, scrollable content, keyboard tap handling.
-- `NativeDeviceTile`, `NativePower`, `NativeButton`, SVG icons and controlled connection states.
-- Native Switch, 48 dp touch containers, Pressable feedback, text scaling enabled, wrapping card rows. No fixed screen height or CSS conversion.
-- `useNativeDemo`: shared `requestSwitch` / nominal values / protected CH3 / load rejection. Local in-memory demonstration only.
-- Generated `tokens.ts` derives from the same `../design-tokens.json` as the web CSS.
-
-## Host integration contract
-
-The host Expo app must provide `SafeAreaProvider`, register bundled Manrope with `expo-font` before rendering, and pass local image sources (for example `require('./assets/welcome-architecture.webp')` and `require('./assets/lighting-bedroom.webp')`) via `SceneAssets`. The images are the same files in `../public/assets/`.
-
-Mount these components in **isolated Expo Router routes** and supply `onNavigate` from the real router. The kit intentionally does not replace the original app's routing, transport, consent or persistence systems. Keep hardware transport separate from the local demo hook. Never infer controller acknowledgements from hook state.
-
-The host owns font loading, back behavior, native route focus, app lifecycle, keyboard avoidance for future forms, permissions and transport. These screens require no camera, location or Bluetooth permission. Scene presets affect only the picture. Native planner, journal, setup, settings and full device detail remain future adaptations; those working interactions currently live in the web app.
-
-## Validation
+Implemented: Welcome, Home, Lighting, Energy, Devices, Device Detail, Protected CH3, Autopilot, Planner, Journal, Setup (three steps), Settings. Native controls have labelled touch areas, text scaling and scrollable content. The planner uses a real native modal/editor and the shared overlap validator; it never exposes CH3 as an option. Journal entries follow actual local actions. Connection choices are explicit UI previews.
 
 ```sh
 npm ci --prefix native --ignore-scripts
 npm run typecheck --prefix native
+npm ci --prefix native/host --ignore-scripts
+npm run typecheck --prefix native/host
+npm run export:android --prefix native/host
+npm start --prefix native/host
 ```
 
-TypeScript checks these sources against the installed real React Native 0.88, SVG and safe-area definitions, not mock declarations. This does **not** prove Android rendering, screen-reader behavior, performance, fontScale 1.0 / 1.3 / 1.5 or visual parity on a device. Those require an isolated Expo host, Metro export and emulator/device checks. No APK build or device test is claimed.
+The Android export writes a Hermes bundle, two original images and Manrope to `artifacts/native-android/`. It has been produced with the actual Expo/Metro toolchain (772 modules). Local validation reused an installed compatible dependency tree; the host has its own reproducible lockfile and CI installs it independently.
 
-The first local install encountered a certificate-chain error. Enabling Node's system CA store (`NODE_OPTIONS=--use-system-ca`) completed installation without disabling certificate validation.
+This is an isolated preview host, not integration into the original SpecWATT application. State persists in memory during the session; native disk persistence, transport, controller acknowledgements and timed execution are absent. Web persistence remains localStorage. There is no APK, physical-device render, native screen-reader or fontScale 1.0/1.3/1.5 verification. No Android visual-parity claim is made.
 
-API references consulted: [Expo 58 safe areas](https://docs.expo.dev/versions/v58.0.0/sdk/safe-area-context/), [React Native Pressable](https://reactnative.dev/docs/pressable), [React Native Text](https://reactnative.dev/docs/text).
+Official references: [Expo 58](https://docs.expo.dev/versions/v58.0.0/), [safe areas](https://docs.expo.dev/versions/v58.0.0/sdk/safe-area-context/), [React Native AccessibilityInfo](https://reactnative.dev/docs/accessibilityinfo), [Animated](https://reactnative.dev/docs/animated), [TextInput](https://reactnative.dev/docs/textinput).
