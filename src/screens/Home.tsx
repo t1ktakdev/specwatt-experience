@@ -4,10 +4,12 @@ import {
   Sun,
   Lightbulb,
   ShieldCheck,
+  CalendarDays,
+  Sparkles,
 } from "lucide-react";
 import { totalWatts } from "../model";
 import { useApp } from "../state/context";
-import { fmt, scene } from "../lib/design";
+import { fmt, visuals } from "../lib/design";
 import {
   Header,
   DemoBadge,
@@ -44,11 +46,11 @@ export function Home() {
               </div>
               <p>
                 {link === "online"
-                  ? "Нагрузка в пределах лимита"
+                  ? `Резерв ${fmt(7 - watts)} Вт до лимита`
                   : "Нет актуальных измерений"}
               </p>
             </div>
-            <PowerGauge value={link === "online" ? watts : 0} />
+            <PowerGauge value={link === "online" ? watts : null} />
           </div>
           <button className="energy-hero-foot" onClick={() => go("energy")}>
             <span>
@@ -81,10 +83,15 @@ export function Home() {
           />
         </div>
         <button className="ambient-tile" onClick={() => go("lighting")}>
-          <img src={scene} alt="Тёплое освещение гостиной" />
+          <img
+            src={visuals.home}
+            alt="Скульптурный световой объект из бронзы и дымчатого стекла"
+            width="480"
+            height="220"
+          />
           <div />
           <span>
-            <small>СВЕТ СОЗДАЁТ НАСТРОЕНИЕ</small>
+            <small>LIGHT / CONCEPT</small>
             <strong>Ваш тихий вечер.</strong>
             <em>
               Управлять освещением
@@ -92,6 +99,18 @@ export function Home() {
             </em>
           </span>
         </button>
+        <div className="quick-actions">
+          <button onClick={() => go("planner")}>
+            <CalendarDays size={18} />
+            <span>План нагрузки</span>
+            <ArrowUpRight size={15} />
+          </button>
+          <button onClick={() => go("autopilot")}>
+            <Sparkles size={18} />
+            <span>Автопилот</span>
+            <ArrowUpRight size={15} />
+          </button>
+        </div>
         <button className="protection-line" onClick={() => go("protected")}>
           <span className="shield-mini">
             <ShieldCheck size={20} />

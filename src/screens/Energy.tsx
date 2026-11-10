@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  ArrowUpRight,
   Sun,
   Lightbulb,
   SlidersHorizontal,
@@ -9,14 +8,17 @@ import {
 } from "lucide-react";
 import { useApp } from "../state/context";
 import { Icon, Header, DemoBadge, SectionTitle, Nav } from "../components/ui";
-import { MiniSpark, Period, EnergyChart } from "../components/charts";
-import { shares } from "../lib/demo-energy";
+import { Period, EnergyChart } from "../components/charts";
+import { shares, totals } from "../lib/demo-energy";
+import { fmtEnergy } from "../lib/design";
 
 export function Energy() {
   const [period, setPeriod] = useState<Period>("Неделя");
   const { go } = useApp();
-  const value =
-    period === "День" ? "0,12" : period === "Неделя" ? "0,91" : "3,30";
+  const value = totals[period].toLocaleString("ru-RU", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
   return (
     <>
       <main className="screen-content energy-content">
@@ -25,6 +27,7 @@ export function Energy() {
           {(["День", "Неделя", "Месяц"] as Period[]).map((p) => (
             <button
               className={p === period ? "active" : ""}
+              aria-pressed={p === period}
               key={p}
               onClick={() => setPeriod(p)}
             >
@@ -40,10 +43,15 @@ export function Energy() {
             {value}
             <span>кВт·ч</span>
           </div>
-          <span className="comparison">
-            <ArrowUpRight size={15} />
-            <b>−12%</b> к предыдущему периоду
-            <MiniSpark />
+          <span className="analytics-context">
+            <span>
+              {period === "День"
+                ? "24 часовых интервала"
+                : period === "Неделя"
+                  ? "7 дней · учебный профиль"
+                  : "30 дней · учебный профиль"}
+            </span>
+            <b>{fmtEnergy(totals[period] * 1000)} Вт·ч</b>
           </span>
         </section>
         <section className="chart-section material">
@@ -64,7 +72,7 @@ export function Energy() {
             </span>
             <span>
               {period === "Неделя"
-                ? "4–10 ноября"
+                ? "2–8 ноября"
                 : period === "День"
                   ? "10 ноября"
                   : "Ноябрь"}{" "}
@@ -122,6 +130,9 @@ export function Energy() {
               <strong>
                 {c.percent}
                 <small>%</small>
+                <span className="consumer-amount">
+                  ≈ {fmtEnergy((totals[period] * c.percent) / 100)} кВт·ч
+                </span>
               </strong>
             </button>
           ))}

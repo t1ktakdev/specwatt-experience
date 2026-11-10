@@ -7,6 +7,8 @@ import {
   Radio,
   Activity,
   LucideIcon,
+  TriangleAlert,
+  Inbox,
 } from "lucide-react";
 import { LogEntry } from "../types";
 import { useApp } from "../state/context";
@@ -15,13 +17,19 @@ import { Icon, Header, DemoBadge, Nav } from "../components/ui";
 export function Journal() {
   const { events, go } = useApp();
   const [filter, setFilter] = useState("Все");
-  const filtered =
-    filter === "Защита" ? events.filter((e) => e.kind === "shield") : events;
+  const kinds: Record<string, LogEntry["kind"][]> = {
+    Все: ["light", "shield", "auto", "system", "warning"],
+    Защита: ["shield", "warning"],
+    Управление: ["light"],
+    Авто: ["auto"],
+  };
+  const filtered = events.filter((e) => kinds[filter].includes(e.kind));
   const icons: Record<LogEntry["kind"], LucideIcon> = {
     light: Sun,
     shield: ShieldCheck,
     auto: Sparkles,
     system: Radio,
+    warning: TriangleAlert,
   };
   return (
     <>
@@ -46,10 +54,11 @@ export function Journal() {
           <Activity size={27} />
         </div>
         <div className="filter-chips">
-          {["Все", "Защита"].map((f) => (
+          {Object.keys(kinds).map((f) => (
             <button
               className={f === filter ? "active" : ""}
               onClick={() => setFilter(f)}
+              aria-pressed={f === filter}
               key={f}
             >
               {f}
@@ -57,10 +66,25 @@ export function Journal() {
           ))}
         </div>
         <div className="journal-date">
-          <span>Сегодня</span>
+          <span>
+            Сегодня ·{" "}
+            {new Date().toLocaleDateString("ru-RU", {
+              day: "numeric",
+              month: "long",
+            })}
+          </span>
           <DemoBadge compact />
         </div>
         <div className="event-timeline">
+          {filtered.length === 0 && (
+            <div className="timeline-empty">
+              <Inbox size={28} />
+              <h3>История ещё впереди.</h3>
+              <p>
+                В этом разделе появятся ваши действия в текущей демо-сессии.
+              </p>
+            </div>
+          )}
           {filtered.map((e, i) => (
             <article
               className={`event-item event-${e.kind}`}

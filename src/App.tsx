@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, ReactNode } from "react";
 import { ShieldCheck, Check, X, Layers } from "lucide-react";
 import {
-  initialChannels,
+  readChannels,
   requestSwitch,
   totalWatts,
   ChannelId,
@@ -53,24 +53,13 @@ export function Screen({ page }: { page: Page }) {
 
 export function readPage(): Page {
   const p = location.hash.slice(1);
-  return p in pageLabels ? (p as Page) : "welcome";
+  return Object.hasOwn(pageLabels, p) ? (p as Page) : "welcome";
 }
 
 export default function App() {
   const [page, setPage] = useState<Page>(readPage);
   const [channels, setChannels] = useState<ChannelState>(() => {
-    try {
-      const v = JSON.parse(localStorage.getItem("specwatt-channels") || "null");
-      return v &&
-        typeof v.CH1 === "boolean" &&
-        typeof v.CH2 === "boolean" &&
-        v.CH3 === true &&
-        totalWatts(v) <= 7
-        ? v
-        : initialChannels;
-    } catch {
-      return initialChannels;
-    }
+    return readChannels(localStorage.getItem("specwatt-channels"));
   });
   const [link, setLink] = useState<LinkState>("online");
   const [brightness, setBrightness] = useState(70);
@@ -81,28 +70,34 @@ export default function App() {
     new URLSearchParams(location.search).has("gallery"),
   );
   const toastTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const [events, setEvents] = useState<LogEntry[]>([
-    {
-      title: "Свет для тихого вечера",
-      detail: "CH2 включён в демонстрации",
-      time: "19:24",
-      kind: "light",
-    },
+  const [events, setEvents] = useState<LogEntry[]>(() => [
     {
       title: "Защита активна",
       detail: "CH3 исключён из управления",
-      time: "19:20",
+      time: new Date().toLocaleTimeString("ru-RU", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
       kind: "shield",
     },
     {
       title: "Демо-сессия начата",
       detail: "Локальные данные · без оборудования",
-      time: "19:20",
+      time: new Date().toLocaleTimeString("ru-RU", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
       kind: "system",
     },
   ]);
+  const allGallery =
+    new URLSearchParams(location.search).get("gallery") === "all";
   useDialogFocus(Boolean(dialog), ".modal", () => setDialog(""));
   useEffect(() => {
+    document.documentElement.classList.toggle(
+      "reduce-motion",
+      localStorage.getItem("specwatt-reduce-motion") === "true",
+    );
     const fn = () => setPage(readPage());
     addEventListener("hashchange", fn);
     return () => removeEventListener("hashchange", fn);
@@ -128,25 +123,40 @@ export default function App() {
   function toggle(id: ChannelId) {
     const result = requestSwitch(channels, id, link);
     if (!result.ok) {
-      if (result.reason === "limit") setDialog("limit");
-      else if (result.reason === "protected") go("protected");
+      if (result.reason === "limit") {
+        setDialog("limit");
+        record({
+          title: "Лимит сохранил баланс",
+          detail: "Запрос 8,4 Вт отклонён · лимит 7 Вт · состояние не изменено",
+          kind: "warning",
+          channel: id,
+        });
+      } else if (result.reason === "protected") go("protected");
       else toast("Нет актуального соединения. Команда не отправлена.");
       return;
     }
     setChannels(result.next);
-    setEvents((e) => [
-      {
-        title: `${id === "CH1" ? "Светильник" : "LED-лента"} ${result.next[id] ? "включён" : "выключен"}`,
-        detail: "Локальная симуляция · не команда оборудованию",
-        time: new Date().toLocaleTimeString("ru-RU", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        kind: "light",
-      },
-      ...e,
-    ]);
+    record({
+      title: `${id === "CH1" ? "Светильник" : "LED-лента"} ${result.next[id] ? "включён" : "выключен"}`,
+      detail: "Локальная симуляция · не команда оборудованию",
+      kind: "light",
+      channel: id,
+    });
     toast("Состояние изменено в демо");
+  }
+  function record(entry: Omit<LogEntry, "time">) {
+    setEvents((items) =>
+      [
+        {
+          ...entry,
+          time: new Date().toLocaleTimeString("ru-RU", {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        },
+        ...items,
+      ].slice(0, 100),
+    );
   }
   const model: Model = {
     page,
@@ -154,18 +164,37 @@ export default function App() {
     channels,
     toggle,
     link,
-    setLink,
+    setLink: (next) => {
+      setLink(next);
+      if (next !== "online") setAuto(false);
+      record({
+        title:
+          next === "online"
+            ? "Демо-сессия доступна"
+            : next === "offline"
+              ? "Демонстрация отсутствия связи"
+              : next === "loading"
+                ? "Ожидание демо-состояния"
+                : "Ошибка демо-соединения",
+        detail: "Состояние интерфейса · сетевые команды не отправлены",
+        kind: "system",
+      });
+    },
     brightness,
     setBrightness,
     auto,
     setAuto,
     events,
+    record,
     toast,
     modal: setDialog,
   };
   return (
     <Context.Provider value={model}>
-      <div className={`experience ${gallery ? "is-gallery" : ""}`}>
+      <div
+        data-version="3"
+        className={`experience ${gallery ? "is-gallery" : ""}`}
+      >
         {!gallery && <DesktopSidebar page={page} go={go} />}
         <div className="stage">
           <div className="stage-toolbar">
@@ -177,18 +206,19 @@ export default function App() {
           </div>
           {gallery ? (
             <div className="gallery">
-              {(["welcome", "home", "lighting", "energy"] as Page[]).map(
-                (p, i) => (
-                  <div className="gallery-item" key={p}>
-                    <span className="gallery-title">
-                      0{i + 1} / {pageLabels[p]}
-                    </span>
-                    <div className="phone-frame">
-                      <Screen page={p} />
-                    </div>
+              {(allGallery
+                ? (Object.keys(pageLabels) as Page[])
+                : (["welcome", "home", "lighting", "energy"] as Page[])
+              ).map((p, i) => (
+                <div className="gallery-item" key={p}>
+                  <span className="gallery-title">
+                    0{i + 1} / {pageLabels[p]}
+                  </span>
+                  <div className="phone-frame">
+                    <Screen page={p} />
                   </div>
-                ),
-              )}
+                </div>
+              ))}
             </div>
           ) : (
             <div className="phone-frame">
@@ -197,7 +227,7 @@ export default function App() {
           )}
           <div className="stage-caption">
             <span>DESIGNED TO FEEL DIFFERENT.</span>
-            <span>ANDROID EXPERIENCE · RU</span>
+            <span>EXPERIENCE V3 · MOBILE WEB · RU</span>
           </div>
         </div>
       </div>

@@ -1,6 +1,13 @@
-import { Power, Sparkles, Clock3, CalendarDays } from "lucide-react";
+import { Power, Sparkles, Clock3, CalendarDays, History } from "lucide-react";
 import { useApp } from "../state/context";
-import { Header, SectionTitle, Toggle, Nav, DetailRow } from "../components/ui";
+import {
+  Header,
+  SectionTitle,
+  Toggle,
+  Nav,
+  DetailRow,
+  ConnectionBanner,
+} from "../components/ui";
 
 export function LampIllustration({ on }: { on: boolean }) {
   return (
@@ -54,17 +61,23 @@ export function LampIllustration({ on }: { on: boolean }) {
 }
 
 export function DeviceDetail() {
-  const { channels, toggle, link, go } = useApp();
+  const { channels, toggle, link, go, events } = useApp();
+  const last = events.find((e) => e.channel === "CH1");
   return (
     <>
       <main className="screen-content">
         <Header title="Основной свет" subtitle="Светильник · CH1" back />
+        <ConnectionBanner />
         <div className="device-object material">
           <span className="object-category">LIGHT / 01</span>
-          <LampIllustration on={channels.CH1} />
+          <LampIllustration on={link === "online" && channels.CH1} />
           <span className={`object-status ${channels.CH1 ? "lit" : ""}`}>
             <i />
-            {channels.CH1 ? "ВКЛЮЧЕНО" : "ВЫКЛЮЧЕНО"}
+            {link !== "online"
+              ? "НЕТ ПОДТВЕРЖДЕНИЯ"
+              : channels.CH1
+                ? "ВКЛЮЧЕНО"
+                : "ВЫКЛЮЧЕНО"}
           </span>
         </div>
         <div className="light-power-row material">
@@ -107,8 +120,8 @@ export function DeviceDetail() {
           <DetailRow
             icon={Clock3}
             title="Ручной приоритет"
-            detail="Авто не мешает вашему решению"
-            value="30 мин"
+            detail="Автопилот не отправляет фоновые команды"
+            value="Демо"
           />
           <DetailRow
             icon={Sparkles}
@@ -122,6 +135,20 @@ export function DeviceDetail() {
             detail="Настроить демо-план"
             onClick={() => go("planner")}
           />
+        </div>
+        <SectionTitle action="Журнал" onClick={() => go("journal")}>
+          История канала
+        </SectionTitle>
+        <div className="device-history">
+          <span>
+            <History size={12} /> ТЕКУЩАЯ СЕССИЯ
+          </span>
+          <p>{last ? last.title : "Ручных действий пока нет"}</p>
+          <small>
+            {last
+              ? `${last.time} · ${last.detail}`
+              : "Переключение появится здесь после действия в демо."}
+          </small>
         </div>
         <p className="fine-note">
           Только включение и выключение. Аппаратное диммирование светильника не

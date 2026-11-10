@@ -6,7 +6,13 @@ export const fmt = (v: number) =>
 export const fmtEnergy = (v: number) =>
   v.toLocaleString("ru-RU", { maximumFractionDigits: 2 });
 
-export const scene = "./assets/ambient-room.webp";
+export const visuals = {
+  welcome: "./assets/welcome-architecture.webp",
+  welcomeSmall: "./assets/welcome-architecture-480.webp",
+  lighting: "./assets/lighting-bedroom.webp",
+  lightingSmall: "./assets/lighting-bedroom-480.webp",
+  home: "./assets/evening-object.svg",
+};
 
 export const pageLabels: Record<Page, string> = {
   welcome: "Первое впечатление",

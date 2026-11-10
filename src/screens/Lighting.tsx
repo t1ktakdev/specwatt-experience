@@ -10,8 +10,14 @@ import {
   Clock3,
 } from "lucide-react";
 import { useApp } from "../state/context";
-import { scene } from "../lib/design";
-import { Icon, IconButton, Toggle, Nav } from "../components/ui";
+import { visuals } from "../lib/design";
+import {
+  Icon,
+  IconButton,
+  Toggle,
+  Nav,
+  ConnectionBanner,
+} from "../components/ui";
 
 export function Lighting() {
   const { go, channels, toggle, brightness, setBrightness, toast, link } =
@@ -35,26 +41,36 @@ export function Lighting() {
             onClick={() => go("devices")}
           />
         </div>
+        <ConnectionBanner />
         <div
           className={`lighting-scene ${!channels.CH2 ? "scene-off" : ""}`}
           style={{ "--illumination": brightness / 100 } as CSSProperties}
         >
           <img
-            src={scene}
-            alt="Сцена гостиной с тёплым архитектурным освещением"
+            src={visuals.lighting}
+            srcSet={`${visuals.lightingSmall} 480w, ${visuals.lighting} 960w`}
+            sizes="(max-width: 760px) 100vw, 347px"
+            width="960"
+            height="1200"
+            fetchPriority="high"
+            alt="Спальня с ореховым изголовьем и скрытым архитектурным светом"
           />
           <div className="scene-shade" />
           <span className="scene-tag">
             <i />
-            {channels.CH2 ? "ВЕЧЕРНИЙ СВЕТ" : "СВЕТ ВЫКЛЮЧЕН"}
+            {link !== "online"
+              ? "КОНЦЕПЦИЯ · НЕТ СВЯЗИ"
+              : channels.CH2
+                ? "ВЕЧЕРНИЙ СВЕТ"
+                : "СВЕТ ВЫКЛЮЧЕН"}
           </span>
           <span className="scene-caption">
-            Свет, в котором
+            Оставьте день
             <br />
-            хочется остаться.
+            за порогом.
           </span>
           <span className="scene-count">
-            01 <span>/ 01</span>
+            BEDROOM <span>/ CONCEPT</span>
           </span>
         </div>
         <div className="light-power-row material">
@@ -80,7 +96,9 @@ export function Lighting() {
         </div>
         <div className="brightness-block">
           <div className="brightness-heading">
-            <h2>Световая сцена</h2>
+            <h2>
+              Световая сцена <small>КОНЦЕПЦИЯ</small>
+            </h2>
             <span>
               {brightness}
               <small>%</small>
@@ -111,6 +129,7 @@ export function Lighting() {
             ].map((p) => (
               <button
                 className={brightness === p.value ? "selected" : ""}
+                aria-pressed={brightness === p.value}
                 key={p.name}
                 onClick={() => setBrightness(p.value)}
               >

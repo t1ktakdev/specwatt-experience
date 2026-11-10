@@ -18,7 +18,8 @@ export type LogEntry = {
   title: string;
   detail: string;
   time: string;
-  kind: "light" | "shield" | "auto" | "system";
+  kind: "light" | "shield" | "auto" | "system" | "warning";
+  channel?: ChannelId;
 };
 
 export type Model = {
@@ -33,6 +34,7 @@ export type Model = {
   auto: boolean;
   setAuto: (b: boolean) => void;
   events: LogEntry[];
+  record: (entry: Omit<LogEntry, "time">) => void;
   toast: (s: string) => void;
   modal: (s: string) => void;
 };

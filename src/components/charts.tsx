@@ -8,12 +8,21 @@ export function PowerGauge({
   value = 6.6,
   limit = 7,
 }: {
-  value?: number;
+  value?: number | null;
   limit?: number;
 }) {
+  const current = value ?? 0;
   return (
     <div className="power-gauge">
-      <svg viewBox="0 0 120 120" aria-label={`${fmt(value)} ватт из ${limit}`}>
+      <svg
+        viewBox="0 0 120 120"
+        role="img"
+        aria-label={
+          value === null
+            ? "Текущая мощность неизвестна"
+            : `${fmt(current)} ватт из ${limit}`
+        }
+      >
         <defs>
           <linearGradient id="gaugeAmber" x1="0" y1="1" x2="1" y2="0">
             <stop stopColor="#a16637" />
@@ -47,7 +56,7 @@ export function PowerGauge({
           stroke="url(#gaugeAmber)"
           strokeWidth="4"
           strokeLinecap="round"
-          strokeDasharray={`${Math.min(value / limit, 1) * 205} 300`}
+          strokeDasharray={`${Math.min(current / limit, 1) * 205} 300`}
           transform="rotate(135 60 60)"
         />
         {Array.from({ length: 25 }, (_, i) => {
@@ -56,7 +65,7 @@ export function PowerGauge({
             <path
               key={i}
               d={`M${60 + 53 * Math.cos(a)} ${60 + 53 * Math.sin(a)}L${60 + 56 * Math.cos(a)} ${60 + 56 * Math.sin(a)}`}
-              stroke={i < (value / limit) * 24 ? "#e0b382" : "#555451"}
+              stroke={i < (current / limit) * 24 ? "#e0b382" : "#555451"}
               strokeWidth="1"
             />
           );
@@ -64,7 +73,7 @@ export function PowerGauge({
       </svg>
       <span>
         <Zap size={25} strokeWidth={1.3} />
-        <small>из {limit} Вт</small>
+        <small>{value === null ? "Нет данных" : `из ${limit} Вт`}</small>
       </span>
     </div>
   );
@@ -107,11 +116,19 @@ export function EnergyChart({ period }: { period: Period }) {
   const x = 12 + (sel * (width - 24)) / (values.length - 1),
     y = height - 12 - (values[sel] / max) * (height - 28);
   const unit = period === "День" ? "Вт" : "кВт·ч";
+  const sampleLabel =
+    period === "День"
+      ? `${String(sel).padStart(2, "0")}:00–${String(sel + 1).padStart(2, "0")}:00`
+      : period === "Неделя"
+        ? ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"][sel]
+        : ["1–7 ноября", "8–14 ноября", "15–21 ноября", "22–30 ноября"][sel];
   return (
     <div className="chart">
-      <div className="chart-unit">
-        {unit}
-        <span>ДЕМОНСТРАЦИЯ</span>
+      <div className="chart-selection">
+        <span>{sampleLabel}</span>
+        <output aria-live="polite">
+          {fmtEnergy(values[sel])} {unit}
+        </output>
       </div>
       <svg
         viewBox={`0 0 ${width} ${height}`}
@@ -141,7 +158,7 @@ export function EnergyChart({ period }: { period: Period }) {
               x="305"
               y={20 + i * 32.5}
               textAnchor="end"
-              fill="#777a79"
+              fill="#afb4aa"
               fontSize="9"
             >
               {fmtEnergy(max * (1 - i / 4))}
@@ -183,6 +200,16 @@ export function EnergyChart({ period }: { period: Period }) {
           />
         ))}
       </svg>
+      <input
+        className="chart-point-control"
+        type="range"
+        aria-label="Интервал графика"
+        aria-valuetext={`${sampleLabel}: ${fmtEnergy(values[sel])} ${unit}`}
+        min="0"
+        max={values.length - 1}
+        value={sel}
+        onChange={(e) => setSelected(+e.target.value)}
+      />
       <span
         className="chart-tooltip"
         style={{

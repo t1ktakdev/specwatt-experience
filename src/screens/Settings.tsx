@@ -11,6 +11,8 @@ import {
   LoaderCircle,
   TriangleAlert,
   Cpu,
+  ShieldCheck,
+  Database,
 } from "lucide-react";
 import { LinkState } from "../model";
 import { useApp } from "../state/context";
@@ -27,7 +29,9 @@ import {
 
 export function Settings() {
   const { link, setLink, go, toast } = useApp();
-  const [motion, setMotion] = useState(false);
+  const [motion, setMotion] = useState(
+    () => localStorage.getItem("specwatt-reduce-motion") === "true",
+  );
   const [about, setAbout] = useState(false);
   return (
     <>
@@ -121,6 +125,7 @@ export function Settings() {
                   "reduce-motion",
                   !motion,
                 );
+                localStorage.setItem("specwatt-reduce-motion", String(!motion));
               }}
               label="Меньше движения"
             />
@@ -144,20 +149,49 @@ export function Settings() {
             onClick={() => setAbout(!about)}
           />
         </div>
+        <SectionTitle>Безопасность и данные</SectionTitle>
+        <div className="list-surface">
+          <DetailRow
+            icon={ShieldCheck}
+            title="Защита CH3"
+            detail="Всегда исключён из управления"
+            onClick={() => go("protected")}
+          />
+          <DetailRow
+            icon={Zap}
+            title="Лимит нагрузки"
+            detail="Проверяется перед переключением"
+            value="7 Вт"
+          />
+          <DetailRow
+            icon={Database}
+            title="Только на этом устройстве"
+            detail="Расписания и разрешения хранятся в браузере"
+          />
+        </div>
+        <section className="settings-safety">
+          <div>
+            <ShieldCheck size={20} />
+            <strong>Вы в демонстрационном режиме</strong>
+          </div>
+          <p>
+            Телеметрия ESP32 не подключена. Переключатели меняют локальную
+            модель; расписания не выполняются по времени.
+          </p>
+        </section>
         {about && (
           <div className="about-panel">
             <h3>Красивый интерфейс. Честные границы.</h3>
             <p>
-              React / TypeScript · SVG · Manrope. Все данные демонстрационные.
-              Диммер — визуальная концепция. Автопилот и расписания не выполняют
-              фоновые команды. Реальная телеметрия, ESP32 и тарифы не
-              подключены.
+              Все данные демонстрационные. Диммер — визуальная концепция.
+              Автопилот и расписания не выполняют фоновые команды. Реальная
+              телеметрия, ESP32 и тарифы не подключены.
             </p>
           </div>
         )}
         <div className="settings-foot">
           <Brand small />
-          <span>EXPERIENCE PROTOTYPE · V1.0</span>
+          <span>EXPERIENCE V3 · WEB DEMO</span>
         </div>
       </main>
       <Nav active="home" />

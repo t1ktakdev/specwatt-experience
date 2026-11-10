@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { useApp } from "../state/context";
-import { scene } from "../lib/design";
+import { visuals } from "../lib/design";
 import { Brand, Primary } from "../components/ui";
 
 export function Welcome() {
@@ -9,8 +9,13 @@ export function Welcome() {
     <div className="welcome">
       <img
         className="welcome-photo"
-        src={scene}
-        alt="Камерная гостиная с янтарным светом подвесного светильника"
+        src={visuals.welcome}
+        srcSet={`${visuals.welcomeSmall} 480w, ${visuals.welcome} 960w`}
+        sizes="(max-width: 760px) 100vw, 393px"
+        width="960"
+        height="1440"
+        fetchPriority="high"
+        alt="Архитектурный холл с бронзовым светильником и тёплым светом на травертине"
       />
       <div className="welcome-vignette" />
       <div className="welcome-top">
@@ -18,17 +23,15 @@ export function Welcome() {
         <span className="edition">SMART ENERGY</span>
       </div>
       <div className="welcome-progress">
-        <i />
-        <i />
+        <span>EXPERIENCE / 03</span>
         <i />
       </div>
       <div className="welcome-copy">
-        <span className="eyebrow">МЕНЬШЕ ЛИШНЕГО. БОЛЬШЕ ЖИЗНИ.</span>
+        <span className="eyebrow">ТЕХНОЛОГИЯ СПОКОЙНОЙ ЖИЗНИ</span>
         <h1>
           Энергия.
-          <br />В вашем
           <br />
-          <em>ритме.</em>
+          <em>В вашем ритме.</em>
         </h1>
         <p>
           Красивый свет. Понятная энергия.
@@ -37,7 +40,7 @@ export function Welcome() {
         </p>
         <Primary onClick={() => go("home")}>Открыть SpecWATT</Primary>
         <button className="welcome-setup" onClick={() => go("setup")}>
-          Подключить свой контроллер
+          Как подключить контроллер
           <ArrowUpRight size={15} />
         </button>
         <div className="welcome-foot">

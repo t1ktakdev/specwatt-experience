@@ -2,37 +2,34 @@ import { useState } from "react";
 import {
   ArrowRight,
   ArrowLeft,
-  ShieldCheck,
   Radio,
   Check,
-  LoaderCircle,
   Cable,
   Cpu,
+  LockKeyhole,
 } from "lucide-react";
 import { useApp } from "../state/context";
-import {
-  IconButton,
-  Brand,
-  Primary,
-  HomeIndicator,
-  DetailRow,
-} from "../components/ui";
+import { IconButton, Brand, Primary, HomeIndicator } from "../components/ui";
 
 export function Setup() {
   const { go, toast } = useApp();
   const [step, setStep] = useState(1);
   const [address, setAddress] = useState("http://127.0.0.1:8000");
-  const [checking, setChecking] = useState(false);
+  const [mode, setMode] = useState<"demo" | "hardware">("demo");
   function check() {
-    if (!/^https?:\/\//.test(address)) {
+    let valid = false;
+    try {
+      const url = new URL(address);
+      valid =
+        ["http:", "https:"].includes(url.protocol) && Boolean(url.hostname);
+    } catch {
+      /* Keep invalid input visible. */
+    }
+    if (!valid) {
       toast("Укажите адрес, начинающийся с http:// или https://");
       return;
     }
-    setChecking(true);
-    setTimeout(() => {
-      setChecking(false);
-      setStep(3);
-    }, 900);
+    setStep(3);
   }
   return (
     <>
@@ -73,17 +70,31 @@ export function Setup() {
               <br />
               Вся энергия — в понятном интерфейсе.
             </p>
-            <div className="setup-checklist">
-              <DetailRow
-                icon={Cable}
-                title="ESP32 и сервер"
-                detail="Аппаратное подключение ещё в разработке"
-              />
-              <DetailRow
-                icon={ShieldCheck}
-                title="Безопасность по умолчанию"
-                detail="CH3 исключён из переключения"
-              />
+            <div className="setup-modes">
+              <button
+                className={mode === "demo" ? "selected" : ""}
+                aria-pressed={mode === "demo"}
+                onClick={() => setMode("demo")}
+              >
+                <Radio size={23} />
+                <span>
+                  <b>Изучить демонстрацию</b>
+                  <small>Без оборудования · локальные данные</small>
+                </span>
+                {mode === "demo" && <Check size={18} />}
+              </button>
+              <button
+                className={mode === "hardware" ? "selected" : ""}
+                aria-pressed={mode === "hardware"}
+                onClick={() => setMode("hardware")}
+              >
+                <Cable size={23} />
+                <span>
+                  <b>У меня есть контроллер</b>
+                  <small>Посмотреть требования к подключению</small>
+                </span>
+                {mode === "hardware" && <Check size={18} />}
+              </button>
             </div>
             <Primary onClick={() => setStep(2)}>Посмотреть настройку</Primary>
             <button className="text-link" onClick={() => go("home")}>
@@ -92,38 +103,62 @@ export function Setup() {
             </button>
           </>
         ) : step === 2 ? (
-          <>
-            <span className="eyebrow">02 / ПАРАМЕТРЫ</span>
-            <h1>
-              Задайте точку
-              <br />
-              подключения.
-            </h1>
-            <p className="setup-description">
-              Это демонстрация настройки. Прототип
-              <br />
-              не отправляет сетевые запросы на этот адрес.
-            </p>
-            <label className="form-label setup-address">
-              Адрес сервера
-              <input
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="https://your-server.example"
-                type="url"
-              />
-            </label>
-            <p className="fine-note">
-              Адрес не сохраняется и не передаётся третьим лицам. Реальное
-              сопряжение требует подтверждённого протокола ESP32.
-            </p>
-            <Primary
-              onClick={check}
-              icon={checking ? LoaderCircle : ArrowRight}
-            >
-              {checking ? "Проверка демо…" : "Продолжить настройку"}
-            </Primary>
-          </>
+          mode === "hardware" ? (
+            <>
+              <span className="eyebrow">02 / РЕАЛЬНЫЙ КОНТРОЛЛЕР</span>
+              <h1>
+                Подключение требует
+                <br />
+                настоящего протокола.
+              </h1>
+              <section className="hardware-unavailable">
+                <LockKeyhole size={28} />
+                <h2>Сопряжение пока недоступно</h2>
+                <p>
+                  Этот веб-прототип не отправляет запросы ESP32. Для подключения
+                  нужны проверенные адрес сервера, протокол и подтверждение
+                  состояния оборудования.
+                </p>
+                <Primary disabled onClick={() => {}} icon={LockKeyhole}>
+                  Подключение недоступно
+                </Primary>
+              </section>
+              <button className="text-link" onClick={() => setMode("demo")}>
+                Продолжить в демо
+                <ArrowRight size={15} />
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="eyebrow">02 / ПАРАМЕТРЫ</span>
+              <h1>
+                Задайте точку
+                <br />
+                подключения.
+              </h1>
+              <p className="setup-description">
+                Это демонстрация настройки. Прототип
+                <br />
+                не отправляет сетевые запросы на этот адрес.
+              </p>
+              <label className="form-label setup-address">
+                Адрес сервера
+                <input
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="https://your-server.example"
+                  type="url"
+                />
+              </label>
+              <p className="fine-note">
+                Адрес не сохраняется и не передаётся третьим лицам. Реальное
+                сопряжение требует подтверждённого протокола ESP32.
+              </p>
+              <Primary onClick={check} icon={ArrowRight}>
+                Продолжить настройку
+              </Primary>
+            </>
+          )
         ) : (
           <>
             <span className="eyebrow">03 / ГОТОВО К ЗНАКОМСТВУ</span>
