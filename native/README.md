@@ -15,6 +15,8 @@ npm start --prefix native/host
 
 The Android export writes a Hermes bundle, two original images and Manrope to `artifacts/native-android/`. It has been produced with the actual Expo/Metro toolchain (772 modules). Local validation reused an installed compatible dependency tree; the host has its own reproducible lockfile and CI installs it independently.
 
+The first clean CI export exposed a nested `pretty-format` → `react-is` resolution failure hidden by the reused tree. Metro now allows hierarchical lookup inside host dependencies while keeping shared source and React/RN singletons on the host tree. This follows [Metro's resolution context](https://metrobundler.dev/docs/resolution/); no extra application dependency was added to mask the failure.
+
 This is an isolated preview host, not integration into the original SpecWATT application. State persists in memory during the session; native disk persistence, transport, controller acknowledgements and timed execution are absent. Web persistence remains localStorage. There is no APK, physical-device render, native screen-reader or fontScale 1.0/1.3/1.5 verification. No Android visual-parity claim is made.
 
 Official references: [Expo 58](https://docs.expo.dev/versions/v58.0.0/), [safe areas](https://docs.expo.dev/versions/v58.0.0/sdk/safe-area-context/), [React Native AccessibilityInfo](https://reactnative.dev/docs/accessibilityinfo), [Animated](https://reactnative.dev/docs/animated), [TextInput](https://reactnative.dev/docs/textinput).
