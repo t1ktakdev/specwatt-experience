@@ -24,7 +24,7 @@ Direct plugin `whoami`: `MCP tool codex_apps/figma.whoami is not available to th
 
 No authenticated plan/file was resolved. No Figma file, edit, screenshot, import or parity result is claimed. `COMPONENT-MAP.md`, generated tokens and `design-export/` preserve a concrete transfer path. Code layers alone would not satisfy editable Design layer requirements.
 
-## QA 5 — Product validation: local passed; publication check pending
+## QA 5 — Product validation: local and public checks passed
 
 - `npm run build`: TypeScript + generated tokens + production Vite build passed.
 - `npm run typecheck`, `npm run lint`, `npm test`: passed. Lint here is Prettier formatting, not an ESLint ruleset.
@@ -32,7 +32,10 @@ No authenticated plan/file was resolved. No Figma file, edit, screenshot, import
 - `node tools/qa-v3.mjs`: all seven extended scenario groups passed, zero console/page errors and HTTP failures.
 - `node tools/accessibility.mjs`: axe WCAG A/AA checks on the initial view of 12 routes, zero reported violations. No full WCAG certification or manual screen-reader claim.
 - `node tools/capture.mjs ...`: actual route screenshots, lower-content views, four-screen and 12-screen overview. Asset decode and bundled Manrope verified in the browser.
-- Published-site checks will be recorded after the release deployment completes. Local build is not treated as public verification.
+- Public site verified separately at 11:22 Asia/Bishkek on 10 November 2026. `verify-live.mjs` rendered all 12 V3 routes, checked HTTP 200, bundled Manrope, image decode, overload refusal, switching, scene slider, periods and CH3. Zero page errors or failed responses.
+- `qa-v3.mjs https://t1ktakdev.github.io/specwatt-experience/` also passed all seven extended scenario groups against the published app; no console errors or failed HTTP responses. These are actual public checks, not an inference from the local build.
+- Published application source: `4b001e07df84fdceb5910e902c19d0b51be49bd8`. [Merged PR #1](https://github.com/t1ktakdev/specwatt-experience/pull/1). [Successful Pages build and deploy](https://github.com/t1ktakdev/specwatt-experience/actions/runs/42761448168). PR checks also passed in [run 42761221345](https://github.com/t1ktakdev/specwatt-experience/actions/runs/42761221345).
+- `live-verification.json`, `live-qa-v3.json` and `screenshots/published-overview.png` retain public verification evidence. Later evidence-only documentation commits do not change the deployed application.
 
 ## Android scope
 

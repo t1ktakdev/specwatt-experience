@@ -1,11 +1,11 @@
 {
   "url": "https://t1ktakdev.github.io/specwatt-experience/",
-  "verifiedAt": "2026-11-09T19:33:33.508Z",
+  "verifiedAt": "2026-11-10T05:22:34.373Z",
   "http": 200,
   "fonts": "Manrope loaded",
   "assets": "image and bundled assets loaded",
   "checks": [
-    "four screen renders",
+    "12 V3 screen renders",
     "power limit rejection",
     "Escape closes modal",
     "channel switching",
