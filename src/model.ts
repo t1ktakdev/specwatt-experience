@@ -7,6 +7,34 @@ export const initialChannels: ChannelState = {
   CH2: true,
   CH3: true,
 };
+export function readChannels(raw: string | null): ChannelState {
+  try {
+    const value = JSON.parse(raw || "null");
+    if (
+      value &&
+      typeof value.CH1 === "boolean" &&
+      typeof value.CH2 === "boolean" &&
+      value.CH3 === true
+    ) {
+      const next: ChannelState = { CH1: value.CH1, CH2: value.CH2, CH3: true };
+      if (totalWatts(next) <= 7) return next;
+    }
+  } catch {
+    /* Invalid local data is never trusted. */
+  }
+  return { ...initialChannels };
+}
+export function readConsent(raw: string | null): {
+  CH1: boolean;
+  CH2: boolean;
+} {
+  try {
+    const v = JSON.parse(raw || "null");
+    return { CH1: v?.CH1 === true, CH2: v?.CH2 === true };
+  } catch {
+    return { CH1: false, CH2: false };
+  }
+}
 export function totalWatts(channels: ChannelState): number {
   return (
     Math.round(
