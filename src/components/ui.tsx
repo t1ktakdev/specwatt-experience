@@ -16,7 +16,8 @@ import {
   TriangleAlert,
   LucideIcon,
 } from "lucide-react";
-import { ChannelId } from "../model";
+import { ChannelId, nominal } from "../model";
+import { fmt } from "../lib/design";
 import { Page } from "../types";
 import { useApp } from "../state/context";
 
@@ -198,16 +199,19 @@ export function Primary({
   onClick,
   icon = ArrowRight,
   secondary = false,
+  disabled = false,
 }: {
   children: ReactNode;
   onClick: () => void;
   icon?: LucideIcon;
   secondary?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <button
       className={`primary-button ${secondary ? "secondary" : ""}`}
       onClick={onClick}
+      disabled={disabled}
     >
       <span>{children}</span>
       <Icon icon={icon} size={21} />
@@ -306,7 +310,7 @@ export function ConnectionBanner() {
   const { link, setLink } = useApp();
   if (link === "online") return null;
   return (
-    <div className="connection-banner">
+    <div className={`connection-banner state-${link}`} role="status">
       <div>
         <Icon
           icon={
@@ -381,6 +385,13 @@ export function DeviceCard({
           label={`${title}: питание`}
           disabled={link !== "online"}
         />
+      </div>
+      <div className="device-watts">
+        <span>
+          {link === "online" ? fmt(on ? nominal[id] : 0) : "—"}{" "}
+          <small>Вт</small>
+        </span>
+        <span>{id === "CH1" ? "РЕЛЕ / 01" : "РЕЛЕ / 02"}</span>
       </div>
     </article>
   );

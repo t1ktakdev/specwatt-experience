@@ -8,20 +8,18 @@ import {
   ShieldCheck,
   Sparkles,
   CalendarDays,
+  Clock3,
+  ArrowRight,
 } from "lucide-react";
 import { useApp } from "../state/context";
 import { Icon, Header, SectionTitle, Toggle, Nav } from "../components/ui";
+import { readConsent } from "../model";
 
 export function Autopilot() {
-  const { auto, setAuto, go, toast, link } = useApp();
+  const { auto, setAuto, go, toast, link, record } = useApp();
   const [allow, setAllow] = useState<{ CH1: boolean; CH2: boolean }>(() => {
     try {
-      return (
-        JSON.parse(localStorage.getItem("specwatt-consent") || "null") || {
-          CH1: false,
-          CH2: false,
-        }
-      );
+      return readConsent(localStorage.getItem("specwatt-consent"));
     } catch {
       return { CH1: false, CH2: false };
     }
@@ -36,6 +34,11 @@ export function Autopilot() {
       return;
     }
     setAuto(!auto);
+    record({
+      title: auto ? "Демо-автопилот выключен" : "Демо-автопилот разрешён",
+      detail: "Только концепция · фоновые команды не выполняются",
+      kind: "auto",
+    });
     toast(
       !auto
         ? "Автопилот включён только в демонстрации"
@@ -46,6 +49,13 @@ export function Autopilot() {
     const next = { ...allow, [id]: !allow[id] };
     setAllow(next);
     localStorage.setItem("specwatt-consent", JSON.stringify(next));
+    record({
+      title: `${id}: разрешение ${next[id] ? "выдано" : "отозвано"}`,
+      detail:
+        "Разрешение для демо-правил · не согласие на команды оборудованию",
+      kind: "auto",
+      channel: id,
+    });
     if (!next.CH1 && !next.CH2) setAuto(false);
   }
   return (
@@ -57,6 +67,14 @@ export function Autopilot() {
           action="settings"
         />
         <section className={`autopilot-hero material ${auto ? "enabled" : ""}`}>
+          <div className="auto-status">
+            <i />
+            {link !== "online"
+              ? "НЕДОСТУПЕН БЕЗ СВЯЗИ"
+              : auto
+                ? "РАЗРЕШЕНИЕ ПОЛУЧЕНО"
+                : "ОЖИДАЕТ ВАШЕГО РЕШЕНИЯ"}
+          </div>
           <div className="autopilot-path">
             <span>
               <Sun size={22} />
@@ -83,6 +101,7 @@ export function Autopilot() {
               label="Демо-автопилот"
               checked={auto}
               onChange={changeAuto}
+              disabled={link !== "online"}
             />
           </div>
           <p>
@@ -113,6 +132,27 @@ export function Autopilot() {
             </div>
           ))}
         </div>
+        <section className="auto-rule">
+          <div className="auto-rule-head">
+            <Clock3 size={20} />
+            <b>Тихий вечер</b>
+            <span>ПРИМЕР ПРАВИЛА</span>
+          </div>
+          <div className="auto-rule-steps">
+            <span>19:00</span>
+            <ArrowRight size={12} />
+            <span>Есть разрешение</span>
+            <ArrowRight size={12} />
+            <span>Проверка 7 Вт</span>
+          </div>
+          <p>
+            {!allow.CH2
+              ? "Нужно разрешение для CH2. "
+              : "Разрешение CH2 выдано. "}
+            Предполагаемое действие — включить LED-ленту. В этой версии правило
+            не исполняется.
+          </p>
+        </section>
         <button className="auto-plan" onClick={() => go("planner")}>
           <CalendarDays size={24} />
           <div>

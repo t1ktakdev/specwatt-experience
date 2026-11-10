@@ -16,6 +16,7 @@ import {
   Nav,
   SystemState,
   DeviceCard,
+  ConnectionBanner,
 } from "../components/ui";
 
 export function Devices() {
@@ -29,9 +30,18 @@ export function Devices() {
           subtitle="Один стенд. Всё на своих местах."
         />
         <SystemState />
+        <ConnectionBanner />
         <div className="devices-summary">
           <div className="device-count">
             03<span>КАНАЛА В СИСТЕМЕ</span>
+            <div className="catalog-meta">
+              <span>
+                <b>02</b> управляемых
+              </span>
+              <span>
+                <b>01</b> защищённый
+              </span>
+            </div>
           </div>
           <div className="summary-orbit">
             <Cpu size={27} />
@@ -46,6 +56,7 @@ export function Devices() {
             <button
               key={f}
               className={f === filter ? "active" : ""}
+              aria-pressed={f === filter}
               onClick={() => setFilter(f)}
             >
               {f}

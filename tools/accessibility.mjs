@@ -1,6 +1,7 @@
 import { chromium } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import fs from "node:fs/promises";
+import assert from "node:assert/strict";
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({
   viewport: { width: 393, height: 852 },
@@ -45,3 +46,7 @@ await fs.writeFile(
 );
 console.log(JSON.stringify(report, null, 2));
 await browser.close();
+assert.ok(
+  report.every((r) => r.violations.length === 0),
+  "Accessibility violations: see artifacts/accessibility.json",
+);

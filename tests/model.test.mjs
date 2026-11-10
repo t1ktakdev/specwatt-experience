@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { initialChannels, totalWatts, requestSwitch } from "../src/model.ts";
+import {
+  initialChannels,
+  totalWatts,
+  requestSwitch,
+  readChannels,
+  readConsent,
+} from "../src/model.ts";
 import { data, totals, shares } from "../src/lib/demo-energy.ts";
 test("демо-профили энергии согласованы с итогами и лимитом", () => {
   assert.ok(
@@ -51,5 +57,34 @@ test("offline и error запрещают команды; loading даёт busy"
   assert.deepEqual(requestSwitch(initialChannels, "CH2", "loading"), {
     ok: false,
     reason: "busy",
+  });
+});
+
+test("persisted channel state is normalized and unsafe state falls back to baseline", () => {
+  assert.deepEqual(readChannels("{"), initialChannels);
+  assert.deepEqual(
+    readChannels(JSON.stringify({ CH1: true, CH2: true, CH3: true })),
+    initialChannels,
+  );
+  assert.deepEqual(
+    readChannels(JSON.stringify({ CH1: true, CH2: false, CH3: false })),
+    initialChannels,
+  );
+  assert.deepEqual(
+    readChannels(
+      JSON.stringify({ CH1: true, CH2: false, CH3: true, extra: true }),
+    ),
+    { CH1: true, CH2: false, CH3: true },
+  );
+});
+test("consent requires actual boolean true, not truthy stored values", () => {
+  assert.deepEqual(readConsent("null"), { CH1: false, CH2: false });
+  assert.deepEqual(readConsent('{"CH1":"yes","CH2":1}'), {
+    CH1: false,
+    CH2: false,
+  });
+  assert.deepEqual(readConsent('{"CH1":true,"CH2":false,"CH3":true}'), {
+    CH1: true,
+    CH2: false,
   });
 });
