@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, Switch, TextInput, View } from "react-native";
-import { Copy, s } from "./components";
+import { Copy, NativeIcon, s } from "./components";
 import { palette as c } from "./tokens";
 export function NativeRow({
   title,
@@ -13,7 +13,12 @@ export function NativeRow({
 }) {
   const content = (
     <>
-      <Copy style={s.section}>{title}</Copy>
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
+        <Copy style={[s.section, { flex: 1 }]}>{title}</Copy>
+        {onPress && (
+          <NativeIcon kind="arrow" size={16} color={c.textSecondary} />
+        )}
+      </View>
       {detail && <Copy style={s.muted}>{detail}</Copy>}
     </>
   );
@@ -35,18 +40,28 @@ export function NativeToggle({
   value,
   onChange,
   disabled = false,
+  emphasis = false,
 }: {
   label: string;
   detail?: string;
   value: boolean;
   onChange: () => void;
   disabled?: boolean;
+  emphasis?: boolean;
 }) {
   return (
-    <View style={[s.switchRow, { minHeight: 72 }]}>
+    <View style={[s.switchRow, { minHeight: 52 }]}>
       <View style={{ flex: 1 }}>
-        <Copy>{label}</Copy>
-        {detail && <Copy style={s.muted}>{detail}</Copy>}
+        <Copy
+          style={
+            emphasis
+              ? { fontSize: 24, lineHeight: 32, fontWeight: "500" }
+              : undefined
+          }
+        >
+          {label}
+        </Copy>
+        {detail && detail !== label && <Copy style={s.muted}>{detail}</Copy>}
       </View>
       <View style={s.switchTouch}>
         <Switch

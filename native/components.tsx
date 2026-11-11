@@ -1,4 +1,4 @@
-import React, { type ReactNode } from "react";
+import React, { createContext, useContext, type ReactNode } from "react";
 import {
   Pressable,
   ScrollView,
@@ -21,15 +21,109 @@ import {
 import { NativeProduct } from "./Product";
 import type { SceneAssets } from "./screens";
 
+export const NativeNavigation = createContext<{
+  go: (route: import("./screens").NativeRoute) => void;
+  back: () => unknown;
+}>({ go: () => {}, back: () => {} });
+export function NativeHeader({
+  title,
+  subtitle,
+  back = false,
+  home = false,
+  journal = false,
+  compact = false,
+}: {
+  title: string;
+  subtitle?: string;
+  back?: boolean;
+  home?: boolean;
+  journal?: boolean;
+  compact?: boolean;
+}) {
+  const nav = useContext(NativeNavigation);
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+        minHeight: 60,
+      }}
+    >
+      {back && (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Назад"
+          onPress={() => {
+            if (!nav.back())
+              nav.go(
+                ["Основной свет", "Атмосферный свет", "Под защитой"].includes(
+                  title,
+                )
+                  ? "devices"
+                  : "home",
+              );
+          }}
+          style={s.iconButton}
+        >
+          <NativeIcon kind="back" color={c.textPrimary} size={20} />
+        </Pressable>
+      )}
+      <View style={{ flex: 1, gap: 2 }}>
+        {home && (
+          <Copy style={[s.caption, { fontSize: 9, letterSpacing: 1.4 }]}>
+            SPECWATT · МОЙ СТЕНД
+          </Copy>
+        )}
+        <Copy
+          accessibilityRole="header"
+          style={[
+            s.title,
+            compact && { fontSize: 16, lineHeight: 24, letterSpacing: -0.3 },
+          ]}
+        >
+          {title}
+        </Copy>
+        {subtitle && <Copy style={s.muted}>{subtitle}</Copy>}
+      </View>
+      {(home || journal) && (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Журнал событий"
+          onPress={() => nav.go("journal")}
+          style={s.iconButton}
+        >
+          <NativeIcon kind="bell" color={c.textSecondary} size={20} />
+        </Pressable>
+      )}
+      {!home && title !== "Настройки" && (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Настройки"
+          onPress={() => nav.go("settings")}
+          style={s.iconButton}
+        >
+          <NativeIcon kind="settings" color={c.textSecondary} size={20} />
+        </Pressable>
+      )}
+    </View>
+  );
+}
 export function Copy({ style, ...props }: TextProps) {
   return <Text allowFontScaling style={[s.body, style]} {...props} />;
 }
-export function ScreenShell({ children }: { children: ReactNode }) {
+export function ScreenShell({
+  children,
+  compact = false,
+}: {
+  children: ReactNode;
+  compact?: boolean;
+}) {
   return (
     <SafeAreaView style={s.safe} edges={["left", "right"]}>
       <StatusBar barStyle="light-content" />
       <ScrollView
-        contentContainerStyle={s.content}
+        contentContainerStyle={[s.content, compact && { gap: 8 }]}
         keyboardShouldPersistTaps="handled"
       >
         {children}
@@ -128,7 +222,9 @@ export function NativeButton({
 export function SourceLabel({ link }: { link: LinkState }) {
   return (
     <View style={s.source}>
-      <Copy style={s.caption}>SPECWATT / ДЕМО</Copy>
+      <Copy style={[s.caption, { letterSpacing: 0, color: c.statusProtected }]}>
+        • Демо-сессия активна
+      </Copy>
       <Copy
         style={[
           s.caption,
@@ -136,7 +232,7 @@ export function SourceLabel({ link }: { link: LinkState }) {
         ]}
       >
         {link === "online"
-          ? "Локальная модель"
+          ? "Только демо"
           : link === "loading"
             ? "Ожидание данных"
             : link === "error"
@@ -158,22 +254,25 @@ export function NativePower({
 }) {
   return (
     <Surface>
-      <Copy style={s.caption}>МОЩНОСТЬ СЕЙЧАС · ДЕМО</Copy>
+      <View style={s.source}>
+        <Copy style={s.caption}>• МОЩНОСТЬ СЕЙЧАС</Copy>
+        <Copy style={[s.caption, { fontSize: 9 }]}>ДЕМО</Copy>
+      </View>
       <View style={s.powerRow}>
         <View style={{ flex: 1 }}>
           <Copy style={s.metric}>
             {watts === null ? "—" : watts.toLocaleString("ru-RU")}
             <Copy style={s.unit}> Вт</Copy>
           </Copy>
-          <Copy style={s.muted}>
+          <Copy style={[s.muted, { fontSize: 11, lineHeight: 16 }]}>
             {watts === null
               ? "Нет актуальных данных"
               : `Резерв ${(Math.round((7 - watts) * 10) / 10).toLocaleString("ru-RU")} Вт`}
           </Copy>
         </View>
         <Svg
-          width={106}
-          height={106}
+          width={80}
+          height={80}
           viewBox="0 0 120 120"
           accessible
           accessibilityLabel={
@@ -214,19 +313,23 @@ export function NativePower({
       {channels && (
         <View
           style={{
-            gap: 14,
+            gap: 8,
             borderTopWidth: 1,
             borderColor: "#ffffff12",
-            paddingTop: 16,
+            paddingTop: 10,
           }}
         >
           <View style={s.source}>
-            <Copy style={s.muted}>Баланс нагрузки</Copy>
-            <Copy style={s.muted}>Лимит 7 Вт</Copy>
+            <Copy style={[s.muted, { fontSize: 11, lineHeight: 16 }]}>
+              Баланс нагрузки
+            </Copy>
+            <Copy style={[s.muted, { fontSize: 11, lineHeight: 16 }]}>
+              Лимит 7 Вт
+            </Copy>
           </View>
           <View
             style={{
-              height: 8,
+              height: 6,
               backgroundColor: "#ffffff0a",
               borderRadius: 3,
               overflow: "hidden",
@@ -255,7 +358,7 @@ export function NativePower({
                   {id}
                   {id === "CH3" ? " · защита" : ""}
                 </Copy>
-                <Copy style={{ fontSize: 16 }}>
+                <Copy style={{ fontSize: 16, lineHeight: 20 }}>
                   {watts === null
                     ? "—"
                     : (channels[id] ? nominal[id] : 0).toLocaleString(
@@ -268,7 +371,6 @@ export function NativePower({
           </View>
         </View>
       )}
-      <Copy style={s.caption}>ЛОКАЛЬНАЯ МОДЕЛЬ · НЕ ИЗМЕРЕНИЕ</Copy>
     </Surface>
   );
 }
@@ -290,47 +392,62 @@ export function NativeDeviceTile({
   layout?: "tile" | "row";
 }) {
   const title = id === "CH1" ? "Светильник" : "LED-лента";
-  if (layout === "row")
-    return (
-      <View
-        style={[
-          s.device,
-          { flexDirection: "row", flexBasis: "auto", gap: 14 },
-          on && s.deviceOn,
-        ]}
+  const row = layout === "row";
+  return (
+    <View
+      style={[
+        s.device,
+        row && { flexDirection: "row", flexBasis: "auto", gap: 12 },
+        on && link === "online" && s.deviceOn,
+      ]}
+    >
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`Открыть ${title}`}
+        onPress={onOpen}
+        style={row ? { width: 90, justifyContent: "center" } : undefined}
       >
+        <NativeProduct
+          id={id}
+          on={on}
+          known={link === "online"}
+          assets={assets}
+          height={row ? 96 : 80}
+        />
+        <Copy
+          style={[
+            s.caption,
+            {
+              position: "absolute",
+              top: 3,
+              left: 4,
+              fontSize: 9,
+              paddingHorizontal: 4,
+              backgroundColor: "#242829cc",
+              borderRadius: 3,
+            },
+          ]}
+        >
+          {id}
+        </Copy>
+      </Pressable>
+      <View style={{ flex: row ? 1 : undefined, gap: 2 }}>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={`Открыть ${title}`}
           onPress={onOpen}
-          style={{ width: 96, justifyContent: "center" }}
+          style={{ minHeight: 44, justifyContent: "center" }}
         >
-          <Copy style={s.caption}>{id}</Copy>
-          <NativeProduct
-            id={id}
-            on={on}
-            known={link === "online"}
-            assets={assets}
-          />
-        </Pressable>
-        <View style={{ flex: 1, gap: 4 }}>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={`Открыть ${title}`}
-            onPress={onOpen}
-            style={{ minHeight: 48, justifyContent: "center" }}
-          >
-            <Copy style={s.deviceTitle}>{title}</Copy>
-          </Pressable>
-          <Copy style={s.muted}>
+          <Copy style={s.deviceTitle}>{title}</Copy>
+          <Copy style={[s.muted, { fontSize: 11, lineHeight: 16 }]}>
             {id === "CH1" ? "Основной свет" : "Атмосферный свет"}
           </Copy>
-          <View style={s.switchRow}>
-            <Copy style={s.muted}>
-              {link === "online"
-                ? (on ? nominal[id] : 0).toLocaleString("ru-RU") + " Вт"
-                : "— Вт"}
-            </Copy>
+        </Pressable>
+        <View style={s.switchRow}>
+          <Copy style={[s.muted, { fontSize: 11, lineHeight: 16, flex: 1 }]}>
+            {link === "online" ? (on ? "Включено" : "Выключено") : "Нет связи"}
+          </Copy>
+          <View style={s.switchTouch}>
             <Switch
               accessibilityLabel={`${title}: питание`}
               disabled={link !== "online"}
@@ -338,69 +455,28 @@ export function NativeDeviceTile({
               onValueChange={() => onToggle(id)}
               thumbColor={on ? "#fff0d8" : "#b7beb5"}
               trackColor={{ false: "#444a47", true: c.accentAmber }}
-              style={s.switchTouch}
             />
           </View>
         </View>
-      </View>
-    );
-  return (
-    <View style={[s.device, on && s.deviceOn]}>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={`Открыть ${title}`}
-        onPress={onOpen}
-      >
-        <NativeProduct
-          id={id}
-          on={on}
-          known={link === "online"}
-          assets={assets}
-        />
-      </Pressable>
-      <Pressable
-        onPress={onOpen}
-        accessibilityRole="button"
-        accessibilityLabel={`Открыть ${title}`}
-        style={s.deviceHeading}
-      >
-        <NativeIcon
-          kind={id === "CH1" ? "light" : "sun"}
-          color={on ? c.accentAmber : c.textSecondary}
-        />
-        <Copy style={s.caption}>{id}</Copy>
-      </Pressable>
-      <Copy style={s.deviceTitle}>{title}</Copy>
-      <Copy style={s.muted}>
-        {id === "CH1" ? "Основной свет" : "Атмосферный свет"}
-      </Copy>
-      <View style={s.switchRow}>
-        <Copy style={s.muted}>
-          {link === "online" ? (on ? "Включено" : "Выключено") : "Нет связи"}
-        </Copy>
-        <View style={s.switchTouch}>
-          <Switch
-            accessibilityLabel={`${title}: питание`}
-            disabled={link !== "online"}
-            value={on}
-            onValueChange={() => onToggle(id)}
-            thumbColor={on ? "#fff0d8" : "#b7beb5"}
-            trackColor={{ false: "#444a47", true: c.accentAmber }}
-          />
+        <View style={s.source}>
+          <Copy style={{ fontSize: 13, lineHeight: 20 }}>
+            {link === "online"
+              ? (on ? nominal[id] : 0).toLocaleString("ru-RU")
+              : "—"}{" "}
+            Вт
+          </Copy>
+          <Copy style={[s.caption, { fontSize: 8, letterSpacing: 0.5 }]}>
+            РЕЛЕ / {id === "CH1" ? "01" : "02"}
+          </Copy>
         </View>
       </View>
-      <Copy style={s.deviceWatts}>
-        {link === "online"
-          ? (on ? nominal[id] : 0).toLocaleString("ru-RU")
-          : "—"}{" "}
-        Вт
-      </Copy>
     </View>
   );
 }
+
 export const s = StyleSheet.create({
   safe: { flex: 1, backgroundColor: c.surfaceCanvas },
-  content: { padding: 23, gap: 18, paddingBottom: 32 },
+  content: { paddingHorizontal: 22, paddingTop: 8, gap: 12, paddingBottom: 24 },
   body: {
     fontFamily: "Manrope",
     fontSize: tokens.typography.body.fontSize,
@@ -415,19 +491,20 @@ export const s = StyleSheet.create({
   },
   muted: { fontSize: 13, lineHeight: 21, color: c.textSecondary },
   title: {
-    fontSize: tokens.typography.heading.fontSize,
-    lineHeight: 38,
+    fontSize: 28,
+    lineHeight: 36,
     letterSpacing: -1,
     fontWeight: "500",
   },
   section: { fontSize: 16, lineHeight: 24, fontWeight: "500" },
   card: {
-    padding: 20,
+    padding: 16,
     borderRadius: 20,
+    overflow: "hidden",
     borderWidth: 1,
     borderColor: "#ffffff14",
-    backgroundColor: "#282d2d",
-    gap: 12,
+    backgroundColor: "#282b2b",
+    gap: 8,
   },
   source: {
     flexDirection: "row",
@@ -448,10 +525,11 @@ export const s = StyleSheet.create({
     color: c.textSecondary,
   },
   button: {
-    minHeight: 56,
+    minHeight: 52,
     backgroundColor: c.accentAmber,
     borderRadius: 18,
-    padding: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -469,9 +547,9 @@ export const s = StyleSheet.create({
   device: {
     flexGrow: 1,
     flexBasis: 145,
-    padding: 16,
-    gap: 8,
-    borderRadius: 22,
+    padding: 12,
+    gap: 6,
+    borderRadius: 18,
     borderWidth: 1,
     borderColor: "#ffffff12",
     backgroundColor: "#24282a",
@@ -483,7 +561,7 @@ export const s = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  deviceTitle: { fontSize: 16, lineHeight: 24, fontWeight: "500" },
+  deviceTitle: { fontSize: 15, lineHeight: 22, fontWeight: "500" },
   switchRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -492,8 +570,8 @@ export const s = StyleSheet.create({
     flexWrap: "wrap",
   },
   switchTouch: {
-    minHeight: 48,
-    minWidth: 48,
+    minHeight: 44,
+    minWidth: 44,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -504,18 +582,18 @@ export const s = StyleSheet.create({
     borderTopColor: "#ffffff10",
     paddingTop: 8,
   },
-  grid: { flexDirection: "row", flexWrap: "wrap", gap: 12 },
+  grid: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   subtleButton: {
-    minHeight: 48,
-    padding: 12,
+    minHeight: 44,
+    padding: 10,
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#ffffff18",
     justifyContent: "center",
   },
   row: {
-    minHeight: 72,
-    paddingVertical: 14,
+    minHeight: 60,
+    paddingVertical: 12,
     gap: 4,
     borderBottomWidth: 1,
     borderBottomColor: "#ffffff12",

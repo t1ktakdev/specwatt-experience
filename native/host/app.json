@@ -1,12 +1,25 @@
 {
   "expo": {
-    "name": "SpecWATT Experience V4.1",
-    "slug": "specwatt-experience-v41-preview",
+    "name": "SpecWATT Experience V4.1.1",
+    "slug": "specwatt-experience-v411-preview",
     "version": "0.1.0",
     "orientation": "portrait",
-    "scheme": "specwatt-experience-v41",
+    "scheme": "specwatt-experience-v411",
     "userInterfaceStyle": "dark",
-    "plugins": ["./plugins/with-embedded-preview.cjs"],
-    "android": { "package": "dev.specwatt.experience.v41.preview" }
+    "plugins": [
+      "./plugins/with-embedded-preview.cjs",
+      [
+        "expo-navigation-bar",
+        {
+          "enforceContrast": false,
+          "hidden": false,
+          "style": "light"
+        }
+      ]
+    ],
+    "android": {
+      "package": "dev.specwatt.experience.v411.preview"
+    },
+    "backgroundColor": "#17191a"
   }
 }

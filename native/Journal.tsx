@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Pressable } from "react-native";
 import {
+  NativeHeader,
   Copy,
   NativeButton,
   NativeIcon,
@@ -22,9 +23,7 @@ export function NativeJournal(m: NativeModel & NativeRuntime) {
   const visible = m.events.filter((e) => kinds[filter].includes(e.kind));
   return (
     <ScreenShell>
-      <Copy accessibilityRole="header" style={s.title}>
-        Журнал событий
-      </Copy>
+      <NativeHeader title="Журнал событий" back />
       <View
         style={{
           borderTopWidth: 1,
@@ -52,7 +51,13 @@ export function NativeJournal(m: NativeModel & NativeRuntime) {
             accessibilityRole="button"
             accessibilityState={{ selected: f === filter }}
             onPress={() => setFilter(f)}
-            style={s.subtleButton}
+            style={[
+              s.subtleButton,
+              {
+                backgroundColor: f === filter ? "#3b352e" : "transparent",
+                borderColor: f === filter ? "#edb17c66" : "#ffffff18",
+              },
+            ]}
           >
             <Copy>{f}</Copy>
           </Pressable>

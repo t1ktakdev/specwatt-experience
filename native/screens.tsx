@@ -17,9 +17,10 @@ import Svg, {
   Stop,
   Text as SvgText,
 } from "react-native-svg";
-import { NativeToggle } from "./controls";
+import { NativeToggle, NativeRow } from "./controls";
 import { NativeSceneSlider } from "./SceneSlider";
 import {
+  NativeHeader,
   Copy,
   NativeButton,
   NativeDeviceTile,
@@ -69,7 +70,6 @@ export function NativeWelcome({
   assets: SceneAssets;
   onNavigate: NativeModel["onNavigate"];
 }) {
-  const { height } = useWindowDimensions();
   return (
     <View style={{ flex: 1, backgroundColor: "#17191a" }}>
       <Image
@@ -96,10 +96,9 @@ export function NativeWelcome({
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          minHeight: height - 70,
           padding: 24,
           justifyContent: "space-between",
-          gap: 120,
+          gap: 84,
         }}
       >
         <View style={{ gap: 20, paddingTop: 16 }}>
@@ -151,21 +150,30 @@ export function NativeWelcome({
   );
 }
 export function NativeHome(model: NativeModel) {
+  const { fontScale } = useWindowDimensions();
   return (
-    <ScreenShell>
+    <ScreenShell compact>
+      <NativeHeader title="Добрый вечер." home />
       <SourceLabel link={model.link} />
-      <Copy accessibilityRole="header" style={s.title}>
-        Добрый вечер.
-      </Copy>
       <NativePower
         watts={model.link === "online" ? totalWatts(model.channels) : null}
         channels={model.channels}
       />
-      <Copy style={s.section}>Под вашим контролем</Copy>
-      <View style={s.grid}>
+      <View style={[s.source, { alignItems: "center" }]}>
+        <Copy style={s.section}>Под вашим контролем</Copy>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => model.onNavigate("devices")}
+          style={{ minHeight: 44, justifyContent: "center" }}
+        >
+          <Copy style={s.muted}>Все устройства ›</Copy>
+        </Pressable>
+      </View>
+      <View style={[s.grid, fontScale > 1.2 && { flexDirection: "column" }]}>
         {(["CH1", "CH2"] as const).map((id) => (
           <NativeDeviceTile
             key={id}
+            layout={fontScale > 1.2 ? "row" : "tile"}
             id={id}
             assets={model.assets}
             on={model.channels[id]}
@@ -177,30 +185,6 @@ export function NativeHome(model: NativeModel) {
           />
         ))}
       </View>
-      <Surface>
-        <View style={s.source}>
-          <NativeIcon kind="sun" />
-          <Copy style={s.caption}>CH2 / СВЕТОВАЯ СЦЕНА</Copy>
-        </View>
-        <Svg
-          width="100%"
-          height={100}
-          viewBox="0 0 347 132"
-          accessibilityLabel="Архитектурный LED-профиль"
-        >
-          <Path d="M0 0H347V132H0Z" fill="#292c2a" />
-          <Path d="M0 83 347 33V38L0 89Z" fill="#141819" />
-          <Path d="M0 88 347 37" stroke="#d19560" strokeWidth={6} />
-          <Path d="M0 87 347 36" stroke="#ffe3bb" strokeWidth={2} />
-        </Svg>
-        <Copy style={[s.section, { fontSize: 24, lineHeight: 32 }]}>
-          Свет вдоль стены.
-        </Copy>
-        <NativeButton
-          label="Управлять освещением"
-          onPress={() => model.onNavigate("lighting")}
-        />
-      </Surface>
       <View style={s.grid}>
         {(["planner", "autopilot"] as const).map((route) => (
           <Pressable
@@ -213,6 +197,28 @@ export function NativeHome(model: NativeModel) {
           </Pressable>
         ))}
       </View>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Управлять освещением"
+        onPress={() => model.onNavigate("lighting")}
+        style={[s.card, { padding: 16, backgroundColor: "#30302b", gap: 4 }]}
+      >
+        <Copy style={[s.caption, { color: c.accentAmber, fontSize: 9 }]}>
+          CH2 / СВЕТОВАЯ СЦЕНА
+        </Copy>
+        <Copy style={[s.section, { fontSize: 22, lineHeight: 30 }]}>
+          Свет вдоль стены.
+        </Copy>
+        <Svg width="100%" height={50} viewBox="0 0 347 60" accessible={false}>
+          <Path d="m30 58 290-47 20 5L50 64Z" fill="#d19560" />
+          <Path d="m30 57 290-47 15 4L45 61Z" fill="#ffe3bb" />
+        </Svg>
+        <Copy style={s.muted}>Управлять освещением ↗</Copy>
+      </Pressable>
+      <Copy style={[s.caption, { fontSize: 9, letterSpacing: 0 }]}>
+        Локальная модель · не измерение оборудования
+      </Copy>
+
       <Pressable
         accessibilityRole="button"
         style={s.subtleButton}
@@ -232,11 +238,12 @@ export function NativeLighting({
   const [brightness, setBrightness] = useState(70);
   return (
     <ScreenShell>
-      <SourceLabel link={model.link} />
-      <Copy accessibilityRole="header" style={s.title}>
-        Атмосферный свет
-      </Copy>
-      <Copy style={s.caption}>LED-ЛЕНТА / CH2</Copy>
+      <NativeHeader
+        title="Атмосферный свет"
+        subtitle="LED-лента · CH2"
+        back
+        compact
+      />
       <View style={local.scene}>
         <Image
           source={assets.lighting}
@@ -309,8 +316,8 @@ export function NativeLighting({
         Концепция сцены. Аппаратное диммирование не подтверждено; яркость
         изменяет только изображение.
       </Copy>
-      <NativeButton
-        label="Добавить расписание"
+      <NativeRow
+        title="Добавить расписание"
         onPress={() => model.onNavigate("planner")}
       />
     </ScreenShell>
@@ -329,11 +336,22 @@ export function NativeEnergy({
   const x = (i: number) => 44 + ((i + 0.5) / values.length) * 280;
   return (
     <ScreenShell>
-      <Copy style={s.caption}>SPECWATT / ДЕМО-ИСТОРИЯ</Copy>
-      <Copy accessibilityRole="header" style={s.title}>
-        Энергия в деталях
-      </Copy>
-      <View style={s.grid}>
+      <NativeHeader
+        title="Энергия в деталях"
+        subtitle="Учебный профиль · демо"
+      />
+      <View
+        style={[
+          s.grid,
+          {
+            gap: 2,
+            padding: 3,
+            borderWidth: 1,
+            borderColor: "#ffffff14",
+            borderRadius: 18,
+          },
+        ]}
+      >
         {(["День", "Неделя", "Месяц"] as Period[]).map((p) => (
           <Pressable
             key={p}
@@ -362,11 +380,13 @@ export function NativeEnergy({
           </Pressable>
         ))}
       </View>
-      <Copy style={s.caption}>ОБЩЕЕ ПОТРЕБЛЕНИЕ</Copy>
-      <Copy style={s.metric}>
-        {totals[period].toLocaleString("ru-RU", { minimumFractionDigits: 2 })}
-        <Copy style={s.unit}> кВт·ч</Copy>
-      </Copy>
+      <View style={{ gap: 2, paddingVertical: 8 }}>
+        <Copy style={s.caption}>ОБЩЕЕ ПОТРЕБЛЕНИЕ</Copy>
+        <Copy style={s.metric}>
+          {totals[period].toLocaleString("ru-RU", { minimumFractionDigits: 2 })}
+          <Copy style={s.unit}> кВт·ч</Copy>
+        </Copy>
+      </View>
       <Surface>
         <Copy style={s.section}>
           {period === "День"
@@ -442,10 +462,10 @@ export function NativeEnergy({
             accessibilityRole="button"
             accessibilityLabel="Предыдущий интервал"
             disabled={index === 0}
-            style={s.subtleButton}
+            style={[s.iconButton, index === 0 && s.disabled]}
             onPress={() => setSelected(index - 1)}
           >
-            <Copy>Назад</Copy>
+            <NativeIcon kind="back" size={18} />
           </Pressable>
           <Copy
             accessibilityLiveRegion="polite"
@@ -460,10 +480,10 @@ export function NativeEnergy({
             accessibilityRole="button"
             accessibilityLabel="Следующий интервал"
             disabled={index === values.length - 1}
-            style={s.subtleButton}
+            style={[s.iconButton, index === values.length - 1 && s.disabled]}
             onPress={() => setSelected(index + 1)}
           >
-            <Copy>Далее</Copy>
+            <NativeIcon kind="arrow" size={18} />
           </Pressable>
         </View>
       </Surface>
@@ -472,7 +492,7 @@ export function NativeEnergy({
         <Pressable
           key={id}
           accessibilityRole="button"
-          style={s.subtleButton}
+          style={s.row}
           onPress={() =>
             onNavigate(
               id === "CH3" ? "protected" : id === "CH2" ? "lighting" : "device",
@@ -519,10 +539,11 @@ export function NativeProtected({
 }) {
   return (
     <ScreenShell>
-      <SourceLabel link={link} />
-      <Copy accessibilityRole="header" style={s.title}>
-        Под защитой
-      </Copy>
+      <NativeHeader
+        title="Под защитой"
+        subtitle="CH3 · вне автоматизации"
+        back
+      />
       <View
         style={[
           s.protected,
@@ -530,7 +551,7 @@ export function NativeProtected({
         ]}
       >
         <View style={s.source}>
-          <Copy style={{ fontSize: 64, lineHeight: 76, letterSpacing: -3 }}>
+          <Copy style={{ fontSize: 56, lineHeight: 68, letterSpacing: -3 }}>
             CH3
           </Copy>
           <NativeIcon kind="shield" size={38} color={c.statusProtected} />
@@ -598,8 +619,8 @@ export function NativeProtected({
         Защита реализована в модели симулятора. Аппаратная схема ESP32 требует
         отдельной проверки.
       </Copy>
-      <NativeButton
-        label="Вернуться к устройствам"
+      <NativeRow
+        title="Вернуться к устройствам"
         onPress={() => onNavigate("devices")}
       />
     </ScreenShell>

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Pressable } from "react-native";
 import {
+  NativeHeader,
   Copy,
   NativeButton,
   ScreenShell,
@@ -14,10 +15,7 @@ import type { NativeRuntime } from "./useNativeDemo";
 export function NativeSettings(m: NativeModel & NativeRuntime) {
   return (
     <ScreenShell>
-      <SourceLabel link={m.link} />
-      <Copy accessibilityRole="header" style={s.title}>
-        Настройки
-      </Copy>
+      <NativeHeader title="Настройки" back />
       <Copy style={s.section}>Соединение</Copy>
       <Surface>
         <Copy style={s.section}>Источник: локальный симулятор</Copy>
@@ -83,7 +81,7 @@ export function NativeSettings(m: NativeModel & NativeRuntime) {
         title="Локальная сессия"
         detail="Этот native preview хранит данные в памяти до перезапуска. Телеметрия и транспорт не подключены."
       />
-      <NativeButton label="К главной" onPress={() => m.onNavigate("home")} />
+      <NativeRow title="К главной" onPress={() => m.onNavigate("home")} />
     </ScreenShell>
   );
 }
