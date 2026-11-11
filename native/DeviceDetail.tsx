@@ -1,11 +1,5 @@
 import React from "react";
-import Svg, {
-  Path,
-  Ellipse,
-  Defs,
-  LinearGradient,
-  Stop,
-} from "react-native-svg";
+import { NativeProduct } from "./Product";
 import {
   Copy,
   NativeButton,
@@ -26,46 +20,15 @@ export function NativeDeviceDetail(model: NativeModel & NativeRuntime) {
       <Copy accessibilityRole="header" style={s.title}>
         Основной свет
       </Copy>
-      <Copy style={s.caption}>СВЕТИЛЬНИК / CH1</Copy>
+      <Copy style={s.caption}>СВЕТИЛЬНИК / CH1 · КОНЦЕПЦИЯ</Copy>
       <Surface>
-        <Svg
-          width="100%"
-          height={220}
-          viewBox="0 0 300 220"
-          accessible
-          accessibilityLabel="Дисковый подвесной светильник CH1"
-        >
-          <Defs>
-            <LinearGradient id="metal" x2="1">
-              <Stop stopColor="#342e27" />
-              <Stop offset=".48" stopColor="#b89b71" />
-              <Stop offset="1" stopColor="#262824" />
-            </LinearGradient>
-          </Defs>
-          <Path d="M149 0V80" stroke="#77776b" strokeWidth={1.5} />
-          <Path d="M144 76h12v12h-12Z" fill="#71634d" />
-          <Path
-            d="M52 114C64 92 102 81 150 81S236 92 248 114L245 123H55Z"
-            fill="url(#metal)"
-            stroke="#ad936b"
-            strokeWidth={0.6}
-          />
-          <Ellipse
-            cx={150}
-            cy={121}
-            rx={96}
-            ry={22}
-            fill="#151a18"
-            stroke="#a28964"
-          />
-          <Ellipse
-            cx={150}
-            cy={123}
-            rx={87}
-            ry={16}
-            fill={on ? "#ffe6b6" : "#4a5146"}
-          />
-        </Svg>
+        <NativeProduct
+          id="CH1"
+          on={on}
+          known={model.link === "online"}
+          assets={model.assets}
+          height={260}
+        />
         <Copy>
           {model.link !== "online"
             ? "Нет подтверждения"

@@ -1,0 +1,573 @@
+[
+  {
+    "id": "75:194",
+    "route": "welcome",
+    "key": "welcome",
+    "name": "V4.1 / 01 welcome",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 27,
+      "INSTANCE": 4,
+      "VECTOR": 13,
+      "TEXT": 12
+    },
+    "images": [
+      {
+        "id": "75:196",
+        "name": "Image (РђСЂС…РёС‚РµРєС‚СѓСЂРЅС‹Р№ С…РѕР»Р» СЃ Р±СЂРѕРЅР·РѕРІС‹Рј СЃРІРµС‚РёР»СЊРЅРёРєРѕРј Рё С‚С‘РїР»С‹Рј СЃРІРµС‚РѕРј РЅР° С‚СЂР°РІРµСЂС‚РёРЅРµ)",
+        "width": 393,
+        "height": 852
+      }
+    ],
+    "reactSource": "src/screens/Welcome.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "75:284",
+    "route": "home",
+    "key": "home",
+    "name": "V4.1 / 02 home",
+    "width": 393,
+    "height": 1375.6875,
+    "types": {
+      "FRAME": 138,
+      "TEXT": 49,
+      "VECTOR": 97,
+      "INSTANCE": 6
+    },
+    "images": [
+      {
+        "id": "I75:608;94:24",
+        "name": "ProductVisual",
+        "width": 166.5,
+        "height": 111
+      }
+    ],
+    "reactSource": "src/screens/Home.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "75:706",
+    "route": "lighting",
+    "key": "lighting",
+    "name": "V4.1 / 03 lighting",
+    "width": 393,
+    "height": 1053.25,
+    "types": {
+      "FRAME": 68,
+      "VECTOR": 72,
+      "TEXT": 22,
+      "INSTANCE": 3
+    },
+    "images": [
+      {
+        "id": "75:725",
+        "name": "Image (РЎРїР°Р»СЊРЅСЏ СЃ РѕСЂРµС…РѕРІС‹Рј РёР·РіРѕР»РѕРІСЊРµРј Рё СЃРєСЂС‹С‚С‹Рј Р°СЂС…РёС‚РµРєС‚СѓСЂРЅС‹Рј СЃРІРµС‚РѕРј)",
+        "width": 345,
+        "height": 320
+      }
+    ],
+    "reactSource": "src/screens/Lighting.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "75:921",
+    "route": "energy",
+    "key": "energy",
+    "name": "V4.1 / 04 energy",
+    "width": 393,
+    "height": 1238.28125,
+    "types": {
+      "FRAME": 99,
+      "TEXT": 54,
+      "INSTANCE": 3,
+      "VECTOR": 66,
+      "GROUP": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Energy.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "75:1199",
+    "route": "devices",
+    "key": "devices",
+    "name": "V4.1 / 05 devices",
+    "width": 393,
+    "height": 1179.515625,
+    "types": {
+      "FRAME": 95,
+      "TEXT": 39,
+      "VECTOR": 51,
+      "INSTANCE": 4
+    },
+    "images": [
+      {
+        "id": "I75:1389;94:77",
+        "name": "ProductVisual",
+        "width": 106,
+        "height": 126
+      }
+    ],
+    "reactSource": "src/screens/Devices.tsx",
+    "nativeSource": "native/Devices.tsx"
+  },
+  {
+    "id": "75:1487",
+    "route": "device",
+    "key": "device",
+    "name": "V4.1 / 06 device",
+    "width": 393,
+    "height": 1410.0625,
+    "types": {
+      "FRAME": 83,
+      "VECTOR": 56,
+      "TEXT": 30,
+      "INSTANCE": 3
+    },
+    "images": [
+      {
+        "id": "75:1509",
+        "name": "ProductVisual",
+        "width": 345,
+        "height": 298
+      }
+    ],
+    "reactSource": "src/screens/DeviceDetail.tsx",
+    "nativeSource": "native/DeviceDetail.tsx"
+  },
+  {
+    "id": "75:1710",
+    "route": "autopilot",
+    "key": "autopilot",
+    "name": "V4.1 / 07 autopilot",
+    "width": 393,
+    "height": 1548.453125,
+    "types": {
+      "FRAME": 110,
+      "TEXT": 39,
+      "VECTOR": 81,
+      "INSTANCE": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Autopilot.tsx",
+    "nativeSource": "native/Autopilot.tsx"
+  },
+  {
+    "id": "75:2002",
+    "route": "planner",
+    "key": "planner",
+    "name": "V4.1 / 08 planner",
+    "width": 393,
+    "height": 1321.28125,
+    "types": {
+      "FRAME": 97,
+      "VECTOR": 44,
+      "TEXT": 56,
+      "INSTANCE": 3,
+      "GROUP": 4
+    },
+    "images": [],
+    "reactSource": "src/screens/Planner.tsx",
+    "nativeSource": "native/Planner.tsx"
+  },
+  {
+    "id": "75:2257",
+    "route": "journal",
+    "key": "journal",
+    "name": "V4.1 / 09 journal",
+    "width": 393,
+    "height": 1290.09375,
+    "types": {
+      "FRAME": 77,
+      "VECTOR": 41,
+      "TEXT": 36,
+      "INSTANCE": 3
+    },
+    "images": [],
+    "reactSource": "src/screens/Journal.tsx",
+    "nativeSource": "native/Journal.tsx"
+  },
+  {
+    "id": "75:2465",
+    "route": "setup",
+    "key": "setup",
+    "name": "V4.1 / 10 setup",
+    "width": 393,
+    "height": 965.75,
+    "types": {
+      "FRAME": 53,
+      "VECTOR": 37,
+      "INSTANCE": 4,
+      "TEXT": 22
+    },
+    "images": [],
+    "reactSource": "src/screens/Setup.tsx",
+    "nativeSource": "native/Setup.tsx"
+  },
+  {
+    "id": "75:2613",
+    "route": "settings",
+    "key": "settings",
+    "name": "V4.1 / 11 settings",
+    "width": 393,
+    "height": 1658.453125,
+    "types": {
+      "FRAME": 125,
+      "VECTOR": 74,
+      "TEXT": 41,
+      "INSTANCE": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Settings.tsx",
+    "nativeSource": "native/Settings.tsx"
+  },
+  {
+    "id": "75:2922",
+    "route": "protected",
+    "key": "protected",
+    "name": "V4.1 / 12 protected",
+    "width": 393,
+    "height": 1199.328125,
+    "types": {
+      "FRAME": 71,
+      "VECTOR": 39,
+      "TEXT": 26,
+      "INSTANCE": 2
+    },
+    "images": [],
+    "reactSource": "src/screens/Protected.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "75:3108",
+    "route": "setup-2",
+    "key": "setup-2",
+    "name": "V4.1 / 13 setup-2",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 39,
+      "VECTOR": 22,
+      "INSTANCE": 4,
+      "TEXT": 13
+    },
+    "images": [],
+    "reactSource": "src/screens/Setup.tsx",
+    "nativeSource": "native/Setup.tsx"
+  },
+  {
+    "id": "75:3218",
+    "route": "setup-3",
+    "key": "setup-3",
+    "name": "V4.1 / 14 setup-3",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 46,
+      "VECTOR": 30,
+      "INSTANCE": 4,
+      "TEXT": 19
+    },
+    "images": [],
+    "reactSource": "src/screens/Setup.tsx",
+    "nativeSource": "native/Setup.tsx"
+  },
+  {
+    "id": "85:9",
+    "route": "home",
+    "key": "state-0",
+    "name": "V4.1 / state-0",
+    "width": 393,
+    "height": 1588.359375,
+    "types": {
+      "FRAME": 145,
+      "TEXT": 52,
+      "VECTOR": 103,
+      "INSTANCE": 6
+    },
+    "images": [
+      {
+        "id": "I85:349;94:130",
+        "name": "ProductVisual",
+        "width": 166.5,
+        "height": 111
+      }
+    ],
+    "reactSource": "src/screens/Home.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:447",
+    "route": "home",
+    "key": "state-1",
+    "name": "V4.1 / state-1",
+    "width": 393,
+    "height": 1567.96875,
+    "types": {
+      "FRAME": 145,
+      "TEXT": 52,
+      "VECTOR": 97,
+      "INSTANCE": 6
+    },
+    "images": [
+      {
+        "id": "I85:781;94:130",
+        "name": "ProductVisual",
+        "width": 166.5,
+        "height": 111
+      }
+    ],
+    "reactSource": "src/screens/Home.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:879",
+    "route": "home",
+    "key": "state-2",
+    "name": "V4.1 / state-2",
+    "width": 393,
+    "height": 1588.359375,
+    "types": {
+      "FRAME": 145,
+      "TEXT": 52,
+      "VECTOR": 99,
+      "INSTANCE": 6
+    },
+    "images": [
+      {
+        "id": "I85:1215;94:130",
+        "name": "ProductVisual",
+        "width": 166.5,
+        "height": 111
+      }
+    ],
+    "reactSource": "src/screens/Home.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:1313",
+    "route": "lighting",
+    "key": "state-3",
+    "name": "V4.1 / state-3",
+    "width": 393,
+    "height": 1053.25,
+    "types": {
+      "FRAME": 68,
+      "VECTOR": 72,
+      "TEXT": 22,
+      "RECTANGLE": 1,
+      "INSTANCE": 3
+    },
+    "images": [
+      {
+        "id": "85:1332",
+        "name": "Image (РЎРїР°Р»СЊРЅСЏ СЃ РѕСЂРµС…РѕРІС‹Рј РёР·РіРѕР»РѕРІСЊРµРј Рё СЃРєСЂС‹С‚С‹Рј Р°СЂС…РёС‚РµРєС‚СѓСЂРЅС‹Рј СЃРІРµС‚РѕРј)",
+        "width": 345,
+        "height": 320
+      }
+    ],
+    "reactSource": "src/screens/Lighting.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:1528",
+    "route": "device",
+    "key": "state-4",
+    "name": "V4.1 / state-4",
+    "width": 393,
+    "height": 1410.0625,
+    "types": {
+      "FRAME": 83,
+      "VECTOR": 56,
+      "TEXT": 30,
+      "INSTANCE": 3
+    },
+    "images": [
+      {
+        "id": "85:1550",
+        "name": "ProductVisual",
+        "width": 345,
+        "height": 298
+      }
+    ],
+    "reactSource": "src/screens/DeviceDetail.tsx",
+    "nativeSource": "native/DeviceDetail.tsx"
+  },
+  {
+    "id": "85:1751",
+    "route": "journal",
+    "key": "state-5",
+    "name": "V4.1 / state-5",
+    "width": 393,
+    "height": 1146.8125,
+    "types": {
+      "FRAME": 62,
+      "VECTOR": 34,
+      "TEXT": 29,
+      "INSTANCE": 3
+    },
+    "images": [],
+    "reactSource": "src/screens/Journal.tsx",
+    "nativeSource": "native/Journal.tsx"
+  },
+  {
+    "id": "85:1930",
+    "route": "autopilot",
+    "key": "state-6",
+    "name": "V4.1 / state-6",
+    "width": 393,
+    "height": 1548.453125,
+    "types": {
+      "FRAME": 110,
+      "TEXT": 39,
+      "VECTOR": 81,
+      "INSTANCE": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Autopilot.tsx",
+    "nativeSource": "native/Autopilot.tsx"
+  },
+  {
+    "id": "85:2222",
+    "route": "protected",
+    "key": "state-7",
+    "name": "V4.1 / state-7",
+    "width": 393,
+    "height": 1199.328125,
+    "types": {
+      "FRAME": 71,
+      "VECTOR": 39,
+      "TEXT": 26,
+      "INSTANCE": 2
+    },
+    "images": [],
+    "reactSource": "src/screens/Protected.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:2408",
+    "route": "limit",
+    "key": "state-overload",
+    "name": "V4.1 / state-overload",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 9,
+      "VECTOR": 3,
+      "TEXT": 4,
+      "INSTANCE": 2
+    },
+    "images": [],
+    "reactSource": "src/components/LimitDialog.tsx",
+    "nativeSource": "native/Experience.tsx · notice"
+  },
+  {
+    "id": "85:2432",
+    "route": "energy",
+    "key": "energy-day",
+    "name": "V4.1 / energy-day",
+    "width": 393,
+    "height": 1238.28125,
+    "types": {
+      "FRAME": 99,
+      "TEXT": 52,
+      "INSTANCE": 3,
+      "VECTOR": 83,
+      "GROUP": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Energy.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:2725",
+    "route": "energy",
+    "key": "energy-month",
+    "name": "V4.1 / energy-month",
+    "width": 393,
+    "height": 1238.28125,
+    "types": {
+      "FRAME": 99,
+      "TEXT": 51,
+      "INSTANCE": 3,
+      "VECTOR": 63,
+      "GROUP": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Energy.tsx",
+    "nativeSource": "native/screens.tsx"
+  },
+  {
+    "id": "85:2997",
+    "route": "planner",
+    "key": "planner-saved",
+    "name": "V4.1 / planner-saved",
+    "width": 393,
+    "height": 1296.796875,
+    "types": {
+      "FRAME": 112,
+      "VECTOR": 47,
+      "TEXT": 60,
+      "INSTANCE": 4,
+      "GROUP": 4
+    },
+    "images": [],
+    "reactSource": "src/screens/Planner.tsx",
+    "nativeSource": "native/Planner.tsx"
+  },
+  {
+    "id": "85:3278",
+    "route": "planner",
+    "key": "planner-editing",
+    "name": "V4.1 / planner-editing",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 151,
+      "VECTOR": 58,
+      "TEXT": 88,
+      "INSTANCE": 6,
+      "GROUP": 8
+    },
+    "images": [],
+    "reactSource": "src/screens/Planner.tsx",
+    "nativeSource": "native/Planner.tsx"
+  },
+  {
+    "id": "85:3648",
+    "route": "planner",
+    "key": "planner-conflict",
+    "name": "V4.1 / planner-conflict",
+    "width": 393,
+    "height": 852,
+    "types": {
+      "FRAME": 152,
+      "VECTOR": 59,
+      "TEXT": 89,
+      "INSTANCE": 6,
+      "GROUP": 8
+    },
+    "images": [],
+    "reactSource": "src/screens/Planner.tsx",
+    "nativeSource": "native/Planner.tsx"
+  },
+  {
+    "id": "85:4021",
+    "route": "autopilot",
+    "key": "permission-granted",
+    "name": "V4.1 / permission-granted",
+    "width": 393,
+    "height": 1516.0625,
+    "types": {
+      "FRAME": 110,
+      "TEXT": 39,
+      "VECTOR": 81,
+      "INSTANCE": 5
+    },
+    "images": [],
+    "reactSource": "src/screens/Autopilot.tsx",
+    "nativeSource": "native/Autopilot.tsx"
+  }
+]

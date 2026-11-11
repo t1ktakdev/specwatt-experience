@@ -1,3 +1,21 @@
+# Android preview V4.1
+
+Самостоятельные нативные экраны React Native/Expo, не WebView. Отдельное имя и пакет `dev.specwatt.experience.v41.preview` сохраняют установленные приложения. Системный шрифт не блокируется: проверяются масштабы 1.0, 1.3, 1.5. Фото и Manrope включены в пакет. Состояние этой нативной демонстрации хранится в памяти до перезапуска, без ESP32-команд и фоновых расписаний.
+
+Проверенная сборка: Expo 58.0.19, React Native 0.88.0, JDK 17, Android SDK 37, NDK 27.1.12297006, x86_64. На Windows нужен короткий **физический** путь (например `D:\e41`); junction не сокращает пути CMake после canonicalization. Копировать только эту изолированную Experience-ветку.
+
+В `native/host`: `npm ci --ignore-scripts`, `npx expo prebuild --platform android --no-install`. Затем из `native/host/android`:
+
+```powershell
+.\gradlew.bat :app:assembleDebug --no-daemon --max-workers=1 '-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=384m' '-Pkotlin.compiler.execution.strategy=in-process' '-PreactNativeArchitectures=x86_64' '-Pspecwatt.embeddedPreview=true' -I ../../../tools/android-low-memory.gradle
+```
+
+`specwatt.embeddedPreview` включает JS и ресурсы в debug APK и отключает ожидание Metro через локальный config plugin; сервер разработки не нужен. При обычном запуске без этого флага режим разработки сохраняется. Ограничение числа сборочных процессов помогает на ноутбуке с 16 ГБ памяти. Готовый APK расположен в `app/build/outputs/apk/debug/app-debug.apk`. Это APK для x86_64-эмулятора; ARM-телефон и iOS не проверялись.
+
+После установки: `adb shell am start -a android.intent.action.VIEW -d specwatt-experience-v41://home`. Ссылки меняют только маршрут, команды в них не принимаются. `python tools/android-screenshots-v41.py` из корня сохраняет 42 снимка (12 маршрутов + два дополнительных шага × три масштаба), XML доступности и восстанавливает прежний масштаб шрифта. [Реальные кадры](../docs/v41/review.html).
+
+Ниже сохранена документация исходного V4.
+
 # Experience V4 · isolated native UI and Expo host
 
 All twelve routes and three setup steps are implemented using React Native primitives, shared tokens/assets and the same guarded switch/planner model as the web app. `Experience.tsx` assembles the screens with four tabs, back navigation, notices, system reduced-motion handling and route transitions. `host/` supplies Expo 58.0.19, React Native 0.88.0, Manrope loading and the original interior assets.

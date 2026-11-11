@@ -1,3 +1,13 @@
+# V4.1 Candidate · текущее направление
+
+Warm Graphite × Ambient Amber сохраняется. Референс A задаёт предметный масштаб и физические материалы, B — атмосферу и переход от интерьера к управлению, C — числовую и причинную ясность. Собственные изображения концептуального светильника явно подписаны; фотографии референсов не поставляются.
+
+Двенадцать задач образуют разные композиции: архитектурный Welcome, энергобаланс Home, интерьер Lighting, исследуемая аналитика Energy, инвентарные строки Devices, предмет Device Detail, последовательность решений Autopilot, временная диаграмма Planner, хронология Journal, три стадии Setup, операционные группы Settings и паспорт защиты CH3. Прозрачность декоративных слоёв не связывается с непрозрачными цветовыми переменными Figma. Основные цвета и типографика используют существующие токены; 62 переменные сохранены.
+
+29 пар при одинаковых данных доступны в [приёмке V4.1](docs/v41/review.html). Android имеет собственные системные Switch, клавиатуру, Safe Area и прокрутку; воспроизведение Figma не проверено. Детальные наблюдения и подтверждения — [DELIVERY](docs/v41/DELIVERY.md).
+
+Ниже сохранено описание исходного V4.
+
 # Experience V4 · Warm Graphite × Ambient Amber
 
 V4 starts from the real v1.1.0 repository at `263a4df`; it preserves Welcome's original architectural photograph and Manrope, and improves the full twelve-route experience. The original SpecWATT application and both rejected Figma files remain unchanged.

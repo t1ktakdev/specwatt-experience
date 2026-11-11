@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import {
   Image,
+  ScrollView,
+  useWindowDimensions,
   Pressable,
   StyleSheet,
   View,
   type ImageSourcePropType,
 } from "react-native";
-import Svg, { Circle, Path, Rect, Text as SvgText } from "react-native-svg";
+import Svg, {
+  Circle,
+  Path,
+  Rect,
+  Defs,
+  LinearGradient,
+  Stop,
+  Text as SvgText,
+} from "react-native-svg";
+import { NativeToggle } from "./controls";
+import { NativeSceneSlider } from "./SceneSlider";
 import {
   Copy,
   NativeButton,
@@ -36,6 +48,7 @@ import type { Page } from "../src/types";
 
 export type NativeRoute = Page;
 export type NativeModel = {
+  assets: SceneAssets;
   channels: ChannelState;
   link: LinkState;
   onToggle: (id: ChannelId) => void;
@@ -45,6 +58,8 @@ export type NativeModel = {
 export type SceneAssets = {
   welcome: ImageSourcePropType;
   lighting: ImageSourcePropType;
+  pendantOn: ImageSourcePropType;
+  pendantOff: ImageSourcePropType;
 };
 
 export function NativeWelcome({
@@ -54,45 +69,85 @@ export function NativeWelcome({
   assets: SceneAssets;
   onNavigate: NativeModel["onNavigate"];
 }) {
+  const { height } = useWindowDimensions();
   return (
-    <ScreenShell>
-      <View style={local.welcomePhoto}>
-        <Image
-          source={assets.welcome}
-          style={StyleSheet.absoluteFill}
-          resizeMode="cover"
-          accessibilityLabel="Архитектурный холл с тёплым светом"
-        />
-        <View style={local.welcomeBrand}>
-          <Copy style={{ fontSize: 24, fontWeight: "700" }}>specwatt.</Copy>
-          <Copy style={s.caption}>EXPERIENCE / 04</Copy>
-        </View>
-      </View>
-      <Copy style={[s.caption, { color: c.accentAmber }]}>
-        ТЕХНОЛОГИЯ СПОКОЙНОЙ ЖИЗНИ
-      </Copy>
-      <Copy accessibilityRole="header" style={s.heroText}>
-        Энергия.
-        <Copy style={[s.heroText, { color: c.accentAmber }]}>
-          {"\n"}В вашем ритме.
-        </Copy>
-      </Copy>
-      <Copy style={s.muted}>
-        Красивый свет. Понятная энергия. Всё под вашим контролем.
-      </Copy>
-      <NativeButton
-        label="Открыть SpecWATT"
-        onPress={() => onNavigate("home")}
+    <View style={{ flex: 1, backgroundColor: "#17191a" }}>
+      <Image
+        source={assets.welcome}
+        style={[StyleSheet.absoluteFill, { width: "100%", height: "100%" }]}
+        resizeMode="cover"
+        accessibilityLabel="Архитектурный холл с тёплым светом"
       />
-      <Pressable
-        accessibilityRole="button"
-        style={s.subtleButton}
-        onPress={() => onNavigate("setup")}
+      <Svg
+        width="100%"
+        height="100%"
+        style={StyleSheet.absoluteFill}
+        pointerEvents="none"
       >
-        <Copy>Как подключить контроллер</Copy>
-      </Pressable>
-      <Copy style={s.caption}>ДЕМОНСТРАЦИЯ · БЕЗ ОБОРУДОВАНИЯ</Copy>
-    </ScreenShell>
+        <Defs>
+          <LinearGradient id="welcome-shade" x2="0" y2="1">
+            <Stop stopColor="#101313" stopOpacity={0} />
+            <Stop offset=".5" stopColor="#101313" stopOpacity={0.15} />
+            <Stop offset="1" stopColor="#101313" stopOpacity={0.95} />
+          </LinearGradient>
+        </Defs>
+        <Rect width="100%" height="100%" fill="url(#welcome-shade)" />
+      </Svg>
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          minHeight: height - 70,
+          padding: 24,
+          justifyContent: "space-between",
+          gap: 120,
+        }}
+      >
+        <View style={{ gap: 20, paddingTop: 16 }}>
+          <Copy style={{ fontSize: 26, fontWeight: "700", lineHeight: 34 }}>
+            specwatt.
+          </Copy>
+          <Copy style={s.caption}>EXPERIENCE / 04.1</Copy>
+        </View>
+        <View style={{ gap: 22 }}>
+          <Copy style={[s.caption, { color: c.accentAmber }]}>
+            ТЕХНОЛОГИЯ СПОКОЙНОЙ ЖИЗНИ
+          </Copy>
+          <Copy
+            accessibilityRole="header"
+            style={[s.heroText, { fontSize: 48, lineHeight: 56 }]}
+          >
+            Энергия.{"\n"}
+            <Copy
+              style={[
+                s.heroText,
+                { color: c.accentAmber, fontSize: 48, lineHeight: 56 },
+              ]}
+            >
+              В вашем ритме.
+            </Copy>
+          </Copy>
+          <Copy style={{ fontSize: 14, lineHeight: 23 }}>
+            Красивый свет. Понятная энергия.{"\n"}Всё под вашим контролем.
+          </Copy>
+          <NativeButton
+            label="Открыть SpecWATT"
+            onPress={() => onNavigate("home")}
+          />
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => onNavigate("setup")}
+            style={{
+              minHeight: 48,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Copy>Как подключить контроллер</Copy>
+          </Pressable>
+          <Copy style={s.caption}>СОЗДАНО ДЛЯ ОСОЗНАННОЙ ЭНЕРГИИ · ДЕМО</Copy>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 export function NativeHome(model: NativeModel) {
@@ -104,6 +159,7 @@ export function NativeHome(model: NativeModel) {
       </Copy>
       <NativePower
         watts={model.link === "online" ? totalWatts(model.channels) : null}
+        channels={model.channels}
       />
       <Copy style={s.section}>Под вашим контролем</Copy>
       <View style={s.grid}>
@@ -111,6 +167,7 @@ export function NativeHome(model: NativeModel) {
           <NativeDeviceTile
             key={id}
             id={id}
+            assets={model.assets}
             on={model.channels[id]}
             link={model.link}
             onToggle={model.onToggle}
@@ -187,6 +244,8 @@ export function NativeLighting({
           style={[
             StyleSheet.absoluteFill,
             {
+              width: "100%",
+              height: "100%",
               opacity: model.channels.CH2
                 ? 0.35 + (brightness / 100) * 0.65
                 : 0.35,
@@ -200,19 +259,28 @@ export function NativeLighting({
           </Copy>
         </View>
       </View>
-      <NativeDeviceTile
-        id="CH2"
-        on={model.channels.CH2}
-        link={model.link}
-        onToggle={model.onToggle}
-        onOpen={() => model.onNavigate("devices")}
-      />
+      <Surface>
+        <NativeToggle
+          label="LED-лента: питание"
+          detail={
+            model.link !== "online"
+              ? "Состояние не подтверждено"
+              : model.channels.CH2
+                ? "Включено · 4,2 Вт"
+                : "Выключено · 0 Вт"
+          }
+          value={model.channels.CH2}
+          disabled={model.link !== "online"}
+          onChange={() => model.onToggle("CH2")}
+        />
+      </Surface>
       <View style={s.source}>
         <Copy style={s.section}>Световая сцена</Copy>
         <Copy style={{ fontSize: 28, lineHeight: 36, color: c.accentAmber }}>
           {brightness}%
         </Copy>
       </View>
+      <NativeSceneSlider value={brightness} onChange={setBrightness} />
       <View style={s.grid}>
         {[
           { title: "Тихий вечер", value: 35 },
@@ -339,7 +407,7 @@ export function NativeEnergy({
               width={Math.max(6, (280 / values.length) * 0.6)}
               height={184 - scale.y(v)}
               rx={2}
-              fill={i === index ? "#edb17c" : "#817363"}
+              fill={i === index ? "#f5bf8c" : "#9d8d79"}
               onPress={() => setSelected(i)}
             />
           ))}
@@ -455,27 +523,81 @@ export function NativeProtected({
       <Copy accessibilityRole="header" style={s.title}>
         Под защитой
       </Copy>
-      <View style={s.protected}>
-        <NativeIcon kind="shield" size={44} color={c.statusProtected} />
-        <Copy style={s.caption}>CH3 / PROTECTED CHANNEL</Copy>
-        <Copy style={[s.title, { textAlign: "center", fontWeight: "400" }]}>
-          Вне управления. Внутри энергобаланса.
+      <View
+        style={[
+          s.protected,
+          { alignItems: "stretch", padding: 24, borderRadius: 22 },
+        ]}
+      >
+        <View style={s.source}>
+          <Copy style={{ fontSize: 64, lineHeight: 76, letterSpacing: -3 }}>
+            CH3
+          </Copy>
+          <NativeIcon kind="shield" size={38} color={c.statusProtected} />
+        </View>
+        <Copy style={s.caption}>ПОСТОЯННАЯ ЗАЩИТА В МОДЕЛИ</Copy>
+        <Copy style={[s.title, { fontSize: 27, fontWeight: "400" }]}>
+          Вне управления.{"\n"}Внутри энергобаланса.
         </Copy>
-        <Copy style={[s.muted, { textAlign: "center" }]}>
-          Исключён из ручного и автоматического переключения.
+        <Copy style={s.muted}>
+          Номинальная нагрузка канала учитывается перед каждым действием CH1 и
+          CH2.
         </Copy>
       </View>
-      <Surface>
+      <View
+        style={{
+          borderTopWidth: 1,
+          borderBottomWidth: 1,
+          borderColor: "#ffffff14",
+          paddingVertical: 20,
+          gap: 8,
+        }}
+      >
         <Copy style={s.caption}>ТЕКУЩАЯ МОЩНОСТЬ · ДЕМО</Copy>
-        <Copy style={s.metric}>
+        <Copy style={[s.metric, { fontSize: 42 }]}>
           {link === "online" ? "2,4" : "—"}
           <Copy style={s.unit}> Вт</Copy>
         </Copy>
+      </View>
+      <View style={{ gap: 16 }}>
+        <View style={s.source}>
+          <View>
+            <Copy style={s.muted}>Базовая нагрузка</Copy>
+            <Copy style={{ fontSize: 24, lineHeight: 36 }}>2,4 Вт</Copy>
+          </View>
+          <View>
+            <Copy style={s.muted}>Лимит стенда</Copy>
+            <Copy style={{ fontSize: 24, lineHeight: 36 }}>7 Вт</Copy>
+          </View>
+        </View>
+        <View
+          style={{
+            height: 10,
+            backgroundColor: "#373e37",
+            borderRadius: 3,
+            overflow: "hidden",
+          }}
+        >
+          <View
+            style={{
+              height: 10,
+              width: "34.2857%",
+              backgroundColor: c.statusProtected,
+            }}
+          />
+        </View>
         <Copy style={s.muted}>
-          Нет переключателя. Не входит в расписания. Защита реализована в
-          модели; аппаратная схема требует отдельной проверки.
+          CH3 занимает 34% лимита · расчёт по номиналу
         </Copy>
-      </Surface>
+      </View>
+      <Copy style={s.section}>Нет удалённого переключения</Copy>
+      <Copy style={s.muted}>Через приложение и автоматизацию</Copy>
+      <Copy style={s.section}>Не входит в расписания</Copy>
+      <Copy style={s.muted}>Правила CH1 / CH2 не затрагивают CH3</Copy>
+      <Copy style={s.muted}>
+        Защита реализована в модели симулятора. Аппаратная схема ESP32 требует
+        отдельной проверки.
+      </Copy>
       <NativeButton
         label="Вернуться к устройствам"
         onPress={() => onNavigate("devices")}

@@ -9,11 +9,14 @@ const result = await build({
   import {LampIllustration} from './src/screens/DeviceDetail.tsx';
   import {PowerGauge} from './src/components/charts.tsx';
   import {LightRail} from './src/components/LightRail.tsx';
+  import {ProductVisual} from './src/components/ProductVisual.tsx';
   import * as icons from 'lucide-react';
   export const assets={
     'lamp-on.svg':render(React.createElement(LampIllustration,{on:true})),
     'lamp-off.svg':render(React.createElement(LampIllustration,{on:false})),
     'light-rail.svg':render(React.createElement(LightRail)),
+    'led-profile-on.svg':render(React.createElement(ProductVisual,{id:'CH2',on:true})),
+    'led-profile-off.svg':render(React.createElement(ProductVisual,{id:'CH2',on:false})),
     'power-gauge.svg':render(React.createElement(PowerGauge,{value:6.6})).match(/<svg[\\s\\S]*?<\\/svg>/)[0],
     ...Object.fromEntries(['Lightbulb','Sun','Moon','ShieldCheck','LockKeyhole','CalendarDays','Clock3','WifiOff','TriangleAlert','Sparkles','Cpu','Activity'].map(name=>['icons/'+name+'.svg',render(React.createElement(icons[name],{size:24,strokeWidth:1.65,color:'#edb17c'}))]))
   };

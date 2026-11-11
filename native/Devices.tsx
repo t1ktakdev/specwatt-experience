@@ -39,6 +39,8 @@ export function NativeDevices(model: NativeModel) {
             <NativeDeviceTile
               key={id}
               id={id}
+              layout="row"
+              assets={model.assets}
               on={model.channels[id]}
               link={model.link}
               onToggle={model.onToggle}

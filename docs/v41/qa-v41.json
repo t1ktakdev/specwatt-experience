@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Bundled Cyrillic and Latin Manrope loads",
+    "Detail back returns to Devices",
+    "24-hour editing independent of OS locale",
+    "Autopilot preview stops an 8.4 W proposal without changing channels",
+    "Real current-session actions are grouped in the journal"
+  ]
+}

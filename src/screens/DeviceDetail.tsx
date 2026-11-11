@@ -1,5 +1,6 @@
 import { Power, Sparkles, Clock3, CalendarDays, History } from "lucide-react";
 import { useApp } from "../state/context";
+import { ProductVisual } from "../components/ProductVisual";
 import {
   Header,
   SectionTitle,
@@ -78,8 +79,8 @@ export function DeviceDetail() {
         <Header title="Основной свет" subtitle="Светильник · CH1" back />
         <ConnectionBanner />
         <div className="device-object material">
-          <span className="object-category">LIGHT / 01</span>
-          <LampIllustration on={link === "online" && channels.CH1} />
+          <span className="object-category">LIGHT / 01 · КОНЦЕПЦИЯ</span>
+          <ProductVisual id="CH1" on={channels.CH1} known={link === "online"} />
           <span className={`object-status ${channels.CH1 ? "lit" : ""}`}>
             <i />
             {link !== "online"

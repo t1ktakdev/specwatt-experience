@@ -21,6 +21,7 @@ import {
   DeviceCard,
 } from "../components/ui";
 import { PowerGauge } from "../components/charts";
+import { LoadBudget } from "../components/LoadBudget";
 
 export function Home() {
   const { channels, go, link } = useApp();
@@ -53,6 +54,7 @@ export function Home() {
             </div>
             <PowerGauge value={link === "online" ? watts : null} />
           </div>
+          <LoadBudget channels={channels} known={link === "online"} />
           <button className="energy-hero-foot" onClick={() => go("energy")}>
             <span>
               Сегодня{" "}

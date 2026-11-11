@@ -1,4 +1,6 @@
 node_modules/
+node_modules-v4-reference/
+native/host/android/
 dist/
 .env*
 *.log

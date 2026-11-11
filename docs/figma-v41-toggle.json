@@ -1,0 +1,25 @@
+{
+  "set": "86:21",
+  "variants": [
+    {
+      "id": "86:9",
+      "name": "State=Off",
+      "reactions": 1
+    },
+    {
+      "id": "86:12",
+      "name": "State=On",
+      "reactions": 1
+    },
+    {
+      "id": "86:15",
+      "name": "State=Disabled",
+      "reactions": 0
+    },
+    {
+      "id": "86:18",
+      "name": "State=Unavailable",
+      "reactions": 0
+    }
+  ]
+}

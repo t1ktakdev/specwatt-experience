@@ -1,10 +1,12 @@
 {
   "expo": {
-    "name": "SpecWATT Experience V4",
-    "slug": "specwatt-experience-v4-preview",
+    "name": "SpecWATT Experience V4.1",
+    "slug": "specwatt-experience-v41-preview",
     "version": "0.1.0",
     "orientation": "portrait",
+    "scheme": "specwatt-experience-v41",
     "userInterfaceStyle": "dark",
-    "android": { "package": "dev.specwatt.experience.v4.preview" }
+    "plugins": ["./plugins/with-embedded-preview.cjs"],
+    "android": { "package": "dev.specwatt.experience.v41.preview" }
   }
 }

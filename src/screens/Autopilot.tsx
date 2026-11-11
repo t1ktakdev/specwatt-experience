@@ -12,14 +12,16 @@ import {
 } from "lucide-react";
 import { useApp } from "../state/context";
 import { Icon, Header, SectionTitle, Toggle, Nav } from "../components/ui";
-import { readConsent } from "../model";
+import { readConsent, totalWatts } from "../model";
+import { fmt } from "../lib/design";
 
 export function Autopilot({
   initialAllow,
 }: {
   initialAllow?: { CH1: boolean; CH2: boolean };
 }) {
-  const { auto, setAuto, go, toast, link, record } = useApp();
+  const { auto, setAuto, go, toast, link, record, channels } = useApp();
+  const projected = totalWatts({ ...channels, CH2: true });
   const [allow, setAllow] = useState<{ CH1: boolean; CH2: boolean }>(() => {
     if (initialAllow) return initialAllow;
     try {
@@ -125,26 +127,70 @@ export function Autopilot({
             <b>Тихий вечер</b>
             <span>ПРИМЕР ПРАВИЛА</span>
           </div>
-          <div className="auto-rule-steps">
-            <span>
-              <b>01</b> 19:00 · условие
-            </span>
-            <ArrowRight size={12} />
-            <span>
-              <b>02</b> Разрешение CH2
-            </span>
-            <ArrowRight size={12} />
-            <span>
-              <b>03</b> Нагрузка ≤ 7 Вт
-            </span>
-            <ArrowRight size={12} />
-            <span className={allow.CH2 ? "policy-allowed" : "policy-blocked"}>
-              <b>04</b>{" "}
-              {allow.CH2
-                ? "LED-лента · предполагается включение"
-                : "Стоп · нет разрешения CH2"}
-            </span>
-          </div>
+          <ol className="decision-flow">
+            <li>
+              <span className="decision-icon">
+                <Clock3 size={20} />
+              </span>
+              <div>
+                <small>01 / УСЛОВИЕ</small>
+                <strong>Наступает 19:00</strong>
+                <p>Учебный триггер · таймер не запущен</p>
+              </div>
+            </li>
+            <li>
+              <span className="decision-icon">
+                <ShieldCheck size={20} />
+              </span>
+              <div>
+                <small>02 / ВАШЕ РЕШЕНИЕ</small>
+                <strong>Разрешение для CH2</strong>
+                <p>
+                  {allow.CH2
+                    ? "Получено · можно отозвать выше"
+                    : "Ожидает вашего согласия"}
+                </p>
+              </div>
+            </li>
+            <li>
+              <span className="decision-icon">
+                <SlidersHorizontal size={20} />
+              </span>
+              <div>
+                <small>03 / ПРОВЕРКА БАЛАНСА</small>
+                <strong>
+                  {link === "online"
+                    ? `${fmt(projected)} Вт из 7 Вт`
+                    : "Нагрузка неизвестна"}
+                </strong>
+                <p>CH3 включён в расчёт · 2,4 Вт</p>
+              </div>
+            </li>
+            <li
+              className={
+                allow.CH2 && projected <= 7 && link === "online"
+                  ? "policy-allowed"
+                  : "policy-blocked"
+              }
+            >
+              <span className="decision-icon">
+                <ArrowRight size={20} />
+              </span>
+              <div>
+                <small>04 / РЕЗУЛЬТАТ ПРОВЕРКИ</small>
+                <strong>
+                  {link !== "online"
+                    ? "Стоп · нет актуальных данных"
+                    : !allow.CH2
+                      ? "Стоп · нет разрешения CH2"
+                      : projected > 7
+                        ? "Стоп · превышен лимит"
+                        : "Включение CH2 допустимо"}
+                </strong>
+                <p>Предпросмотр · действие не выполняется</p>
+              </div>
+            </li>
+          </ol>
           <p>
             {!allow.CH2
               ? "Нужно разрешение для CH2. "

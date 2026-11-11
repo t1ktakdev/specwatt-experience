@@ -1,4 +1,5 @@
 import React from "react";
+import { View, Pressable } from "react-native";
 import {
   Copy,
   NativeButton,
@@ -19,15 +20,38 @@ export function NativeSettings(m: NativeModel & NativeRuntime) {
       </Copy>
       <Copy style={s.section}>Соединение</Copy>
       <Surface>
-        {(["online", "offline", "loading", "error"] as const).map((state) => (
-          <NativeToggle
-            key={state}
-            label={`Предпросмотр: ${state}`}
-            detail="Состояние UI, не реальная связь"
-            value={m.link === state}
-            onChange={() => m.setLink(state)}
-          />
-        ))}
+        <Copy style={s.section}>Источник: локальный симулятор</Copy>
+        <Copy style={s.muted}>Состояние для просмотра</Copy>
+        <View style={s.grid}>
+          {(["online", "offline", "loading", "error"] as const).map((state) => (
+            <Pressable
+              key={state}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: m.link === state }}
+              onPress={() => m.setLink(state)}
+              style={[
+                s.subtleButton,
+                {
+                  backgroundColor: m.link === state ? "#3b352e" : "transparent",
+                  borderColor: m.link === state ? "#edb17c66" : "#ffffff14",
+                  flexBasis: "45%",
+                  flexGrow: 1,
+                },
+              ]}
+            >
+              <Copy>
+                {
+                  {
+                    online: "Демо доступно",
+                    offline: "Нет связи",
+                    loading: "Ожидание",
+                    error: "Ошибка",
+                  }[state]
+                }
+              </Copy>
+            </Pressable>
+          ))}
+        </View>
       </Surface>
       <Copy style={s.section}>Интерфейс</Copy>
       <NativeRow title="Язык интерфейса" detail="Русский" />

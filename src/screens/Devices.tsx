@@ -39,6 +39,9 @@ export function Devices() {
             <b>01</b> защищённый
           </span>
         </div>
+        <p className="inventory-caption">
+          Три канала. Два под вашим контролем.
+        </p>
         <div className="filter-chips">
           {["Все", "Включены", "Защищённые"].map((f) => (
             <button

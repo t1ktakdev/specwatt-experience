@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, codex/experience-v4-crafted-figma]
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,6 +29,9 @@ jobs:
       - run: npm ci --prefix native/host --ignore-scripts --no-audit --no-fund
       - run: npm run typecheck --prefix native/host
       - run: npm run export:android --prefix native/host
+      - name: Validate Android preview generation
+        working-directory: native/host
+        run: npx expo prebuild --platform android --no-install
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - name: Verify browser experience
@@ -41,6 +44,7 @@ jobs:
           node tools/qa.mjs
           node tools/qa-v3.mjs
           node tools/qa-v4.mjs
+          SPECWATT_URL=http://127.0.0.1:4173 node tools/qa-v41.mjs
           node tools/accessibility.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

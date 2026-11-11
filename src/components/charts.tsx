@@ -177,8 +177,8 @@ export function EnergyChart({ period }: { period: Period }) {
             width={Math.max(6, (280 / values.length) * 0.6)}
             height={184 - scale.y(v)}
             rx="2"
-            fill={i === sel ? "#edb17c" : "#817363"}
-            opacity={i === sel ? 1 : 0.65}
+            fill={i === sel ? "#f5bf8c" : "#9d8d79"}
+            opacity={i === sel ? 1 : 0.9}
           />
         ))}
         <path

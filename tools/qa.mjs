@@ -1,3 +1,4 @@
+const base = process.env.SPECWATT_URL || "http://127.0.0.1:4173";
 import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
@@ -25,7 +26,7 @@ const routes = [
 const report = { checks: [], overflow: [], errors };
 await fs.mkdir("artifacts", { recursive: true });
 async function visit(route) {
-  await page.goto(`http://127.0.0.1:4173/#${route}`);
+  await page.goto(`${base}/#${route}`);
   await page.evaluate(() => document.fonts.ready);
   await page.evaluate(() =>
     Promise.all([...document.images].map((i) => i.decode().catch(() => {}))),
@@ -165,7 +166,9 @@ await expect(page.locator(".empty-schedules")).toBeVisible();
 report.checks.push("Schedule save/reload/delete; CH3 excluded");
 await visit("setup");
 await page.getByRole("button", { name: "Посмотреть настройку" }).click();
-await page.getByLabel("Адрес сервера").fill("https://demo.example");
+await page
+  .getByLabel("Пример адреса сервера · без подключения")
+  .fill("https://demo.example");
 await page.getByRole("button", { name: "Продолжить настройку" }).click();
 await expect(
   page.getByRole("heading", { name: "Ваш интерфейс готов к исследованию." }),
@@ -188,7 +191,7 @@ await page.screenshot({
   animations: "disabled",
   path: "artifacts/desktop.png",
 });
-await page.goto("http://127.0.0.1:4173/?gallery");
+await page.goto(`${base}/?gallery`);
 await page.setViewportSize({ width: 1800, height: 1080 });
 await page.evaluate(() => document.fonts.ready);
 await page.waitForTimeout(250);

@@ -1,0 +1,50 @@
+[
+  {
+    "route": "welcome",
+    "violations": []
+  },
+  {
+    "route": "home",
+    "violations": []
+  },
+  {
+    "route": "lighting",
+    "violations": []
+  },
+  {
+    "route": "energy",
+    "violations": []
+  },
+  {
+    "route": "devices",
+    "violations": []
+  },
+  {
+    "route": "device",
+    "violations": []
+  },
+  {
+    "route": "protected",
+    "violations": []
+  },
+  {
+    "route": "autopilot",
+    "violations": []
+  },
+  {
+    "route": "planner",
+    "violations": []
+  },
+  {
+    "route": "journal",
+    "violations": []
+  },
+  {
+    "route": "setup",
+    "violations": []
+  },
+  {
+    "route": "settings",
+    "violations": []
+  }
+]

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Pressable } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Pressable, BackHandler } from "react-native";
 import {
   Copy,
   NativeButton,
@@ -21,9 +21,32 @@ export function NativeSetup({
     [mode, setMode] = useState<"demo" | "hardware">("demo"),
     [address, setAddress] = useState("http://127.0.0.1:8000"),
     [error, setError] = useState("");
+  useEffect(() => {
+    const subscription = BackHandler.addEventListener(
+      "hardwareBackPress",
+      () => {
+        if (step > 1) setStep(step - 1);
+        else onNavigate("welcome");
+        return true;
+      },
+    );
+    return () => subscription.remove();
+  }, [step, onNavigate]);
   return (
     <ScreenShell>
       <Copy style={s.caption}>SPECWATT / 0{step} ИЗ 03</Copy>
+      <View style={{ flexDirection: "row", gap: 4 }}>
+        {[1, 2, 3].map((n) => (
+          <View
+            key={n}
+            style={{
+              height: 2,
+              flex: 1,
+              backgroundColor: n <= step ? "#edb17c" : "#ffffff18",
+            }}
+          />
+        ))}
+      </View>
       <Pressable
         accessibilityRole="button"
         style={s.subtleButton}
@@ -31,7 +54,14 @@ export function NativeSetup({
       >
         <Copy>← Назад</Copy>
       </Pressable>
-      <Surface>
+      <View
+        style={{
+          padding: step === 2 ? 12 : 24,
+          gap: 20,
+          borderRadius: 20,
+          backgroundColor: step === 3 ? "#222c26" : "#222728",
+        }}
+      >
         <View style={s.source}>
           <Copy>Интерфейс</Copy>
           <NativeIcon kind="arrow" />
@@ -39,7 +69,7 @@ export function NativeSetup({
         </View>
         <Copy style={s.muted}>CH1 · 1,8 Вт / CH2 · 4,2 Вт / CH3 · 2,4 Вт</Copy>
         <Copy style={s.caption}>СХЕМА ДЕМОНСТРАЦИИ, НЕ ПЛАТА ESP32</Copy>
-      </Surface>
+      </View>
       <Copy accessibilityRole="header" style={s.title}>
         {step === 1
           ? "Начните с демо. Подключайте осознанно."
@@ -98,7 +128,7 @@ export function NativeSetup({
         ) : (
           <>
             <NativeField
-              label="Адрес сервера"
+              label="Пример адреса сервера · без подключения"
               keyboardType="url"
               value={address}
               onChange={setAddress}

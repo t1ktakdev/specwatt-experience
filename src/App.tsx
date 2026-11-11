@@ -137,7 +137,11 @@ export default function App() {
     );
     const fn = () => setPage(readPage());
     addEventListener("hashchange", fn);
-    return () => removeEventListener("hashchange", fn);
+    addEventListener("popstate", fn);
+    return () => {
+      removeEventListener("hashchange", fn);
+      removeEventListener("popstate", fn);
+    };
   }, []);
   useEffect(() => {
     localStorage.setItem("specwatt-channels", JSON.stringify(channels));
@@ -149,8 +153,13 @@ export default function App() {
     [],
   );
   function go(p: Page) {
-    location.hash = p;
+    if (p === readPage()) return;
+    history.pushState({ specwatt: true, from: readPage() }, "", `#${p}`);
     setPage(p);
+  }
+  function back() {
+    if (history.state?.specwatt) history.back();
+    else go("home");
   }
   function toast(s: string) {
     setNotice(s);
@@ -198,6 +207,7 @@ export default function App() {
   const model: Model = {
     page,
     go,
+    back,
     channels,
     toggle,
     link,
@@ -229,7 +239,7 @@ export default function App() {
   return (
     <Context.Provider value={model}>
       <div
-        data-version="4"
+        data-version="4.1"
         className={`experience ${gallery ? "is-gallery" : ""} ${new URLSearchParams(location.search).has("designexport") ? "design-export" : ""}`}
       >
         {!gallery && <DesktopSidebar page={page} go={go} />}

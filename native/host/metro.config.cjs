@@ -2,6 +2,8 @@ const path = require("path");
 const fs = require("fs");
 const { getDefaultConfig } = require("expo/metro-config");
 const config = getDefaultConfig(__dirname);
+// Keep export/build memory predictable on development laptops.
+config.maxWorkers = 2;
 const modules = fs.realpathSync(path.join(__dirname, "node_modules"));
 config.watchFolders = [path.resolve(__dirname, "../.."), modules];
 config.resolver.nodeModulesPaths = [modules];

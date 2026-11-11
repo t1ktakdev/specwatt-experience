@@ -1,0 +1,252 @@
+{
+  "page": "69:9",
+  "screens": [
+    {
+      "id": "75:194",
+      "route": "welcome",
+      "key": "welcome",
+      "name": "V4.1 / 01 welcome",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 27,
+        "INSTANCE": 4,
+        "VECTOR": 13,
+        "TEXT": 12
+      },
+      "images": [
+        {
+          "id": "75:196",
+          "name": "Image (Архитектурный холл с бронзовым светильником и тёплым светом на травертине)",
+          "width": 393,
+          "height": 852
+        }
+      ]
+    },
+    {
+      "id": "75:284",
+      "route": "home",
+      "key": "home",
+      "name": "V4.1 / 02 home",
+      "width": 393,
+      "height": 1375.6875,
+      "types": {
+        "FRAME": 138,
+        "TEXT": 49,
+        "VECTOR": 97,
+        "INSTANCE": 6
+      },
+      "images": [
+        {
+          "id": "I75:608;94:24",
+          "name": "ProductVisual",
+          "width": 166.5,
+          "height": 111
+        }
+      ]
+    },
+    {
+      "id": "75:706",
+      "route": "lighting",
+      "key": "lighting",
+      "name": "V4.1 / 03 lighting",
+      "width": 393,
+      "height": 1053.25,
+      "types": {
+        "FRAME": 68,
+        "VECTOR": 72,
+        "TEXT": 22,
+        "INSTANCE": 3
+      },
+      "images": [
+        {
+          "id": "75:725",
+          "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+          "width": 345,
+          "height": 320
+        }
+      ]
+    },
+    {
+      "id": "75:921",
+      "route": "energy",
+      "key": "energy",
+      "name": "V4.1 / 04 energy",
+      "width": 393,
+      "height": 1238.28125,
+      "types": {
+        "FRAME": 99,
+        "TEXT": 54,
+        "INSTANCE": 3,
+        "VECTOR": 66,
+        "GROUP": 5
+      },
+      "images": []
+    },
+    {
+      "id": "75:1199",
+      "route": "devices",
+      "key": "devices",
+      "name": "V4.1 / 05 devices",
+      "width": 393,
+      "height": 1179.515625,
+      "types": {
+        "FRAME": 95,
+        "TEXT": 39,
+        "VECTOR": 51,
+        "INSTANCE": 4
+      },
+      "images": [
+        {
+          "id": "I75:1389;94:77",
+          "name": "ProductVisual",
+          "width": 106,
+          "height": 126
+        }
+      ]
+    },
+    {
+      "id": "75:1487",
+      "route": "device",
+      "key": "device",
+      "name": "V4.1 / 06 device",
+      "width": 393,
+      "height": 1410.0625,
+      "types": {
+        "FRAME": 83,
+        "VECTOR": 56,
+        "TEXT": 30,
+        "INSTANCE": 3
+      },
+      "images": [
+        {
+          "id": "75:1509",
+          "name": "ProductVisual",
+          "width": 345,
+          "height": 298
+        }
+      ]
+    },
+    {
+      "id": "75:1710",
+      "route": "autopilot",
+      "key": "autopilot",
+      "name": "V4.1 / 07 autopilot",
+      "width": 393,
+      "height": 1548.453125,
+      "types": {
+        "FRAME": 110,
+        "TEXT": 39,
+        "VECTOR": 81,
+        "INSTANCE": 5
+      },
+      "images": []
+    },
+    {
+      "id": "75:2002",
+      "route": "planner",
+      "key": "planner",
+      "name": "V4.1 / 08 planner",
+      "width": 393,
+      "height": 1321.28125,
+      "types": {
+        "FRAME": 97,
+        "VECTOR": 44,
+        "TEXT": 56,
+        "INSTANCE": 3,
+        "GROUP": 4
+      },
+      "images": []
+    },
+    {
+      "id": "75:2257",
+      "route": "journal",
+      "key": "journal",
+      "name": "V4.1 / 09 journal",
+      "width": 393,
+      "height": 1290.09375,
+      "types": {
+        "FRAME": 77,
+        "VECTOR": 41,
+        "TEXT": 36,
+        "INSTANCE": 3
+      },
+      "images": []
+    },
+    {
+      "id": "75:2465",
+      "route": "setup",
+      "key": "setup",
+      "name": "V4.1 / 10 setup",
+      "width": 393,
+      "height": 965.75,
+      "types": {
+        "FRAME": 53,
+        "VECTOR": 37,
+        "INSTANCE": 4,
+        "TEXT": 22
+      },
+      "images": []
+    },
+    {
+      "id": "75:2613",
+      "route": "settings",
+      "key": "settings",
+      "name": "V4.1 / 11 settings",
+      "width": 393,
+      "height": 1658.453125,
+      "types": {
+        "FRAME": 125,
+        "VECTOR": 74,
+        "TEXT": 41,
+        "INSTANCE": 5
+      },
+      "images": []
+    },
+    {
+      "id": "75:2922",
+      "route": "protected",
+      "key": "protected",
+      "name": "V4.1 / 12 protected",
+      "width": 393,
+      "height": 1199.328125,
+      "types": {
+        "FRAME": 71,
+        "VECTOR": 39,
+        "TEXT": 26,
+        "INSTANCE": 2
+      },
+      "images": []
+    },
+    {
+      "id": "75:3108",
+      "route": "setup-2",
+      "key": "setup-2",
+      "name": "V4.1 / 13 setup-2",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 39,
+        "VECTOR": 22,
+        "INSTANCE": 4,
+        "TEXT": 13
+      },
+      "images": []
+    },
+    {
+      "id": "75:3218",
+      "route": "setup-3",
+      "key": "setup-3",
+      "name": "V4.1 / 14 setup-3",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 46,
+        "VECTOR": 30,
+        "INSTANCE": 4,
+        "TEXT": 19
+      },
+      "images": []
+    }
+  ]
+}

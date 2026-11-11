@@ -1,0 +1,14 @@
+{
+  "base": "http://127.0.0.1:4174",
+  "checks": [
+    "Overload rejection recorded in session journal; revoking final consent disables autopilot",
+    "Planner edit/reload, nominal timeline, pause, empty day and overload conflict rejection",
+    "Chart is inspectable with keyboard; selection reports interval and energy unit",
+    "Offline device state and accessible power gauge are unknown, not zero or confirmed on",
+    "Reduced-motion preference persists and matches the toggle after reload",
+    "Real controller path explicitly unavailable; demo validates URL but sends no network request",
+    "Two distinct decoded interiors; Home has an editable architectural LED vector instead of the rejected oval object"
+  ],
+  "errors": [],
+  "failedResponses": []
+}

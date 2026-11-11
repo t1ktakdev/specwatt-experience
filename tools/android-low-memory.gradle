@@ -1,0 +1,29 @@
+// Local build option: serialize Ninja compilation on a memory-constrained host.
+// https://cmake.org/cmake/help/latest/prop_gbl/JOB_POOLS.html
+gradle.beforeProject { p ->
+  p.plugins.withId('com.facebook.react') {
+    if (p.findProperty('specwatt.embeddedPreview') == 'true') {
+      p.extensions.getByName('react').debuggableVariants = []
+    }
+    // Shared screen/model sources live outside the Expo host directory.
+    // Include them in Gradle's inputs so an APK cannot reuse stale JS.
+    p.tasks.configureEach { task ->
+      if (task.name.startsWith('createBundle') && task.name.endsWith('JsAndAssets')) {
+        task.inputs.files(p.fileTree(new File(p.rootDir, '../../..')) {
+          include 'native/**/*.tsx', 'native/**/*.ts', 'src/**/*.ts'
+          exclude '**/node_modules/**', '**/node_modules-v4-reference/**', '**/android/**'
+        })
+      }
+    }
+  }
+  ['com.android.application', 'com.android.library'].each { pluginId ->
+    p.plugins.withId(pluginId) {
+      p.extensions.getByName('android').defaultConfig.externalNativeBuild.cmake.arguments.addAll([
+        '-DCMAKE_JOB_POOLS=specwatt_compile=1',
+        '-DCMAKE_JOB_POOL_COMPILE=specwatt_compile',
+        '-DCMAKE_JOB_POOL_LINK=specwatt_compile',
+        '-DCMAKE_OBJECT_PATH_MAX=240'
+      ])
+    }
+  }
+}
