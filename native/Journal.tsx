@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Pressable } from "react-native";
 import {
+  NativeHeader,
   Copy,
   NativeButton,
   NativeIcon,
@@ -8,6 +9,7 @@ import {
   Surface,
   s,
 } from "./components";
+import { NativeRow } from "./controls";
 import type { NativeModel } from "./screens";
 import type { NativeRuntime } from "./useNativeDemo";
 import type { LogEntry } from "../src/types";
@@ -22,9 +24,7 @@ export function NativeJournal(m: NativeModel & NativeRuntime) {
   const visible = m.events.filter((e) => kinds[filter].includes(e.kind));
   return (
     <ScreenShell>
-      <Copy accessibilityRole="header" style={s.title}>
-        Журнал событий
-      </Copy>
+      <NativeHeader title="Журнал событий" back />
       <View
         style={{
           borderTopWidth: 1,
@@ -52,7 +52,13 @@ export function NativeJournal(m: NativeModel & NativeRuntime) {
             accessibilityRole="button"
             accessibilityState={{ selected: f === filter }}
             onPress={() => setFilter(f)}
-            style={s.subtleButton}
+            style={[
+              s.subtleButton,
+              {
+                backgroundColor: f === filter ? "#3b352e" : "transparent",
+                borderColor: f === filter ? "#edb17c66" : "#ffffff18",
+              },
+            ]}
           >
             <Copy>{f}</Copy>
           </Pressable>
@@ -123,8 +129,8 @@ export function NativeJournal(m: NativeModel & NativeRuntime) {
       <Copy style={s.muted}>
         Не подтверждает отправку или получение команд оборудованием.
       </Copy>
-      <NativeButton
-        label="К устройствам"
+      <NativeRow
+        title="К устройствам"
         onPress={() => m.onNavigate("devices")}
       />
     </ScreenShell>

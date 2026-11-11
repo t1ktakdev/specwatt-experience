@@ -1,0 +1,33 @@
+{
+  "package": "dev.specwatt.experience.v411.preview",
+  "apk": "D:\\SpecWATT-Experience-V411\\SpecWATT-Experience-V411-x86_64-debug.apk",
+  "sha256": "5bab99ead1351ff5f23b2465adcb89ba93da0041de8d307be4a1f35ecd0016c4",
+  "installedSha256": "5bab99ead1351ff5f23b2465adcb89ba93da0041de8d307be4a1f35ecd0016c4",
+  "bytes": 57889128,
+  "abi": "x86_64",
+  "androidApi": 35,
+  "androidVersion": "15",
+  "displayPixels": [
+    1080,
+    2340
+  ],
+  "densityDpi": 440,
+  "fontScales": [
+    1.0,
+    1.3,
+    1.5
+  ],
+  "sourceMirrorFilesCompared": 21,
+  "sourceDifferences": [],
+  "base": "183fe52a226ef7870aeccb08c8772cccf24579e3",
+  "sourceCommit": "d458f81955f95ec1160317a0dd986bacc3394885",
+  "edgeToEdge": true,
+  "hardware": "not connected",
+  "systemNavigationLimitation": "API 35 emulator ignores light button tint; dark background and correct requested window appearance verified. Physical devices not tested.",
+  "layoutBaselineApkSha256": "b09fd8faec72e65c6f433973fa4d7b76af03e8c4a54f3d3ad32c5a1c19a4e2c4",
+  "targetedRecapture": [
+    "lighting"
+  ],
+  "nativeInteractionExitCode": 0,
+  "sliderRegressionExitCode": 0
+}

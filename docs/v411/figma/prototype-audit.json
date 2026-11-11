@@ -1,0 +1,2573 @@
+{
+  "file": "CZEjsvoYoT7888KQ0o7B5Q",
+  "frames": [
+    {
+      "id": "91:9",
+      "name": "Prototype / welcome",
+      "fixed": 1
+    },
+    {
+      "id": "91:68",
+      "name": "Prototype / home",
+      "fixed": 2
+    },
+    {
+      "id": "91:363",
+      "name": "Prototype / lighting",
+      "fixed": 2
+    },
+    {
+      "id": "91:528",
+      "name": "Prototype / energy",
+      "fixed": 2
+    },
+    {
+      "id": "91:756",
+      "name": "Prototype / devices",
+      "fixed": 2
+    },
+    {
+      "id": "91:950",
+      "name": "Prototype / device",
+      "fixed": 2
+    },
+    {
+      "id": "91:1123",
+      "name": "Prototype / autopilot",
+      "fixed": 2
+    },
+    {
+      "id": "91:1359",
+      "name": "Prototype / planner",
+      "fixed": 2
+    },
+    {
+      "id": "91:1564",
+      "name": "Prototype / journal",
+      "fixed": 2
+    },
+    {
+      "id": "91:1722",
+      "name": "Prototype / setup",
+      "fixed": 1
+    },
+    {
+      "id": "91:1839",
+      "name": "Prototype / settings",
+      "fixed": 2
+    },
+    {
+      "id": "91:2085",
+      "name": "Prototype / protected",
+      "fixed": 2
+    },
+    {
+      "id": "91:2224",
+      "name": "Prototype / setup-2",
+      "fixed": 1
+    },
+    {
+      "id": "91:2303",
+      "name": "Prototype / setup-3",
+      "fixed": 1
+    },
+    {
+      "id": "91:2403",
+      "name": "Prototype / state-0",
+      "fixed": 2
+    },
+    {
+      "id": "91:2715",
+      "name": "Prototype / state-1",
+      "fixed": 2
+    },
+    {
+      "id": "91:3017",
+      "name": "Prototype / state-2",
+      "fixed": 2
+    },
+    {
+      "id": "91:3321",
+      "name": "Prototype / state-3",
+      "fixed": 2
+    },
+    {
+      "id": "91:3486",
+      "name": "Prototype / state-4",
+      "fixed": 2
+    },
+    {
+      "id": "91:3659",
+      "name": "Prototype / state-5",
+      "fixed": 2
+    },
+    {
+      "id": "91:3788",
+      "name": "Prototype / state-6",
+      "fixed": 2
+    },
+    {
+      "id": "91:4024",
+      "name": "Prototype / state-7",
+      "fixed": 2
+    },
+    {
+      "id": "91:4163",
+      "name": "Prototype / state-overload",
+      "fixed": 0
+    },
+    {
+      "id": "91:4182",
+      "name": "Prototype / energy-day",
+      "fixed": 2
+    },
+    {
+      "id": "91:4425",
+      "name": "Prototype / energy-month",
+      "fixed": 2
+    },
+    {
+      "id": "91:4647",
+      "name": "Prototype / planner-saved",
+      "fixed": 2
+    },
+    {
+      "id": "91:4875",
+      "name": "Prototype / planner-editing",
+      "fixed": 3
+    },
+    {
+      "id": "91:5187",
+      "name": "Prototype / planner-conflict",
+      "fixed": 3
+    },
+    {
+      "id": "91:5502",
+      "name": "Prototype / permission-granted",
+      "fixed": 2
+    }
+  ],
+  "links": [
+    {
+      "from": "91:9",
+      "node": "91:25",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:9",
+      "node": "91:26",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:9",
+      "node": "91:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1722",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:78",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:141",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:142",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:154",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "I91:160;94:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:950",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "I91:160;94:35",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4163",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "I91:161;94:57",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:162",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:163",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:186",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:204",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "91:217",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "I91:233;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "I91:233;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:68",
+      "node": "I91:233;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "91:401",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "91:465",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "91:466",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "I91:480;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "I91:480;11:58",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "I91:480;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:363",
+      "node": "I91:480;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "91:540",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4182",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "91:544",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4425",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "91:634",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "91:653",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "91:679",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:950",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "I91:708;11:86",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "I91:708;11:91",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:528",
+      "node": "I91:708;11:109",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "91:768",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1839",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "I91:810;94:80",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:950",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "I91:810;94:87",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4163",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "I91:811;94:110",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "91:812",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "91:813",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "91:836",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1722",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "91:837",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1722",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "I91:851;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "I91:851;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:756",
+      "node": "I91:851;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "91:954",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:950",
+      "node": "91:964",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1839",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "91:988",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4163",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "91:1016",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "91:1031",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "91:1054",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "I91:1075;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "I91:1075;11:58",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "I91:1075;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:950",
+      "node": "I91:1075;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "91:1135",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1839",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "91:1152",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "91:1171",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "91:1189",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "91:1262",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "91:1263",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "I91:1307;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "I91:1307;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1123",
+      "node": "I91:1307;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "91:1363",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:1359",
+      "node": "91:1376",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "91:1480",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "91:1494",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "91:1495",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "I91:1516;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "I91:1516;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "I91:1516;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1359",
+      "node": "I91:1516;11:140",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "91:1568",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:1564",
+      "node": "91:1623",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "91:1663",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "91:1664",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "I91:1674;11:20",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "I91:1674;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "I91:1674;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1564",
+      "node": "I91:1674;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1722",
+      "node": "91:1725",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:9",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1722",
+      "node": "91:1803",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2224",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1722",
+      "node": "91:1804",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2224",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1722",
+      "node": "91:1805",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "91:1843",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:1839",
+      "node": "91:1891",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "91:1926",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "91:1927",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1722",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "91:1947",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "91:1976",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "I91:2026;11:20",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "I91:2026;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "I91:2026;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:1839",
+      "node": "I91:2026;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2085",
+      "node": "91:2089",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:2085",
+      "node": "I91:2178;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2085",
+      "node": "I91:2178;11:58",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2085",
+      "node": "I91:2178;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2085",
+      "node": "I91:2178;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2224",
+      "node": "91:2227",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1722",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2224",
+      "node": "91:2272",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2303",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2224",
+      "node": "91:2273",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2303",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2303",
+      "node": "91:2306",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2224",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2303",
+      "node": "91:2372",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2303",
+      "node": "91:2373",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2413",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2442",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2493",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2494",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2506",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "I91:2512;94:133",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:950",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "I91:2513;94:163",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2514",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2515",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2538",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2556",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "91:2569",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "I91:2585;11:20",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "I91:2585;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "I91:2585;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2403",
+      "node": "I91:2585;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2725",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2748",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2799",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2800",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2812",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "I91:2818;94:133",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:950",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "I91:2819;94:163",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2820",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2821",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2844",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2862",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "91:2875",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "I91:2891;11:20",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "I91:2891;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "I91:2891;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:2715",
+      "node": "I91:2891;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3027",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3052",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3103",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3104",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3116",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "I91:3122;94:133",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:950",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "I91:3123;94:163",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3125",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:363",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3148",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3166",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "91:3179",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:2085",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "I91:3195;11:20",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "I91:3195;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "I91:3195;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3017",
+      "node": "I91:3195;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "91:3359",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "91:3423",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "91:3424",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "I91:3438;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "I91:3438;11:58",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "I91:3438;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3321",
+      "node": "I91:3438;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "91:3490",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:3486",
+      "node": "91:3500",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1839",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "91:3524",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "91:3590",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1564",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "I91:3611;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "I91:3611;11:58",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "I91:3611;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3486",
+      "node": "I91:3611;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3659",
+      "node": "91:3663",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:3659",
+      "node": "91:3729",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3659",
+      "node": "91:3730",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3659",
+      "node": "I91:3740;11:20",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3659",
+      "node": "I91:3740;11:27",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3659",
+      "node": "I91:3740;11:34",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3659",
+      "node": "I91:3740;11:43",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "91:3800",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1839",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "91:3817",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "91:3836",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "91:3854",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "91:3927",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "91:3928",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "I91:3972;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "I91:3972;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "I91:3972;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:3788",
+      "node": "I91:3972;11:140",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4024",
+      "node": "91:4028",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:4024",
+      "node": "I91:4117;11:53",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4024",
+      "node": "I91:4117;11:58",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4024",
+      "node": "I91:4117;11:67",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4024",
+      "node": "I91:4117;11:76",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4163",
+      "node": "91:4175",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:4163",
+      "node": "91:4176",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:4182",
+      "node": "91:4196",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4182",
+      "node": "91:4198",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4425",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4182",
+      "node": "I91:4377;11:86",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4182",
+      "node": "I91:4377;11:91",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4182",
+      "node": "I91:4377;11:98",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4182",
+      "node": "I91:4377;11:109",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4425",
+      "node": "91:4437",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4182",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4425",
+      "node": "91:4439",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4425",
+      "node": "I91:4599;11:86",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4425",
+      "node": "I91:4599;11:91",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4425",
+      "node": "I91:4599;11:98",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4425",
+      "node": "I91:4599;11:109",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "91:4651",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:4647",
+      "node": "91:4664",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "91:4774",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "91:4793",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "91:4796",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "I91:4825;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "I91:4825;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "I91:4825;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4647",
+      "node": "I91:4825;11:140",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "91:4879",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:4875",
+      "node": "91:5021",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "I91:5053;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "I91:5053;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "I91:5053;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "I91:5053;11:140",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "91:5061",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:4875",
+      "node": "91:5131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4647",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:4875",
+      "node": "91:5132",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4647",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "91:5191",
+      "action": "BACK",
+      "navigation": null,
+      "to": null,
+      "targetType": null,
+      "valid": true,
+      "resetScrollPosition": null
+    },
+    {
+      "from": "91:5187",
+      "node": "91:5204",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "91:5314",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "91:5333",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "91:5336",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:4875",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "I91:5365;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "I91:5365;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "I91:5365;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5187",
+      "node": "I91:5365;11:140",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "91:5514",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1839",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "91:5531",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "91:5550",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:12",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "91:5568",
+      "action": "NODE",
+      "navigation": "CHANGE_TO",
+      "to": "86:9",
+      "targetType": "COMPONENT",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "91:5641",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "91:5642",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1359",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "I91:5686;11:119",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:68",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "I91:5686;11:124",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:756",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "I91:5686;11:131",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:528",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    },
+    {
+      "from": "91:5502",
+      "node": "I91:5686;11:140",
+      "action": "NODE",
+      "navigation": "NAVIGATE",
+      "to": "91:1123",
+      "targetType": "FRAME",
+      "valid": true,
+      "resetScrollPosition": true
+    }
+  ],
+  "invalid": [],
+  "playback": {
+    "tested": true,
+    "flows": [
+      "Welcome > Home > Devices > Device > 8.4 W refusal > Device > Back to Devices",
+      "Autopilot > scroll > Planner > first schedule > editor > saved",
+      "Settings > ESP32 Setup > step 2 > step 3 > Home, Back 3 > 2",
+      "Energy day > month > week"
+    ],
+    "limits": "Figma inputs and conditional permission computation are illustrative; real editing and consent checked in React and Android"
+  }
+}

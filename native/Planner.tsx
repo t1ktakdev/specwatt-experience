@@ -11,6 +11,7 @@ import {
 import Svg, { Path, Text as SvgText, Rect } from "react-native-svg";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
+  NativeHeader,
   Copy,
   NativeButton,
   NativeIcon,
@@ -18,7 +19,7 @@ import {
   Surface,
   s,
 } from "./components";
-import { NativeField, NativeToggle } from "./controls";
+import { NativeField, NativeToggle, NativeRow } from "./controls";
 import {
   loadSegments,
   previewPlan,
@@ -44,7 +45,7 @@ function NativeLoad({ plans, day }: { plans: Schedule[]; day: string }) {
       </Copy>
       <Svg
         width="100%"
-        height={180}
+        height={160}
         viewBox="0 0 336 156"
         fontFamily="Manrope"
         accessible
@@ -100,6 +101,70 @@ function NativeLoad({ plans, day }: { plans: Schedule[]; day: string }) {
           </SvgText>
         ))}
       </Svg>
+      <View style={{ gap: 6, paddingBottom: 10 }}>
+        {(["CH1", "CH2", "CH3"] as const).map((id) => (
+          <View
+            key={id}
+            style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
+          >
+            <Copy
+              style={[
+                s.caption,
+                {
+                  width: 48,
+                  letterSpacing: 0,
+                  color: id === "CH3" ? "#b8c9b0" : "#b8bdb5",
+                },
+              ]}
+            >
+              {id}
+            </Copy>
+            <View
+              style={{
+                flex: 1,
+                height: 7,
+                backgroundColor: "#ffffff08",
+                borderRadius: 3,
+                overflow: "hidden",
+              }}
+            >
+              {id === "CH3" ? (
+                <View
+                  style={{
+                    height: 7,
+                    width: "100%",
+                    backgroundColor: "#b8c9b055",
+                  }}
+                />
+              ) : (
+                plans
+                  .filter(
+                    (p) =>
+                      p.enabled && p.channel === id && p.days.includes(day),
+                  )
+                  .map((p) => {
+                    const minutes = (t: string) =>
+                      Number(t.slice(0, 2)) * 60 + Number(t.slice(3));
+                    const start = minutes(p.time),
+                      end = minutes(p.end);
+                    return (
+                      <View
+                        key={p.id}
+                        style={{
+                          position: "absolute",
+                          height: 7,
+                          left: `${(start / 1440) * 100}%`,
+                          width: `${((end - start) / 1440) * 100}%`,
+                          backgroundColor: "#edb17c",
+                        }}
+                      />
+                    );
+                  })
+              )}
+            </View>
+          </View>
+        ))}
+      </View>
       <Copy style={s.muted}>
         CH3 · 2,4 Вт постоянно. Только номинальный расчёт; исполнение не
         подключено.
@@ -140,10 +205,19 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
   return (
     <>
       <ScreenShell>
-        <Copy accessibilityRole="header" style={s.title}>
-          План нагрузки
-        </Copy>
-        <NativeButton label="Новое расписание" onPress={() => open()} />
+        <NativeHeader title="План нагрузки" back />
+        <Copy style={s.muted}>Свой ритм света. В пределах 7 Вт.</Copy>
+        <View style={[s.source, { alignItems: "center" }]}>
+          <Copy style={s.caption}>НЕДЕЛЯ · ДЕМО-ПЛАН</Copy>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Новое расписание"
+            style={s.subtleButton}
+            onPress={() => open()}
+          >
+            <Copy style={{ color: "#edb17c" }}>+ Новое</Copy>
+          </Pressable>
+        </View>
         <View style={{ flexDirection: "row", gap: 3 }}>
           {weekdays.map((d) => (
             <Pressable
@@ -157,12 +231,15 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
                   flex: 1,
                   paddingHorizontal: 0,
                   alignItems: "center",
+                  backgroundColor: d === day ? "#edb17c" : "#ffffff04",
                   borderColor: d === day ? "#edb17c" : "#ffffff18",
                 },
               ]}
               onPress={() => setDay(d)}
             >
-              <Copy>{d}</Copy>
+              <Copy style={{ color: d === day ? "#252623" : "#d9dbd3" }}>
+                {d}
+              </Copy>
             </Pressable>
           ))}
         </View>
@@ -171,9 +248,20 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
         </Surface>
         <Copy style={s.section}>Ваши расписания</Copy>
         {!m.plans.some((p) => p.days.includes(day)) && (
-          <Copy style={s.muted}>
-            На этот день интервалов нет. CH3 останется вне расписаний.
-          </Copy>
+          <Surface>
+            <NativeIcon kind="auto" size={26} />
+            <Copy style={s.section}>Освободите вечер для себя.</Copy>
+            <Copy style={s.muted}>
+              На этот день интервалов нет. CH3 останется вне расписаний.
+            </Copy>
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => open()}
+              style={[s.subtleButton, { alignItems: "center", marginTop: 4 }]}
+            >
+              <Copy>Первое расписание</Copy>
+            </Pressable>
+          </Surface>
         )}
         {m.plans
           .filter((p) => p.days.includes(day))
@@ -191,10 +279,7 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
                   if (e) setError(e);
                 }}
               />
-              <NativeButton
-                label={`Изменить ${p.name}`}
-                onPress={() => open(p)}
-              />
+              <NativeRow title={`Изменить ${p.name}`} onPress={() => open(p)} />
               <Pressable
                 accessibilityRole="button"
                 style={s.subtleButton}

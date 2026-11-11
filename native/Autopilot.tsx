@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { totalWatts } from "../src/model";
 import { NativeIcon } from "./components";
 import {
+  NativeHeader,
   Copy,
   NativeButton,
   ScreenShell,
@@ -18,10 +19,7 @@ export function NativeAutopilot(m: NativeModel & NativeRuntime) {
   const allowed = m.allow.CH2 && m.link === "online" && projected <= 7;
   return (
     <ScreenShell>
-      <SourceLabel link={m.link} />
-      <Copy accessibilityRole="header" style={s.title}>
-        Правила света
-      </Copy>
+      <NativeHeader title="Правила света" />
       <View
         style={{
           borderLeftWidth: 2,
@@ -32,8 +30,8 @@ export function NativeAutopilot(m: NativeModel & NativeRuntime) {
       >
         <Copy style={s.caption}>ДЕМО-АВТОПИЛОТ</Copy>
         <NativeToggle
+          emphasis
           label={m.auto ? "Правила разрешены" : "Сначала — разрешение"}
-          detail={m.auto ? "Правила разрешены" : "Сначала — разрешение"}
           value={m.auto}
           onChange={m.changeAuto}
           disabled={m.link !== "online"}
@@ -135,8 +133,8 @@ export function NativeAutopilot(m: NativeModel & NativeRuntime) {
       <Copy style={s.muted}>
         Пример не исполняется. CH3 исключён из правил.
       </Copy>
-      <NativeButton
-        label="План нагрузки"
+      <NativeRow
+        title="План нагрузки"
         onPress={() => m.onNavigate("planner")}
       />
     </ScreenShell>

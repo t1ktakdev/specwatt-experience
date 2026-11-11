@@ -34,7 +34,17 @@ export function NativeSetup({
   }, [step, onNavigate]);
   return (
     <ScreenShell>
-      <Copy style={s.caption}>SPECWATT / 0{step} ИЗ 03</Copy>
+      <View style={[s.source, { alignItems: "center" }]}>
+        <Copy style={s.caption}>SPECWATT / 0{step} ИЗ 03</Copy>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Назад"
+          style={s.iconButton}
+          onPress={() => (step > 1 ? setStep(step - 1) : onNavigate("welcome"))}
+        >
+          <NativeIcon kind="back" color="#d9dbd3" size={20} />
+        </Pressable>
+      </View>
       <View style={{ flexDirection: "row", gap: 4 }}>
         {[1, 2, 3].map((n) => (
           <View
@@ -47,27 +57,61 @@ export function NativeSetup({
           />
         ))}
       </View>
-      <Pressable
-        accessibilityRole="button"
-        style={s.subtleButton}
-        onPress={() => (step > 1 ? setStep(step - 1) : onNavigate("welcome"))}
-      >
-        <Copy>← Назад</Copy>
-      </Pressable>
       <View
         style={{
-          padding: step === 2 ? 12 : 24,
-          gap: 20,
+          padding: step === 2 ? 12 : 20,
+          gap: 12,
           borderRadius: 20,
           backgroundColor: step === 3 ? "#222c26" : "#222728",
         }}
       >
-        <View style={s.source}>
-          <Copy>Интерфейс</Copy>
-          <NativeIcon kind="arrow" />
-          <Copy>Демо-модель</Copy>
+        <View style={[s.source, { alignItems: "center" }]}>
+          <View style={{ alignItems: "center", gap: 6 }}>
+            <NativeIcon kind="grid" size={step === 2 ? 24 : 38} />
+            <Copy style={s.muted}>Интерфейс</Copy>
+          </View>
+          <NativeIcon kind={step === 3 ? "check" : "arrow"} />
+          <View style={{ alignItems: "center", gap: 6 }}>
+            <NativeIcon
+              kind="shield"
+              size={step === 2 ? 24 : 38}
+              color="#b8c9b0"
+            />
+            <Copy style={s.muted}>Демо-модель</Copy>
+          </View>
         </View>
-        <Copy style={s.muted}>CH1 · 1,8 Вт / CH2 · 4,2 Вт / CH3 · 2,4 Вт</Copy>
+        <View style={{ flexDirection: "row", gap: 12 }}>
+          {[
+            ["CH1", "1,8 Вт"],
+            ["CH2", "4,2 Вт"],
+            ["CH3", "2,4 Вт"],
+          ].map(([id, watts]) => (
+            <View
+              key={id}
+              style={{
+                flex: 1,
+                gap: 3,
+                borderLeftWidth: 1,
+                borderColor: "#ffffff18",
+                paddingLeft: 8,
+              }}
+            >
+              <Copy
+                style={[
+                  s.caption,
+                  {
+                    letterSpacing: 0,
+                    color: id === "CH3" ? "#b8c9b0" : "#d9dbd3",
+                  },
+                ]}
+              >
+                {id}
+                {id === "CH3" ? " · защита" : ""}
+              </Copy>
+              <Copy style={s.muted}>{watts}</Copy>
+            </View>
+          ))}
+        </View>
         <Copy style={s.caption}>СХЕМА ДЕМОНСТРАЦИИ, НЕ ПЛАТА ESP32</Copy>
       </View>
       <Copy accessibilityRole="header" style={s.title}>

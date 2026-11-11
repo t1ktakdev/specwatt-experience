@@ -7,9 +7,10 @@ import {
   StatusBar,
   Pressable,
   View,
+  useWindowDimensions,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Copy, NativeIcon, s } from "./components";
+import { Copy, NativeIcon, NativeNavigation, s } from "./components";
 import {
   NativeWelcome,
   NativeHome,
@@ -37,6 +38,8 @@ export function NativeExperience({
   assets: SceneAssets;
   initialRoute?: NativeRoute;
 }) {
+  const { fontScale } = useWindowDimensions();
+  const largeType = fontScale > 1.2;
   const [route, setRoute] = useState<NativeRoute>(initialRoute),
     [notice, setNotice] = useState(""),
     [setupStep, setSetupStep] = useState(1),
@@ -62,7 +65,7 @@ export function NativeExperience({
       if (!active || !url) return;
       try {
         const parsed = new URL(url);
-        if (parsed.protocol !== "specwatt-experience-v41:") return;
+        if (parsed.protocol !== "specwatt-experience-v411:") return;
         const target = parsed.hostname || parsed.pathname.replace(/^\//, "");
         if (!Object.hasOwn(pageLabels, target)) return;
         history.current = [];
@@ -155,117 +158,73 @@ export function NativeExperience({
         edges={["top", "bottom"]}
       >
         <StatusBar barStyle="light-content" />
-        {route !== "welcome" && route !== "setup" && (
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              paddingHorizontal: 20,
-              paddingTop: 4,
-              gap: 10,
-            }}
-          >
-            {[
-              "lighting",
-              "device",
-              "protected",
-              "planner",
-              "journal",
-              "settings",
-            ].includes(route) ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Назад"
-                onPress={back}
-                style={s.iconButton}
+        <NativeNavigation.Provider value={{ go, back }}>
+          <Animated.View style={{ flex: 1, opacity }} key={route}>
+            {views[route]}
+          </Animated.View>
+          {notice && (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`${notice} Нажмите, чтобы закрыть уведомление`}
+              accessibilityLiveRegion="polite"
+              onPress={() => setNotice("")}
+              style={{ padding: 16, backgroundColor: "#36312a" }}
+            >
+              <Copy>{notice}</Copy>
+            </Pressable>
+          )}
+          {route !== "welcome" && route !== "setup" && (
+            <View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  padding: 4,
+                  marginHorizontal: 12,
+                  marginVertical: 6,
+                  borderWidth: 1,
+                  borderRadius: 24,
+                  backgroundColor: "#262b2c",
+                  borderColor: "#ffffff18",
+                }}
               >
-                <NativeIcon kind="back" color={c.textPrimary} />
-              </Pressable>
-            ) : null}
-            <View style={{ flex: 1 }} />
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => go("journal")}
-              accessibilityLabel="Журнал событий"
-              style={s.iconButton}
-            >
-              <NativeIcon kind="bell" color={c.textSecondary} size={21} />
-            </Pressable>
-            <Pressable
-              accessibilityRole="button"
-              onPress={() => go("settings")}
-              accessibilityLabel="Настройки"
-              style={s.iconButton}
-            >
-              <NativeIcon kind="settings" color={c.textSecondary} size={21} />
-            </Pressable>
-          </View>
-        )}
-        <Animated.View style={{ flex: 1, opacity }} key={route}>
-          {views[route]}
-        </Animated.View>
-        {notice && (
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={`${notice} Нажмите, чтобы закрыть уведомление`}
-            accessibilityLiveRegion="polite"
-            onPress={() => setNotice("")}
-            style={{ padding: 16, backgroundColor: "#36312a" }}
-          >
-            <Copy>{notice}</Copy>
-          </Pressable>
-        )}
-        {route !== "welcome" && route !== "setup" && (
-          <View>
-            <View
-              style={{
-                flexDirection: "row",
-                padding: 8,
-                marginHorizontal: 14,
-                marginVertical: 8,
-                borderWidth: 1,
-                borderRadius: 24,
-                backgroundColor: "#262b2c",
-                borderColor: "#ffffff18",
-              }}
-            >
-              {(["home", "devices", "energy", "autopilot"] as const).map(
-                (r, i) => (
-                  <Pressable
-                    key={r}
-                    accessibilityRole="tab"
-                    accessibilityState={{ selected: active === r }}
-                    style={{
-                      flex: 1,
-                      minHeight: 56,
-                      gap: 5,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                    onPress={() => go(r)}
-                  >
-                    <NativeIcon
-                      kind={(["home", "grid", "energy", "auto"] as const)[i]}
-                      color={active === r ? c.accentAmber : c.textSecondary}
-                      size={23}
-                    />
-                    <Copy
-                      numberOfLines={1}
-                      adjustsFontSizeToFit
-                      minimumFontScale={0.8}
+                {(["home", "devices", "energy", "autopilot"] as const).map(
+                  (r, i) => (
+                    <Pressable
+                      key={r}
+                      accessibilityRole="tab"
+                      accessibilityState={{ selected: active === r }}
                       style={{
-                        fontSize: 11,
-                        color: active === r ? c.accentAmber : c.textSecondary,
+                        flexBasis: largeType ? "50%" : "25%",
+                        flexDirection: largeType ? "row" : "column",
+                        minHeight: largeType ? 48 : 52,
+                        gap: 5,
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
+                      onPress={() => go(r)}
                     >
-                      {["Главная", "Устройства", "Энергия", "Авто"][i]}
-                    </Copy>
-                  </Pressable>
-                ),
-              )}
+                      <NativeIcon
+                        kind={(["home", "grid", "energy", "auto"] as const)[i]}
+                        color={active === r ? c.accentAmber : c.textSecondary}
+                        size={23}
+                      />
+                      <Copy
+                        style={{
+                          fontSize: 11,
+                          lineHeight: 16,
+                          color: active === r ? c.accentAmber : c.textSecondary,
+                        }}
+                      >
+                        {["Главная", "Устройства", "Энергия", "Авто"][i]}
+                      </Copy>
+                    </Pressable>
+                  ),
+                )}
+              </View>
             </View>
-          </View>
-        )}
+          )}
+        </NativeNavigation.Provider>
       </SafeAreaView>
     </SafeAreaProvider>
   );

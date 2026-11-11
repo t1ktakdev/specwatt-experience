@@ -1,0 +1,13 @@
+  Window #7 Window{d9cde62 u0 dev.specwatt.experience.v411.preview/dev.specwatt.experience.v411.preview.MainActivity}:
+    mDisplayId=0 rootTaskId=56 mSession=Session{bbd39a1 5962:u0a10151} mClient=android.os.BinderProxy@c51592d
+    mOwnerUid=10151 showForAllUsers=false package=dev.specwatt.experience.v411.preview appop=NONE
+    mAttrs={(0,0)(fillxfill) sim={adjust=resize} layoutInDisplayCutoutMode=always ty=BASE_APPLICATION wanim=0x1030309
+      fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+      pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+      bhv=DEFAULT
+      fitSides=
+      frameRateBoostOnTouch=true
+      dvrrWindowFrameRateHint=true}
+    Requested w=1080 h=2340 mLayoutSeq=1392
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    

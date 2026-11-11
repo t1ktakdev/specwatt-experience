@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { NavigationBar } from "expo-navigation-bar";
 import { useFonts } from "expo-font";
 import { NativeExperience } from "../Experience";
 export default function App() {
@@ -15,13 +16,17 @@ export default function App() {
       </View>
     );
   return (
-    <NativeExperience
-      assets={{
-        welcome: require("../../public/assets/welcome-architecture.webp"),
-        lighting: require("../../public/assets/lighting-bedroom.webp"),
-        pendantOn: require("../../public/assets/pendant-concept-on.webp"),
-        pendantOff: require("../../public/assets/pendant-concept-off.webp"),
-      }}
-    />
+    <>
+      {/* SDK 58.0.4 maps light to light buttons; the installed native implementation is authoritative. */}
+      <NavigationBar style="light" />
+      <NativeExperience
+        assets={{
+          welcome: require("../../public/assets/welcome-architecture.webp"),
+          lighting: require("../../public/assets/lighting-bedroom.webp"),
+          pendantOn: require("../../public/assets/pendant-concept-on.webp"),
+          pendantOff: require("../../public/assets/pendant-concept-off.webp"),
+        }}
+      />
+    </>
   );
 }
