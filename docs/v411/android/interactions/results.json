@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "8.4 W rejected in native UI; CH1 remains off; no CH3 switch",
+    "Refusal is recorded; Android hardware Back returns to Devices",
+    "Offline native budget is unknown and all visible channel switches are disabled",
+    "Native numeric keyboard formats 2359 as 23:59; Back dismisses keyboard and retains draft",
+    "Android hardware Back moves Setup 3 в†’ 2",
+    "Welcome CTA opens Home",
+    "Autopilot caption appears once; master refuses without consent; CH2 consent enables it; final revocation disables it",
+    "Lighting presets change only the conceptual image brightness (35/100 percent)",
+    "Energy period and interval controls work; consumer row opens Protected with no switch",
+    "Deep-linked detail header Back falls back to Devices",
+    "Native planner saves a valid 19:00вЂ“22:30 CH2 plan and deletes it from session state",
+    "Hardware setup is explicitly unavailable; continuation stays in a local demo and reaches Home",
+    "At fontScale 1.5 all four navigation tabs remain usable; planner numeric keyboard and reachable Save work after real scrolling"
+  ],
+  "apkSha256": "5bab99ead1351ff5f23b2465adcb89ba93da0041de8d307be4a1f35ecd0016c4",
+  "exitCode": 0,
+  "fontScaleRestored": "1.0"
+}

@@ -1,0 +1,27 @@
+{
+  "file": "CZEjsvoYoT7888KQ0o7B5Q",
+  "frame": "75:2002",
+  "card": "75:2130",
+  "wrapper": "75:2139",
+  "button": "75:2140",
+  "wrapperWidth": 305,
+  "gridColumnSpan": 2,
+  "buttonLayoutSizing": "FILL",
+  "buttonInCard": {
+    "x": 21,
+    "y": 114.875,
+    "width": 305,
+    "height": 44
+  },
+  "cardInFrame": {
+    "x": 23,
+    "y": 950.3125,
+    "width": 347,
+    "height": 183.875
+  },
+  "before": {
+    "wrapperWidth": 100,
+    "buttonX": -102.5,
+    "buttonWidth": 305
+  }
+}

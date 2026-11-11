@@ -1,0 +1,14 @@
+{
+  "buttonInCard": {
+    "x": 21,
+    "y": 114.875,
+    "width": 305,
+    "height": 44
+  },
+  "cardInFrame": {
+    "x": 23,
+    "y": 945.40625,
+    "width": 347,
+    "height": 183.875
+  }
+}
