@@ -111,7 +111,7 @@ function NativeLoad({ plans, day }: { plans: Schedule[]; day: string }) {
               style={[
                 s.caption,
                 {
-                  width: 32,
+                  width: 48,
                   letterSpacing: 0,
                   color: id === "CH3" ? "#b8c9b0" : "#b8bdb5",
                 },

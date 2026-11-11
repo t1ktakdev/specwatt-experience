@@ -80,7 +80,38 @@ export function NativeSetup({
             <Copy style={s.muted}>Демо-модель</Copy>
           </View>
         </View>
-        <Copy style={s.muted}>CH1 · 1,8 Вт / CH2 · 4,2 Вт / CH3 · 2,4 Вт</Copy>
+        <View style={{ flexDirection: "row", gap: 12 }}>
+          {[
+            ["CH1", "1,8 Вт"],
+            ["CH2", "4,2 Вт"],
+            ["CH3", "2,4 Вт"],
+          ].map(([id, watts]) => (
+            <View
+              key={id}
+              style={{
+                flex: 1,
+                gap: 3,
+                borderLeftWidth: 1,
+                borderColor: "#ffffff18",
+                paddingLeft: 8,
+              }}
+            >
+              <Copy
+                style={[
+                  s.caption,
+                  {
+                    letterSpacing: 0,
+                    color: id === "CH3" ? "#b8c9b0" : "#d9dbd3",
+                  },
+                ]}
+              >
+                {id}
+                {id === "CH3" ? " · защита" : ""}
+              </Copy>
+              <Copy style={s.muted}>{watts}</Copy>
+            </View>
+          ))}
+        </View>
         <Copy style={s.caption}>СХЕМА ДЕМОНСТРАЦИИ, НЕ ПЛАТА ESP32</Copy>
       </View>
       <Copy accessibilityRole="header" style={s.title}>

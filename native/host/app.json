@@ -11,11 +11,12 @@
       [
         "expo-navigation-bar",
         {
-          "enforceContrast": false,
+          "enforceContrast": true,
           "hidden": false,
           "style": "light"
         }
-      ]
+      ],
+      "./plugins/with-dark-system-bars.cjs"
     ],
     "android": {
       "package": "dev.specwatt.experience.v411.preview"

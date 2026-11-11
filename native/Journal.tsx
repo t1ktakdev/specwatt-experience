@@ -9,6 +9,7 @@ import {
   Surface,
   s,
 } from "./components";
+import { NativeRow } from "./controls";
 import type { NativeModel } from "./screens";
 import type { NativeRuntime } from "./useNativeDemo";
 import type { LogEntry } from "../src/types";
@@ -128,8 +129,8 @@ export function NativeJournal(m: NativeModel & NativeRuntime) {
       <Copy style={s.muted}>
         Не подтверждает отправку или получение команд оборудованием.
       </Copy>
-      <NativeButton
-        label="К устройствам"
+      <NativeRow
+        title="К устройствам"
         onPress={() => m.onNavigate("devices")}
       />
     </ScreenShell>
