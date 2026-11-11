@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { formatTimeInput } from "../lib/time-input";
 import {
   ChevronRight,
   ShieldCheck,
@@ -321,18 +322,33 @@ export function Planner({ preview }: { preview?: PlannerPreview }) {
               <label className="form-label">
                 Включить в
                 <input
-                  type="time"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="ЧЧ:ММ"
+                  pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]"
+                  maxLength={5}
                   value={draft.time}
-                  onChange={(e) => setDraft({ ...draft, time: e.target.value })}
+                  onChange={(e) =>
+                    setDraft({
+                      ...draft,
+                      time: formatTimeInput(e.target.value),
+                    })
+                  }
                   required
                 />
               </label>
               <label className="form-label">
                 Выключить в
                 <input
-                  type="time"
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="ЧЧ:ММ"
+                  pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]"
+                  maxLength={5}
                   value={draft.end}
-                  onChange={(e) => setDraft({ ...draft, end: e.target.value })}
+                  onChange={(e) =>
+                    setDraft({ ...draft, end: formatTimeInput(e.target.value) })
+                  }
                   required
                 />
               </label>

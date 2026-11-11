@@ -20,6 +20,7 @@ import { ChannelId, nominal } from "../model";
 import { fmt } from "../lib/design";
 import { Page } from "../types";
 import { useApp } from "../state/context";
+import { ProductVisual } from "./ProductVisual";
 
 export function Icon({
   icon: I,
@@ -110,14 +111,14 @@ export function Header({
   action?: "settings" | "journal" | "none";
   back?: boolean;
 }) {
-  const { go } = useApp();
+  const { go, back: goBack } = useApp();
   return (
     <header className={`page-header ${back ? "with-back" : ""}`}>
       <div>
         {back ? (
-          <button className="back-label" onClick={() => go("home")}>
+          <button className="back-label" onClick={goBack}>
             <Icon icon={ArrowLeft} size={20} />
-            <span>Обзор</span>
+            <span>Назад</span>
           </button>
         ) : (
           <span className="eyebrow">
@@ -364,7 +365,11 @@ export function DeviceCard({
           onClick={() => go(id === "CH2" ? "lighting" : "device")}
           aria-label={`Открыть ${title}`}
         >
-          <Icon icon={icon} size={29} />
+          {id === "CH1" || id === "CH2" ? (
+            <ProductVisual id={id} on={on} known={link === "online"} />
+          ) : (
+            <Icon icon={icon} size={29} />
+          )}
         </button>
         <span className="channel-label">{id}</span>
       </div>

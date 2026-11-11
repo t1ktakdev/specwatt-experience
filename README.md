@@ -1,3 +1,16 @@
+# SpecWATT Experience V4.1 Candidate
+
+Отдельный художественный цикл от PR #2 (`2b6c6d9`): 12 маршрутов, три шага подключения и 15 состояний обновлены в React, редактируемой Figma и React Native. CH3 защищён, лимит 7 Вт сохранён; основной SpecWATT, V3 и PR #2 не изменены. Публикация не выполнялась.
+
+- [Реальные V4 → V4.1 React ↔ Figma сравнения и Android](docs/v41/review.html)
+- [Пять проходов QA, решения и ограничения](docs/v41/DELIVERY.md)
+- [Figma Candidate](https://www.figma.com/design/CZEjsvoYoT7888KQ0o7B5Q?node-id=69-9)
+- [Актуальные узлы и исходные компоненты](docs/COMPONENT-MAP.md)
+
+Локальный запуск: `npm ci`, затем `npm run dev -- --port 4174`. Проверки: `npm test`, `npm run lint`, `npm run build`; браузерные проверки принимают `SPECWATT_URL`. Android preview — самостоятельный React Native интерфейс, отдельный пакет `dev.specwatt.experience.v41.preview`; сборка проверена на x86_64-эмуляторе. Инструкции — [native/README.md](native/README.md).
+
+Ниже сохранена документация исходного V4.
+
 # SpecWATT Experience V4
 
 React + TypeScript, editable Figma, and an isolated React Native / Expo 58 host. Warm Graphite × Ambient Amber and Manrope are retained. All values and interactions are local demonstrations; no hardware is connected.

@@ -1,0 +1,147 @@
+[
+  {
+    "key": "welcome",
+    "width": 393,
+    "height": 852
+  },
+  {
+    "key": "home",
+    "width": 393,
+    "height": 1375.6875
+  },
+  {
+    "key": "lighting",
+    "width": 393,
+    "height": 1053.25
+  },
+  {
+    "key": "energy",
+    "width": 393,
+    "height": 1238.28125
+  },
+  {
+    "key": "devices",
+    "width": 393,
+    "height": 1179.515625
+  },
+  {
+    "key": "device",
+    "width": 393,
+    "height": 1410.0625
+  },
+  {
+    "key": "autopilot",
+    "width": 393,
+    "height": 1548.453125
+  },
+  {
+    "key": "planner",
+    "width": 393,
+    "height": 1321.28125
+  },
+  {
+    "key": "journal",
+    "width": 393,
+    "height": 1290.09375
+  },
+  {
+    "key": "setup",
+    "width": 393,
+    "height": 965.75
+  },
+  {
+    "key": "settings",
+    "width": 393,
+    "height": 1658.453125
+  },
+  {
+    "key": "protected",
+    "width": 393,
+    "height": 1199.328125
+  },
+  {
+    "key": "setup-2",
+    "width": 393,
+    "height": 852
+  },
+  {
+    "key": "setup-3",
+    "width": 393,
+    "height": 852
+  },
+  {
+    "key": "state-0",
+    "width": 393,
+    "height": 1588.359375
+  },
+  {
+    "key": "state-1",
+    "width": 393,
+    "height": 1567.96875
+  },
+  {
+    "key": "state-2",
+    "width": 393,
+    "height": 1588.359375
+  },
+  {
+    "key": "state-3",
+    "width": 393,
+    "height": 1053.25
+  },
+  {
+    "key": "state-4",
+    "width": 393,
+    "height": 1410.0625
+  },
+  {
+    "key": "state-5",
+    "width": 393,
+    "height": 1146.8125
+  },
+  {
+    "key": "state-6",
+    "width": 393,
+    "height": 1548.453125
+  },
+  {
+    "key": "state-7",
+    "width": 393,
+    "height": 1199.328125
+  },
+  {
+    "key": "state-overload",
+    "width": 393,
+    "height": 852
+  },
+  {
+    "key": "energy-day",
+    "width": 393,
+    "height": 1238.28125
+  },
+  {
+    "key": "energy-month",
+    "width": 393,
+    "height": 1238.28125
+  },
+  {
+    "key": "planner-saved",
+    "width": 393,
+    "height": 1296.796875
+  },
+  {
+    "key": "planner-editing",
+    "width": 393,
+    "height": 852
+  },
+  {
+    "key": "planner-conflict",
+    "width": 393,
+    "height": 852
+  },
+  {
+    "key": "permission-granted",
+    "width": 393,
+    "height": 1516.0625
+  }
+]

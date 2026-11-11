@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "8.4 W rejected in native UI; CH1 remains off; no CH3 switch",
+    "Refusal is recorded; Android hardware Back returns to Devices",
+    "Offline native budget is unknown and all visible channel switches are disabled",
+    "Native numeric keyboard formats 2359 as 23:59; Back dismisses keyboard and retains draft",
+    "Android hardware Back moves Setup 3 → 2"
+  ]
+}

@@ -1,7 +1,7 @@
+const base = process.env.SPECWATT_URL || "http://127.0.0.1:4173";
 import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
-const base = process.argv[2] || "http://127.0.0.1:4173/";
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({
   viewport: { width: 393, height: 852 },
@@ -145,10 +145,16 @@ try {
   ).toBeDisabled();
   await shot("hardware-unavailable");
   await page.getByRole("button", { name: "Продолжить в демо" }).click();
-  await page.getByLabel("Адрес сервера").fill("http://");
+  await page
+    .getByLabel("Пример адреса сервера · без подключения")
+    .fill("http://");
   await page.getByRole("button", { name: "Продолжить настройку" }).click();
-  await expect(page.getByLabel("Адрес сервера")).toBeVisible();
-  await page.getByLabel("Адрес сервера").fill("https://controller.example");
+  await expect(
+    page.getByLabel("Пример адреса сервера · без подключения"),
+  ).toBeVisible();
+  await page
+    .getByLabel("Пример адреса сервера · без подключения")
+    .fill("https://controller.example");
   await page.getByRole("button", { name: "Продолжить настройку" }).click();
   await expect(page.locator(".setup-description")).toContainText(
     "Физическое устройство не подключено",
@@ -166,7 +172,7 @@ try {
       Promise.all([...document.images].map((i) => i.decode())),
     );
     const sources = await page
-      .locator(".phone-screen img")
+      .locator(".welcome-photo, .lighting-scene img")
       .evaluateAll((xs) =>
         xs.map((i) => ({ source: i.currentSrc, width: i.naturalWidth })),
       );

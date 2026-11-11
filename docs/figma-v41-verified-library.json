@@ -1,0 +1,12 @@
+{
+  "components": {
+    "DeviceCard/Layout=Tile, Channel=CH1, State=Off": "94:43",
+    "DeviceCard/Layout=Tile, Channel=CH2, State=On": "94:73",
+    "DeviceCard/Layout=Row, Channel=CH1, State=Off": "94:96",
+    "DeviceCard/Layout=Row, Channel=CH2, State=On": "94:126",
+    "DeviceCard/Layout=Tile, Channel=CH1, State=Unknown": "94:149",
+    "DeviceCard/Layout=Tile, Channel=CH2, State=Unknown": "94:179",
+    "LoadBudget/State=Unknown": "94:209",
+    "LoadBudget": "94:240"
+  }
+}

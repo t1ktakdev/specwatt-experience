@@ -1,0 +1,451 @@
+{
+  "pages": [
+    {
+      "id": "69:9",
+      "name": "10 V4.1 Candidate / Screens",
+      "types": {
+        "FRAME": 1142,
+        "INSTANCE": 53,
+        "VECTOR": 723,
+        "TEXT": 458,
+        "GROUP": 9
+      },
+      "auto": 835,
+      "bound": 804,
+      "imageFills": 5,
+      "reactions": 6,
+      "fonts": [
+        "Manrope"
+      ],
+      "frames": [
+        {
+          "id": "75:194",
+          "name": "V4.1 / 01 welcome",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "75:284",
+          "name": "V4.1 / 02 home",
+          "width": 393,
+          "height": 1375.6875
+        },
+        {
+          "id": "75:706",
+          "name": "V4.1 / 03 lighting",
+          "width": 393,
+          "height": 1053.25
+        },
+        {
+          "id": "75:921",
+          "name": "V4.1 / 04 energy",
+          "width": 393,
+          "height": 1238.28125
+        },
+        {
+          "id": "75:1199",
+          "name": "V4.1 / 05 devices",
+          "width": 393,
+          "height": 1179.515625
+        },
+        {
+          "id": "75:1487",
+          "name": "V4.1 / 06 device",
+          "width": 393,
+          "height": 1410.0625
+        },
+        {
+          "id": "75:1710",
+          "name": "V4.1 / 07 autopilot",
+          "width": 393,
+          "height": 1548.453125
+        },
+        {
+          "id": "75:2002",
+          "name": "V4.1 / 08 planner",
+          "width": 393,
+          "height": 1321.28125
+        },
+        {
+          "id": "75:2257",
+          "name": "V4.1 / 09 journal",
+          "width": 393,
+          "height": 1290.09375
+        },
+        {
+          "id": "75:2465",
+          "name": "V4.1 / 10 setup",
+          "width": 393,
+          "height": 965.75
+        },
+        {
+          "id": "75:2613",
+          "name": "V4.1 / 11 settings",
+          "width": 393,
+          "height": 1658.453125
+        },
+        {
+          "id": "75:2922",
+          "name": "V4.1 / 12 protected",
+          "width": 393,
+          "height": 1199.328125
+        },
+        {
+          "id": "75:3108",
+          "name": "V4.1 / 13 setup-2",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "75:3218",
+          "name": "V4.1 / 14 setup-3",
+          "width": 393,
+          "height": 852
+        }
+      ]
+    },
+    {
+      "id": "75:9",
+      "name": "11 V4.1 Candidate / Components",
+      "types": {
+        "COMPONENT_SET": 1,
+        "COMPONENT": 12,
+        "FRAME": 139,
+        "TEXT": 52,
+        "VECTOR": 21
+      },
+      "auto": 104,
+      "bound": 75,
+      "imageFills": 3,
+      "reactions": 2,
+      "fonts": [
+        "Manrope"
+      ],
+      "frames": []
+    },
+    {
+      "id": "84:92",
+      "name": "12 V4.1 Candidate / States",
+      "types": {
+        "FRAME": 1576,
+        "TEXT": 685,
+        "VECTOR": 975,
+        "INSTANCE": 63,
+        "RECTANGLE": 1,
+        "GROUP": 30
+      },
+      "auto": 1156,
+      "bound": 1065,
+      "imageFills": 5,
+      "reactions": 11,
+      "fonts": [
+        "Manrope"
+      ],
+      "frames": [
+        {
+          "id": "85:9",
+          "name": "V4.1 / state-0",
+          "width": 393,
+          "height": 1588.359375
+        },
+        {
+          "id": "85:447",
+          "name": "V4.1 / state-1",
+          "width": 393,
+          "height": 1567.96875
+        },
+        {
+          "id": "85:879",
+          "name": "V4.1 / state-2",
+          "width": 393,
+          "height": 1588.359375
+        },
+        {
+          "id": "85:1313",
+          "name": "V4.1 / state-3",
+          "width": 393,
+          "height": 1053.25
+        },
+        {
+          "id": "85:1528",
+          "name": "V4.1 / state-4",
+          "width": 393,
+          "height": 1410.0625
+        },
+        {
+          "id": "85:1751",
+          "name": "V4.1 / state-5",
+          "width": 393,
+          "height": 1146.8125
+        },
+        {
+          "id": "85:1930",
+          "name": "V4.1 / state-6",
+          "width": 393,
+          "height": 1548.453125
+        },
+        {
+          "id": "85:2222",
+          "name": "V4.1 / state-7",
+          "width": 393,
+          "height": 1199.328125
+        },
+        {
+          "id": "85:2408",
+          "name": "V4.1 / state-overload",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "85:2432",
+          "name": "V4.1 / energy-day",
+          "width": 393,
+          "height": 1238.28125
+        },
+        {
+          "id": "85:2725",
+          "name": "V4.1 / energy-month",
+          "width": 393,
+          "height": 1238.28125
+        },
+        {
+          "id": "85:2997",
+          "name": "V4.1 / planner-saved",
+          "width": 393,
+          "height": 1296.796875
+        },
+        {
+          "id": "85:3278",
+          "name": "V4.1 / planner-editing",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "85:3648",
+          "name": "V4.1 / planner-conflict",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "85:4021",
+          "name": "V4.1 / permission-granted",
+          "width": 393,
+          "height": 1516.0625
+        }
+      ]
+    },
+    {
+      "id": "89:9",
+      "name": "13 V4.1 Candidate / Prototype",
+      "types": {
+        "FRAME": 2718,
+        "INSTANCE": 116,
+        "VECTOR": 1698,
+        "TEXT": 1143,
+        "GROUP": 39,
+        "RECTANGLE": 1
+      },
+      "auto": 1991,
+      "bound": 1899,
+      "imageFills": 10,
+      "reactions": 227,
+      "fonts": [
+        "Manrope"
+      ],
+      "frames": [
+        {
+          "id": "91:9",
+          "name": "Prototype / welcome",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:68",
+          "name": "Prototype / home",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:363",
+          "name": "Prototype / lighting",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:528",
+          "name": "Prototype / energy",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:756",
+          "name": "Prototype / devices",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:950",
+          "name": "Prototype / device",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:1123",
+          "name": "Prototype / autopilot",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:1359",
+          "name": "Prototype / planner",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:1564",
+          "name": "Prototype / journal",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:1722",
+          "name": "Prototype / setup",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:1839",
+          "name": "Prototype / settings",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:2085",
+          "name": "Prototype / protected",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:2224",
+          "name": "Prototype / setup-2",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:2303",
+          "name": "Prototype / setup-3",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:2403",
+          "name": "Prototype / state-0",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:2715",
+          "name": "Prototype / state-1",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:3017",
+          "name": "Prototype / state-2",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:3321",
+          "name": "Prototype / state-3",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:3486",
+          "name": "Prototype / state-4",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:3659",
+          "name": "Prototype / state-5",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:3788",
+          "name": "Prototype / state-6",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:4024",
+          "name": "Prototype / state-7",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:4163",
+          "name": "Prototype / state-overload",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:4182",
+          "name": "Prototype / energy-day",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:4425",
+          "name": "Prototype / energy-month",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:4647",
+          "name": "Prototype / planner-saved",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:4875",
+          "name": "Prototype / planner-editing",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:5187",
+          "name": "Prototype / planner-conflict",
+          "width": 393,
+          "height": 852
+        },
+        {
+          "id": "91:5502",
+          "name": "Prototype / permission-granted",
+          "width": 393,
+          "height": 852
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "id": "VariableCollectionId:4:10",
+      "name": "SpecWATT / Primitives",
+      "variables": 31
+    },
+    {
+      "id": "VariableCollectionId:4:11",
+      "name": "SpecWATT / Semantics",
+      "variables": 31
+    }
+  ],
+  "textStyles": 7,
+  "oldHomeHeight": 1109.6875,
+  "coverChildren": [
+    "29:231"
+  ],
+  "playback": "Not tested: no playback API"
+}

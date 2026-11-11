@@ -1,3 +1,4 @@
+const base = process.env.SPECWATT_URL || "http://127.0.0.1:4173";
 import { chromium } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import fs from "node:fs/promises";
@@ -22,7 +23,7 @@ for (const route of [
   "setup",
   "settings",
 ]) {
-  await page.goto(`http://127.0.0.1:4173/#${route}`);
+  await page.goto(`${base}/#${route}`);
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(250);
   const result = await new AxeBuilder({ page })

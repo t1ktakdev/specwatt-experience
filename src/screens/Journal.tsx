@@ -24,6 +24,12 @@ export function Journal() {
     Авто: ["auto"],
   };
   const filtered = events.filter((e) => kinds[filter].includes(e.kind));
+  const groups = Object.entries(
+    filtered.reduce<Record<string, LogEntry[]>>((groups, event) => {
+      (groups[event.time] ||= []).push(event);
+      return groups;
+    }, {}),
+  );
   const icons: Record<LogEntry["kind"], LucideIcon> = {
     light: Sun,
     shield: ShieldCheck,
@@ -85,27 +91,66 @@ export function Journal() {
               </p>
             </div>
           )}
-          {filtered.map((e, i) => (
-            <article
-              className={`event-item event-${e.kind}`}
-              key={`${e.title}-${i}`}
-            >
-              <span className="event-node">
-                <Icon icon={icons[e.kind]} size={21} />
-              </span>
-              <div>
-                <time>{e.time}</time>
-                <h3>{e.title}</h3>
-                <p>{e.detail}</p>
-                {e.kind === "shield" && (
-                  <button onClick={() => go("protected")}>
-                    Как работает защита
-                    <ArrowUpRight size={13} />
-                  </button>
-                )}
+          {groups.map(([time, items]) => (
+            <section className="journal-group" key={time}>
+              <div className="journal-time-group">
+                <time>{time}</time>
+                <span>ЛОКАЛЬНАЯ СЕССИЯ</span>
               </div>
-            </article>
+              {items!.map((e, i) => (
+                <article
+                  className={`event-item event-${e.kind}`}
+                  key={`${e.title}-${i}`}
+                >
+                  <span className="event-node">
+                    <Icon icon={icons[e.kind]} size={21} />
+                  </span>
+                  <div>
+                    <span className="event-receipt">
+                      {e.kind === "warning"
+                        ? "ЗАПРОС ОТКЛОНЁН"
+                        : e.kind === "shield"
+                          ? "ЗАЩИТА"
+                          : e.kind === "auto"
+                            ? "РАЗРЕШЕНИЕ"
+                            : "ЛОКАЛЬНО"}
+                      {e.channel ? ` / ${e.channel}` : ""}
+                    </span>
+                    <h3>{e.title}</h3>
+                    <p>{e.detail}</p>
+                    {e.kind === "shield" && (
+                      <button onClick={() => go("protected")}>
+                        Как работает защита
+                        <ArrowUpRight size={13} />
+                      </button>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </section>
           ))}
+        </div>
+        <div className="session-ledger">
+          <span className="eyebrow">ПРОЗРАЧНОСТЬ КАЖДОГО ДЕЙСТВИЯ</span>
+          <h2>
+            У каждого решения —<br />
+            свой след.
+          </h2>
+          <div className="ledger-counts">
+            <span>
+              <b>{events.filter((e) => e.kind === "light").length}</b>
+              Переключения
+            </span>
+            <span>
+              <b>{events.filter((e) => e.kind === "warning").length}</b>Отказы
+            </span>
+            <span>
+              <b>{events.filter((e) => e.kind === "auto").length}</b>Разрешения
+            </span>
+          </div>
+          <button onClick={() => go("devices")}>
+            К управлению устройствами <ArrowUpRight size={17} />
+          </button>
         </div>
         <p className="fine-note">
           Журнал этой сессии содержит только действия в прототипе. Он не

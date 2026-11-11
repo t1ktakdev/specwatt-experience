@@ -19,6 +19,8 @@ export default function App() {
       assets={{
         welcome: require("../../public/assets/welcome-architecture.webp"),
         lighting: require("../../public/assets/lighting-bedroom.webp"),
+        pendantOn: require("../../public/assets/pendant-concept-on.webp"),
+        pendantOff: require("../../public/assets/pendant-concept-off.webp"),
       }}
     />
   );

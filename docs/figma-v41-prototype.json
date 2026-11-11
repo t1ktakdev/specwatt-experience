@@ -1,0 +1,150 @@
+{
+  "page": "89:9",
+  "frames": [
+    {
+      "id": "91:9",
+      "key": "welcome",
+      "route": "welcome"
+    },
+    {
+      "id": "91:68",
+      "key": "home",
+      "route": "home"
+    },
+    {
+      "id": "91:363",
+      "key": "lighting",
+      "route": "lighting"
+    },
+    {
+      "id": "91:528",
+      "key": "energy",
+      "route": "energy"
+    },
+    {
+      "id": "91:756",
+      "key": "devices",
+      "route": "devices"
+    },
+    {
+      "id": "91:950",
+      "key": "device",
+      "route": "device"
+    },
+    {
+      "id": "91:1123",
+      "key": "autopilot",
+      "route": "autopilot"
+    },
+    {
+      "id": "91:1359",
+      "key": "planner",
+      "route": "planner"
+    },
+    {
+      "id": "91:1564",
+      "key": "journal",
+      "route": "journal"
+    },
+    {
+      "id": "91:1722",
+      "key": "setup",
+      "route": "setup"
+    },
+    {
+      "id": "91:1839",
+      "key": "settings",
+      "route": "settings"
+    },
+    {
+      "id": "91:2085",
+      "key": "protected",
+      "route": "protected"
+    },
+    {
+      "id": "91:2224",
+      "key": "setup-2",
+      "route": "setup-2"
+    },
+    {
+      "id": "91:2303",
+      "key": "setup-3",
+      "route": "setup-3"
+    },
+    {
+      "id": "91:2403",
+      "key": "state-0",
+      "route": "home"
+    },
+    {
+      "id": "91:2715",
+      "key": "state-1",
+      "route": "home"
+    },
+    {
+      "id": "91:3017",
+      "key": "state-2",
+      "route": "home"
+    },
+    {
+      "id": "91:3321",
+      "key": "state-3",
+      "route": "lighting"
+    },
+    {
+      "id": "91:3486",
+      "key": "state-4",
+      "route": "device"
+    },
+    {
+      "id": "91:3659",
+      "key": "state-5",
+      "route": "journal"
+    },
+    {
+      "id": "91:3788",
+      "key": "state-6",
+      "route": "autopilot"
+    },
+    {
+      "id": "91:4024",
+      "key": "state-7",
+      "route": "protected"
+    },
+    {
+      "id": "91:4163",
+      "key": "state-overload",
+      "route": "limit"
+    },
+    {
+      "id": "91:4182",
+      "key": "energy-day",
+      "route": "energy"
+    },
+    {
+      "id": "91:4425",
+      "key": "energy-month",
+      "route": "energy"
+    },
+    {
+      "id": "91:4647",
+      "key": "planner-saved",
+      "route": "planner"
+    },
+    {
+      "id": "91:4875",
+      "key": "planner-editing",
+      "route": "planner"
+    },
+    {
+      "id": "91:5187",
+      "key": "planner-conflict",
+      "route": "planner"
+    },
+    {
+      "id": "91:5502",
+      "key": "permission-granted",
+      "route": "autopilot"
+    }
+  ]
+}

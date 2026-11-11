@@ -1,3 +1,7 @@
+# V4.1 Candidate · текущая проверка
+
+Полная проверка нового художественного цикла, Android и сохранности исходников: [DELIVERY](v41/DELIVERY.md). Независимые сравнения всех 29 состояний: [review.html](v41/review.html). Актуальные узлы: [COMPONENT-MAP](COMPONENT-MAP.md). Нижеследующая запись сохранена как история исходного V4.
+
 # Experience V4 verification — 10 November 2026, Asia/Bishkek
 
 Source: real `origin/main` at `263a4dfe54ec12b1f8ff3a1160d97f93a01a5074` (v1.1.0). Isolated branch `codex/experience-v4-crafted-figma`, package v1.2.0. The original SpecWATT repository, backend/firmware and both rejected Figma files were not modified.
@@ -43,20 +47,20 @@ Schedules never execute by time, autopilot sends no background commands, and pai
 
 Executed successfully on the final application source:
 
-| Check | Result |
-| --- | --- |
-| `npm test` | 16 passed |
-| `npm run typecheck` | Passed |
-| `npm run lint` | Passed; Prettier formatting, not ESLint |
-| `npm run build` | Passed; production Vite output |
-| `npm run typecheck --prefix native` | Passed |
-| `npm run typecheck --prefix native/host` | Passed |
-| `npm run export:android --prefix native/host` | Passed; Expo/Metro Android Hermes bundle |
-| `node tools/qa.mjs` | 12 routes × 320/393/440 px; no checked overflow/page errors |
-| `node tools/qa-v3.mjs` | Seven extended scenario groups passed; no failed responses |
-| `node tools/qa-v4.mjs` | Five V4 scenario groups passed; no page/HTTP errors |
-| `node tools/accessibility.mjs` | 12 initial route views, zero reported axe A/AA violations |
-| `node tools/parity.mjs` | 14 core + 15 state screenshots generated |
+| Check                                         | Result                                                      |
+| --------------------------------------------- | ----------------------------------------------------------- |
+| `npm test`                                    | 16 passed                                                   |
+| `npm run typecheck`                           | Passed                                                      |
+| `npm run lint`                                | Passed; Prettier formatting, not ESLint                     |
+| `npm run build`                               | Passed; production Vite output                              |
+| `npm run typecheck --prefix native`           | Passed                                                      |
+| `npm run typecheck --prefix native/host`      | Passed                                                      |
+| `npm run export:android --prefix native/host` | Passed; Expo/Metro Android Hermes bundle                    |
+| `node tools/qa.mjs`                           | 12 routes × 320/393/440 px; no checked overflow/page errors |
+| `node tools/qa-v3.mjs`                        | Seven extended scenario groups passed; no failed responses  |
+| `node tools/qa-v4.mjs`                        | Five V4 scenario groups passed; no page/HTTP errors         |
+| `node tools/accessibility.mjs`                | 12 initial route views, zero reported axe A/AA violations   |
+| `node tools/parity.mjs`                       | 14 core + 15 state screenshots generated                    |
 
 Machine-readable browser reports and geometry are retained in `v4/`. CI independently installs the native host and exports Android; its final run is recorded with the PR after pushing.
 

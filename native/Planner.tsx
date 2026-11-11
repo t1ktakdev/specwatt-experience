@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { formatTimeInput } from "../src/lib/time-input";
 import {
   Modal,
   Pressable,
@@ -8,7 +9,15 @@ import {
   Platform,
 } from "react-native";
 import Svg, { Path, Text as SvgText, Rect } from "react-native-svg";
-import { Copy, NativeButton, ScreenShell, Surface, s } from "./components";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  Copy,
+  NativeButton,
+  NativeIcon,
+  ScreenShell,
+  Surface,
+  s,
+} from "./components";
 import { NativeField, NativeToggle } from "./controls";
 import {
   loadSegments,
@@ -135,7 +144,7 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
           План нагрузки
         </Copy>
         <NativeButton label="Новое расписание" onPress={() => open()} />
-        <View style={s.grid}>
+        <View style={{ flexDirection: "row", gap: 3 }}>
           {weekdays.map((d) => (
             <Pressable
               key={d}
@@ -144,7 +153,10 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
               style={[
                 s.subtleButton,
                 {
-                  minWidth: 48,
+                  minWidth: 0,
+                  flex: 1,
+                  paddingHorizontal: 0,
+                  alignItems: "center",
                   borderColor: d === day ? "#edb17c" : "#ffffff18",
                 },
               ]}
@@ -200,109 +212,140 @@ export function NativePlanner(m: NativeModel & NativeRuntime) {
         animationType={m.reduceMotion ? "none" : "slide"}
         onRequestClose={() => setDraft(null)}
       >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-          style={{
-            flex: 1,
-            justifyContent: "flex-end",
-            backgroundColor: "#000a",
-          }}
+        <SafeAreaView
+          edges={["top", "bottom"]}
+          style={{ flex: 1, backgroundColor: "#252728" }}
         >
-          <ScrollView
-            accessibilityViewIsModal
-            contentContainerStyle={{
-              padding: 24,
-              gap: 16,
-              backgroundColor: "#252728",
-              paddingBottom: 48,
+          <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : undefined}
+            style={{
+              flex: 1,
+              justifyContent: "flex-end",
+              backgroundColor: "#000a",
             }}
           >
-            {draft && (
-              <>
-                <Copy accessibilityRole="header" style={s.title}>
-                  Редактор расписания
-                </Copy>
-                <NativeButton
-                  label="Закрыть расписание"
-                  onPress={() => setDraft(null)}
-                />
-                <View style={s.grid}>
-                  {(["CH1", "CH2"] as const).map((id) => (
-                    <Pressable
-                      key={id}
-                      accessibilityRole="button"
-                      accessibilityState={{ selected: draft.channel === id }}
-                      style={s.subtleButton}
-                      onPress={() => setDraft({ ...draft, channel: id })}
+            <ScrollView
+              accessibilityViewIsModal
+              contentContainerStyle={{
+                padding: 24,
+                gap: 16,
+                backgroundColor: "#252728",
+                paddingBottom: 48,
+              }}
+            >
+              {draft && (
+                <>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: 12,
+                    }}
+                  >
+                    <Copy
+                      accessibilityRole="header"
+                      style={{ flex: 1, fontSize: 24, lineHeight: 32 }}
                     >
-                      <Copy>{id}</Copy>
-                    </Pressable>
-                  ))}
-                </View>
-                <NativeField
-                  label="Название"
-                  value={draft.name}
-                  onChange={(name) => setDraft({ ...draft, name })}
-                />
-                <NativeField
-                  label="Включить в (ЧЧ:ММ)"
-                  value={draft.time}
-                  onChange={(time) => setDraft({ ...draft, time })}
-                />
-                <NativeField
-                  label="Выключить в (ЧЧ:ММ)"
-                  value={draft.end}
-                  onChange={(end) => setDraft({ ...draft, end })}
-                />
-                <View style={s.grid}>
-                  {weekdays.map((d) => (
-                    <Pressable
-                      key={d}
-                      accessibilityRole="button"
-                      accessibilityState={{ selected: draft.days.includes(d) }}
-                      style={[s.subtleButton, { minWidth: 48 }]}
-                      onPress={() =>
-                        setDraft({
-                          ...draft,
-                          days: draft.days.includes(d)
-                            ? draft.days.filter((x) => x !== d)
-                            : [...draft.days, d],
-                        })
-                      }
-                    >
-                      <Copy>{d}</Copy>
-                    </Pressable>
-                  ))}
-                </View>
-                {draftPreview && (
-                  <>
-                    <Copy style={s.caption}>
-                      Предпросмотр · {draftPreview.day}
+                      Свой ритм света
                     </Copy>
-                    <NativeLoad
-                      plans={draftPreview.plans}
-                      day={draftPreview.day}
-                    />
-                  </>
-                )}
-                {error && (
-                  <Copy accessibilityRole="alert" style={{ color: "#f1a893" }}>
-                    {error}
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel="Закрыть расписание"
+                      onPress={() => setDraft(null)}
+                      style={s.iconButton}
+                    >
+                      <NativeIcon kind="back" color="#adb0aa" size={20} />
+                    </Pressable>
+                  </View>
+                  <View style={s.grid}>
+                    {(["CH1", "CH2"] as const).map((id) => (
+                      <Pressable
+                        key={id}
+                        accessibilityRole="button"
+                        accessibilityState={{ selected: draft.channel === id }}
+                        style={s.subtleButton}
+                        onPress={() => setDraft({ ...draft, channel: id })}
+                      >
+                        <Copy>{id}</Copy>
+                      </Pressable>
+                    ))}
+                  </View>
+                  <NativeField
+                    label="Название"
+                    value={draft.name}
+                    onChange={(name) => setDraft({ ...draft, name })}
+                  />
+                  <NativeField
+                    label="Включить в (ЧЧ:ММ)"
+                    keyboardType="number-pad"
+                    value={draft.time}
+                    onChange={(time) =>
+                      setDraft({ ...draft, time: formatTimeInput(time) })
+                    }
+                  />
+                  <NativeField
+                    label="Выключить в (ЧЧ:ММ)"
+                    keyboardType="number-pad"
+                    value={draft.end}
+                    onChange={(end) =>
+                      setDraft({ ...draft, end: formatTimeInput(end) })
+                    }
+                  />
+                  <View style={s.grid}>
+                    {weekdays.map((d) => (
+                      <Pressable
+                        key={d}
+                        accessibilityRole="button"
+                        accessibilityState={{
+                          selected: draft.days.includes(d),
+                        }}
+                        style={[s.subtleButton, { minWidth: 48 }]}
+                        onPress={() =>
+                          setDraft({
+                            ...draft,
+                            days: draft.days.includes(d)
+                              ? draft.days.filter((x) => x !== d)
+                              : [...draft.days, d],
+                          })
+                        }
+                      >
+                        <Copy>{d}</Copy>
+                      </Pressable>
+                    ))}
+                  </View>
+                  {draftPreview && (
+                    <>
+                      <Copy style={s.caption}>
+                        Предпросмотр · {draftPreview.day}
+                      </Copy>
+                      <NativeLoad
+                        plans={draftPreview.plans}
+                        day={draftPreview.day}
+                      />
+                    </>
+                  )}
+                  {error && (
+                    <Copy
+                      accessibilityRole="alert"
+                      style={{ color: "#f1a893" }}
+                    >
+                      {error}
+                    </Copy>
+                  )}
+                  <Copy style={s.muted}>
+                    В памяти текущей сессии. CH3 недоступен в редакторе. Команды
+                    по часам не исполняются.
                   </Copy>
-                )}
-                <Copy style={s.muted}>
-                  В памяти текущей сессии. CH3 недоступен в редакторе. Команды
-                  по часам не исполняются.
-                </Copy>
-                <NativeButton
-                  label="Сохранить демо-план"
-                  icon="check"
-                  onPress={save}
-                />
-              </>
-            )}
-          </ScrollView>
-        </KeyboardAvoidingView>
+                  <NativeButton
+                    label="Сохранить демо-план"
+                    icon="check"
+                    onPress={save}
+                  />
+                </>
+              )}
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </SafeAreaView>
       </Modal>
     </>
   );

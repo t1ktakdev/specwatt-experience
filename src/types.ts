@@ -25,6 +25,7 @@ export type LogEntry = {
 export type Model = {
   page: Page;
   go: (p: Page) => void;
+  back: () => void;
   channels: ChannelState;
   toggle: (c: ChannelId) => void;
   link: LinkState;

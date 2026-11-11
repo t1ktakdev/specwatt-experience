@@ -21,12 +21,12 @@ export function NativeRow({
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
-      style={({ pressed }) => [s.subtleButton, pressed && s.pressed]}
+      style={({ pressed }) => [s.row, pressed && s.pressed]}
     >
       {content}
     </Pressable>
   ) : (
-    <View style={s.subtleButton}>{content}</View>
+    <View style={s.row}>{content}</View>
   );
 }
 export function NativeToggle({
@@ -70,7 +70,7 @@ export function NativeField({
   label: string;
   value: string;
   onChange: (value: string) => void;
-  keyboardType?: "default" | "url" | "numbers-and-punctuation";
+  keyboardType?: "default" | "url" | "number-pad";
 }) {
   return (
     <View style={{ gap: 8 }}>
@@ -80,6 +80,7 @@ export function NativeField({
         value={value}
         onChangeText={onChange}
         keyboardType={keyboardType}
+        inputMode={keyboardType === "number-pad" ? "numeric" : undefined}
         autoCapitalize="none"
         autoCorrect={false}
         style={{

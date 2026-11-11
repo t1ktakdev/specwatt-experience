@@ -50,7 +50,7 @@ export function LoadTimeline({
         <text x="0" y="12" fontSize="10" fill="#b8bdb5">
           Вт
         </text>
-        <path d={`${path}L324 126H36Z`} fill="#edb17c16" />
+        <path d={`${path}L324 126H36Z`} fill="#edb17c" fillOpacity={0.086} />
         <path d={`M36 ${y(2.4)}H324`} stroke="#b8c9b0" strokeWidth="2" />
         {segments
           .filter((s) => s.watts > 7)

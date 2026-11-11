@@ -1,3 +1,4 @@
+const base = process.env.SPECWATT_URL || "http://127.0.0.1:4173";
 import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
@@ -11,7 +12,7 @@ page.on("response", (r) => {
   if (r.status() >= 400) failed.push({ url: r.url(), status: r.status() });
 });
 try {
-  await page.goto("http://127.0.0.1:4173/?screen=home");
+  await page.goto(`${base}/?screen=home`);
   await page
     .getByRole("navigation")
     .getByRole("button", { name: "Энергия", exact: true })
@@ -24,7 +25,7 @@ try {
     page.getByRole("heading", { name: "Добрый вечер." }),
   ).toBeVisible();
   checks.push("Query-route entry preserves tab navigation and browser back");
-  await page.goto("http://127.0.0.1:4173/#energy");
+  await page.goto(`${base}/#energy`);
   await page.evaluate(() => document.fonts.ready);
   assert.equal(
     await page.evaluate(() => document.fonts.check("16px Manrope")),
@@ -71,7 +72,7 @@ try {
   checks.push(
     "Loaded Manrope; chart hover, keyboard selection and three real period states",
   );
-  await page.goto("http://127.0.0.1:4173/#planner");
+  await page.goto(`${base}/#planner`);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page
@@ -107,9 +108,9 @@ try {
   checks.push(
     "Draft conflict is visible on the chart; rejection preserves the single saved plan",
   );
-  await page.goto("http://127.0.0.1:4173/?gallery=states&designexport");
+  await page.goto(`${base}/?gallery=states&designexport`);
   assert.equal(await page.locator(".gallery-item").count(), 9);
-  await page.goto("http://127.0.0.1:4173/?gallery=workflows&designexport");
+  await page.goto(`${base}/?gallery=workflows&designexport`);
   assert.equal(await page.locator(".gallery-item").count(), 6);
   await page.emulateMedia({ reducedMotion: "reduce" });
   assert.equal(

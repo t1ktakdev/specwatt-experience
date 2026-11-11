@@ -33,7 +33,7 @@ export function Setup({ initialStep = 1 }: { initialStep?: number }) {
   }
   return (
     <>
-      <main className="screen-content setup-content">
+      <main className={`screen-content setup-content setup-step-${step}`}>
         <div className="setup-top">
           <IconButton
             icon={ArrowLeft}
@@ -124,17 +124,17 @@ export function Setup({ initialStep = 1 }: { initialStep?: number }) {
             <>
               <span className="eyebrow">02 / ПАРАМЕТРЫ</span>
               <h1>
-                Задайте точку
+                Изучите параметры
                 <br />
                 подключения.
               </h1>
               <p className="setup-description">
-                Это демонстрация настройки. Прототип
+                Это учебный пример адреса. Прототип
                 <br />
                 не отправляет сетевые запросы на этот адрес.
               </p>
               <label className="form-label setup-address">
-                Адрес сервера
+                Пример адреса сервера · без подключения
                 <input
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}

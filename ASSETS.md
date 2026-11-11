@@ -1,3 +1,13 @@
+# V4.1 Candidate assets
+
+`public/assets/pendant-concept-on.webp` and `pendant-concept-off.webp` are original concept product images generated with the built-in image tool on 10 November 2026. Both are 960 × 640 WebP, approximately 30 / 19 KB. They appear only in CH1's Home tile, inventory row and detail, and in the corresponding native components and Figma image fills. They are explicitly conceptual and do not depict verified bench hardware. The two distinct Welcome / Lighting interiors are retained.
+
+The original on-state master is `exec-26f5516d-c9a8-4c3e-a9df-ff6c98dceac5.png`; the off-state edit is `exec-bbf6ece2-66de-4550-b2a2-e07dcc66e10e.png`, under the task's Codex generated-images directory. Prompt: original editorial product photograph of a shallow satin bronze / graphite disk pendant, recessed opal diffuser, machined brass rim and fabric cord; quiet graphite studio; 2700K light; no text, branding, room or interface. The edit preserves geometry and camera while switching the diffuser off. No third-party product photo was copied.
+
+`ProductVisual.tsx` is the source for the editable CH2 aluminium profile. `design-export/led-profile-{on,off}.svg` are rendered from that actual React component. Its drawing is an original concept, not a schematic of ESP32 hardware. UI icons remain Lucide / ISC. Eight bundled Latin / Cyrillic Manrope font files (weights 400, 500, 600, 700) used by CSS remain SIL OFL; font files are local so an isolated checkout does not depend on font requests through another worktree.
+
+---
+
 # V4 asset changes
 
 The rejected `evening-object.svg` is retained only for historical rollback and is no longer referenced by the application. Home renders `LightRail.tsx`, a new editable architectural LED profile. `LampIllustration` renders a brass disk pendant with distinct on/off diffuser states. These are conceptual illustrations, not photographs or technical drawings of registered hardware. `npm run export:vectors` exports the actual React SVGs, including `light-rail.svg`, `lamp-on.svg`, `lamp-off.svg` and the corrected gauge.

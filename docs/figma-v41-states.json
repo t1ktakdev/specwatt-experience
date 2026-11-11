@@ -1,0 +1,271 @@
+{
+  "page": "84:92",
+  "screens": [
+    {
+      "id": "85:9",
+      "route": "home",
+      "key": "state-0",
+      "name": "V4.1 / state-0",
+      "width": 393,
+      "height": 1588.359375,
+      "types": {
+        "FRAME": 145,
+        "TEXT": 52,
+        "VECTOR": 103,
+        "INSTANCE": 6
+      },
+      "images": [
+        {
+          "id": "I85:349;94:130",
+          "name": "ProductVisual",
+          "width": 166.5,
+          "height": 111
+        }
+      ]
+    },
+    {
+      "id": "85:447",
+      "route": "home",
+      "key": "state-1",
+      "name": "V4.1 / state-1",
+      "width": 393,
+      "height": 1567.96875,
+      "types": {
+        "FRAME": 145,
+        "TEXT": 52,
+        "VECTOR": 97,
+        "INSTANCE": 6
+      },
+      "images": [
+        {
+          "id": "I85:781;94:130",
+          "name": "ProductVisual",
+          "width": 166.5,
+          "height": 111
+        }
+      ]
+    },
+    {
+      "id": "85:879",
+      "route": "home",
+      "key": "state-2",
+      "name": "V4.1 / state-2",
+      "width": 393,
+      "height": 1588.359375,
+      "types": {
+        "FRAME": 145,
+        "TEXT": 52,
+        "VECTOR": 99,
+        "INSTANCE": 6
+      },
+      "images": [
+        {
+          "id": "I85:1215;94:130",
+          "name": "ProductVisual",
+          "width": 166.5,
+          "height": 111
+        }
+      ]
+    },
+    {
+      "id": "85:1313",
+      "route": "lighting",
+      "key": "state-3",
+      "name": "V4.1 / state-3",
+      "width": 393,
+      "height": 1053.25,
+      "types": {
+        "FRAME": 68,
+        "VECTOR": 72,
+        "TEXT": 22,
+        "RECTANGLE": 1,
+        "INSTANCE": 3
+      },
+      "images": [
+        {
+          "id": "85:1332",
+          "name": "Image (Спальня с ореховым изголовьем и скрытым архитектурным светом)",
+          "width": 345,
+          "height": 320
+        }
+      ]
+    },
+    {
+      "id": "85:1528",
+      "route": "device",
+      "key": "state-4",
+      "name": "V4.1 / state-4",
+      "width": 393,
+      "height": 1410.0625,
+      "types": {
+        "FRAME": 83,
+        "VECTOR": 56,
+        "TEXT": 30,
+        "INSTANCE": 3
+      },
+      "images": [
+        {
+          "id": "85:1550",
+          "name": "ProductVisual",
+          "width": 345,
+          "height": 298
+        }
+      ]
+    },
+    {
+      "id": "85:1751",
+      "route": "journal",
+      "key": "state-5",
+      "name": "V4.1 / state-5",
+      "width": 393,
+      "height": 1146.8125,
+      "types": {
+        "FRAME": 62,
+        "VECTOR": 34,
+        "TEXT": 29,
+        "INSTANCE": 3
+      },
+      "images": []
+    },
+    {
+      "id": "85:1930",
+      "route": "autopilot",
+      "key": "state-6",
+      "name": "V4.1 / state-6",
+      "width": 393,
+      "height": 1548.453125,
+      "types": {
+        "FRAME": 110,
+        "TEXT": 39,
+        "VECTOR": 81,
+        "INSTANCE": 5
+      },
+      "images": []
+    },
+    {
+      "id": "85:2222",
+      "route": "protected",
+      "key": "state-7",
+      "name": "V4.1 / state-7",
+      "width": 393,
+      "height": 1199.328125,
+      "types": {
+        "FRAME": 71,
+        "VECTOR": 39,
+        "TEXT": 26,
+        "INSTANCE": 2
+      },
+      "images": []
+    },
+    {
+      "id": "85:2408",
+      "route": "limit",
+      "key": "state-overload",
+      "name": "V4.1 / state-overload",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 9,
+        "VECTOR": 3,
+        "TEXT": 4,
+        "INSTANCE": 2
+      },
+      "images": []
+    },
+    {
+      "id": "85:2432",
+      "route": "energy",
+      "key": "energy-day",
+      "name": "V4.1 / energy-day",
+      "width": 393,
+      "height": 1238.28125,
+      "types": {
+        "FRAME": 99,
+        "TEXT": 52,
+        "INSTANCE": 3,
+        "VECTOR": 83,
+        "GROUP": 5
+      },
+      "images": []
+    },
+    {
+      "id": "85:2725",
+      "route": "energy",
+      "key": "energy-month",
+      "name": "V4.1 / energy-month",
+      "width": 393,
+      "height": 1238.28125,
+      "types": {
+        "FRAME": 99,
+        "TEXT": 51,
+        "INSTANCE": 3,
+        "VECTOR": 63,
+        "GROUP": 5
+      },
+      "images": []
+    },
+    {
+      "id": "85:2997",
+      "route": "planner",
+      "key": "planner-saved",
+      "name": "V4.1 / planner-saved",
+      "width": 393,
+      "height": 1296.796875,
+      "types": {
+        "FRAME": 112,
+        "VECTOR": 47,
+        "TEXT": 60,
+        "INSTANCE": 4,
+        "GROUP": 4
+      },
+      "images": []
+    },
+    {
+      "id": "85:3278",
+      "route": "planner",
+      "key": "planner-editing",
+      "name": "V4.1 / planner-editing",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 151,
+        "VECTOR": 58,
+        "TEXT": 88,
+        "INSTANCE": 6,
+        "GROUP": 8
+      },
+      "images": []
+    },
+    {
+      "id": "85:3648",
+      "route": "planner",
+      "key": "planner-conflict",
+      "name": "V4.1 / planner-conflict",
+      "width": 393,
+      "height": 852,
+      "types": {
+        "FRAME": 152,
+        "VECTOR": 59,
+        "TEXT": 89,
+        "INSTANCE": 6,
+        "GROUP": 8
+      },
+      "images": []
+    },
+    {
+      "id": "85:4021",
+      "route": "autopilot",
+      "key": "permission-granted",
+      "name": "V4.1 / permission-granted",
+      "width": 393,
+      "height": 1516.0625,
+      "types": {
+        "FRAME": 110,
+        "TEXT": 39,
+        "VECTOR": 81,
+        "INSTANCE": 5
+      },
+      "images": []
+    }
+  ]
+}
