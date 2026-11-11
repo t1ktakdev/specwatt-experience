@@ -15,7 +15,7 @@ function patchMainActivity(contents) {
       isAppearanceLightStatusBars = false
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-      // The OS contrast scrim avoids the API 35 emulator's transparent-bar tint bug.
+      // Keep OS contrast protection; API 35 emulator icon tint can still ignore it.
       window.isNavigationBarContrastEnforced = true
     }
   }

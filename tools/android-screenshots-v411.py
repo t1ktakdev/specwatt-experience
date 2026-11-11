@@ -32,17 +32,21 @@ def hierarchy():
 old_scale = run('shell','settings','get','system','font_scale').decode().strip()
 parser = argparse.ArgumentParser()
 parser.add_argument('--scales', nargs='+', default=['1.0','1.3','1.5'])
+parser.add_argument('--routes', nargs='+')
 args = parser.parse_args()
 prior_path = out / 'capture-results.json'
 results = json.loads(prior_path.read_text())['captures'] if prior_path.exists() else []
-results = [r for r in results if r['scale'] not in args.scales]
+selected_routes = args.routes or routes + ['setup?step=2','setup?step=3']
+results = [r for r in results if not (r['scale'] in args.scales and r['route'] in selected_routes)]
+installed_path = run('shell','pm','path',package).decode().strip().removeprefix('package:')
+apk_sha = run('shell','sha256sum',installed_path).decode().split()[0]
 try:
     for scale in args.scales:
         run('shell','settings','put','system','font_scale',scale)
         run('shell','am','force-stop',package)
         target = out / scale
         target.mkdir(parents=True, exist_ok=True)
-        for route in routes + ['setup?step=2','setup?step=3']:
+        for route in selected_routes:
             run('shell','am','start','-n',f'{package}/.MainActivity','-a','android.intent.action.VIEW','-d',f'specwatt-experience-v411://{route}')
             time.sleep(1.2)
             key = route.replace('?step=','-')
@@ -74,8 +78,8 @@ try:
                 raise RuntimeError(f'No bottom hierarchy: {scale} {route}')
             snapshot(target / f'{key}-bottom.png')
             (target / f'{key}-bottom.xml').write_bytes(bottom)
-            results.append({'scale':scale,'route':route,'texts':sum(bool(t) for t in texts),'scrollExercised':True,'top':f'{scale}/{key}.png','bottom':f'{scale}/{key}-bottom.png'})
-        print(f'Captured {scale}: 12 routes + 3 setup steps', flush=True)
+            results.append({'scale':scale,'route':route,'texts':sum(bool(t) for t in texts),'apkSha256':apk_sha,'scrollExercised':True,'top':f'{scale}/{key}.png','bottom':f'{scale}/{key}-bottom.png'})
+        print(f'Captured {scale}: {len(selected_routes)} views, top and bottom', flush=True)
 finally:
     run('shell','settings','put','system','font_scale',old_scale)
     (out / 'capture-results.json').write_text(json.dumps({'originalFontScale':old_scale,'captures':results},indent=2),encoding='utf-8')
